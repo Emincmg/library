@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +26,6 @@ Route::get('/getdetailbook/{id}', [App\Http\Controllers\BooksController::class, 
 
 Route::post('/addbook', [App\Http\Controllers\BooksController::class, 'addBook'])->name('addbook');
 Route::post('/updatebook/{id}', [App\Http\Controllers\BooksController::class, 'updateBook'])->name('updatebook');
-
 
 
 

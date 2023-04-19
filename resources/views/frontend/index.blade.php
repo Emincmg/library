@@ -267,7 +267,6 @@
                         });
                     });
                 </script>
-                @php(xdebug_break())
         </div>
     </div>
 @endsection
