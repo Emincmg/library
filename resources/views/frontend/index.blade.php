@@ -85,7 +85,7 @@
                                                 </button>
                                             </h5>
                                         </div>
-                                        <p>{{ $key->book_explanation }}</p>
+                                        <p class="p-card">{{ $key->book_explanation }}</p>
                                         <div class="text-sm op-5">
                                             @foreach($key->book_category as $keyc)
                                                 <a class="text-black mr-2" href="#">{{ $keyc }},</a>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="modal fade" id="addBookModal">
 
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
 
                             <!-- Modal Header -->
@@ -197,12 +197,8 @@
                 </div>
                 <div class="modal fade" id="viewModal">
 
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header d-block border-0">
-                                <h4 class="modal-title w-100 text-center"></h4>
-                            </div>
                             <!-- Modal body -->
                             <div class="modal-body align-items-center">
                                 @yield('book detail modal body')
@@ -220,9 +216,12 @@
                         $.ajax({
                             type: 'GET',
                             url:'getdetailbook/' + elemId,
-                            success:function (data){
-
-                            }
+                            success: function (data){
+                                $('#book_dtl_title').text(data.book_title);
+                                $('#book_dtl_author').text(data.book_author);
+                                $('#book_dtl_explanation').text(data.book_explanation);
+                                $('#book_dtl_img').attr('src',data.book_img);
+                            },
                         })
                     });
                     //Open new book inserting page

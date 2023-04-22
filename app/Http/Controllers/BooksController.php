@@ -62,7 +62,8 @@ class BooksController extends Controller
     public function getDetailBook($id)
     {
         $detailBook=Book::find($id);
-        return redirect(route('home'))->with('detailBook',$detailBook);
+        return $detailBook;
+
     }
 }
 

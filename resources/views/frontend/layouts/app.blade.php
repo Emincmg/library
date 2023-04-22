@@ -111,7 +111,7 @@
             font-weight: 700 !important;
         }
 
-        p {
+        .p-card {
             width: 100%;
             white-space: nowrap;
             overflow: hidden;
@@ -119,9 +119,7 @@
         }
         .modal {
             align-content: center;
-            height: 100%;
             /*position: absolute;*/
-            top: 12.5%;
         }
     </style>
     {{----}}
