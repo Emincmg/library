@@ -21,6 +21,7 @@ class ValidationRequest extends FormRequest
             'book_category' => 'required',
             'book_date' => 'required',
             'book_img' => 'required|url',
+            'book_stock'=>'required'
         ]);
     }
 }

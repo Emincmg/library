@@ -2,7 +2,7 @@
     <form method="POST" action="addbook" enctype="multipart/form-data" id="addBookForm">
         @csrf
         <div id="validation-errors"></div>
-        <div class="mx-auto py-xxl-5" style="width: 28rem; height: 28rem;">
+        <div class="container" style="width: 28rem; height: 28rem;">
             <div class="form-group mt-2">
                 <label for="inputBookTitle">Title</label>
                 <input type="text" class="form-control" name="book_title" placeholder="Book title">
@@ -38,6 +38,10 @@
                     <option>Fantasy</option>
                     <option>Shitpost</option>
                 </select>
+            </div>
+            <div class="form-group ">
+                <br>
+                <label for="inputBookStock">Book Stock :</label><input name="book_stock" type="number">
             </div>
         </div>
     </form>

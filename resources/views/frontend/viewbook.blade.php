@@ -9,10 +9,6 @@
                     <div class="col">
                         <h5 class="text-primary" id="book_dtl_title"></h5>
                     </div>
-
-                    <div class="col">
-                        <h5 class="text-primary" id="book_dtl_author"></h5>
-                    </div>
                 </div>
                 <br>
                 <div class="row">

@@ -13,10 +13,9 @@
                         <h1><span class="text-white">{{$featuredBook->book_title}}</span></h1>
                         <p class="lead text-white">by {{$featuredBook->book_author}}</p>
                         <p>
-                            <a href="#" class="btn btn-primary my-2">Inspect</a>
+                            <a href="#" class="btn btn-primary my-2" id="featuredBook">Inspect</a>
                         </p>
                     @endif
-
                 </div>
             </div>
         </div>
@@ -25,17 +24,14 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <!-- Main content -->
                 <div class="col-lg-9 mb-3">
-                    @if(session()->has('status'))
-                        <div class="alert alert-success">
-                            {{session()->get('status')}}
-                        </div>
-                    @endif
+                    <div id="alerts">
+
+                    </div>
                     <div class="row text-left mb-5">
                         <div class="col-lg-6 mb-3 mb-sm-0">
                             <div
-                                class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
+                                class="dropdown form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
                                 style="width: 100%;">
 
                                 <div class="dropdown-header text-primary">Author</div>
@@ -49,7 +45,7 @@
                         </div>
                         <div class="col-lg-6 text-lg-right">
                             <div
-                                class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
+                                class="dropdown form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
                                 style="width: 100%;">
                                 <div class="dropdown-header text-primary">Category</div>
                                 <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
@@ -65,59 +61,46 @@
                     <div class="container" id="booklist">
                         @foreach($books as $key)
                             <div
-                                class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0 display-flex"
-                                id="{{ $key->id }}">
-                                <div class="row align-items-end">
-                                    <div class="col-xs-3 col-sm-1">
-                                        <img src="{{ $key->book_img }}" alt="" class="rounded img-responsive"
-                                             style="max-height: 200%; max-width: 125%;">
-                                    </div>
-                                    <div class="col-md-8 mb-3 mb-sm-0">
+                                class="card row-hover pos-relative py-1 px-1 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0 display-flex">
+                                <div class="row">
+                                    <div class="col-md-5">
                                         <div class="row">
                                             <h5>
-                                                <a href="javascript:void(0);" class="bookName text-primary ml-auto">{{ $key->book_title }} </a>
+                                                <a href="javascript:void(0);"
+                                                   class="bookName text-primary" style="font-size: medium" id="{{ $key->id }}">{{ $key->book_title }} </a>
                                                 <a href="">-</a>
-                                                <a href="#" class="bookAuthor text-primary ml-auto">{{ $key->book_author }}</a>
-                                                <button data-id="{{$key->id}}"
-                                                        class="btn mr-auto deleteButton text-danger btn-close-white"
-                                                        style="font-size: 18px;">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </button>
+                                                <a href="#"
+                                                   class="bookAuthor text-primary" style="font-size: medium">{{ $key->book_author }}</a>
                                             </h5>
                                         </div>
-                                        <p class="p-card">{{ $key->book_explanation }}</p>
-                                        <div class="text-sm op-5">
-                                            @foreach($key->book_category as $keyc)
-                                                <a class="text-black mr-2" href="#">{{ $keyc }},</a>
-                                            @endforeach
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-auto px-1">
+                                                        <span class="d-block text-sm"
+                                                              style="font-size: 12px; margin-top: 5px;">Last Update: {{ $key->updated_at }} </span>
+                                            </div>
+                                            <div class="col-md-auto px-1">
+                                                        <span class="d-block text-sm"
+                                                              style="font-size: 12px; margin-top: 5px;">Stock: {{ $key->book_stock }} </span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 op-7">
-                                        <div class="row text-center op-7">
-                                            <div class="col px-1 align-self-end">
-                                                <i class="ion-ios-eye-outline icon-1x" style="font-size: 18px;"></i>
-                                                <span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">{{ $key->book_views }} Views</span>
-                                            </div>
-                                            <div class="col px-1 align-self-end">
-                                                <i class="ion-ios-calendar-outline icon-1x"
-                                                   style="font-size: 18px;"></i>
-                                                <span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Publish Date: {{ $key->book_date }} </span>
-                                            </div>
-                                            <div class="col px-1 align-self-end">
-                                                <i class="ion-ios-box-outline icon-1x"
-                                                   style="font-size: 18px;"></i>
-                                                <span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Stock: {{ $key->book_stock }} </span>
-                                            </div>
-                                        </div>
+                                    <div class="col">
+                                        <button data-id="{{$key->id}}"
+                                                class="btn deleteButton text-danger btn-close-white"
+                                                style="font-size: 14px;">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
-                {{--/End of book list section--}}
+                {{--End of book list section--}}
 
-                <!-- Sidebar content -->
+                {{--Sidebar content--}}
                 <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
                     <div class="d-flex flex-row op-7 btn-group ">
                         <button id="addModal" type="button" class="btn btn-success m-2 rounded my-2">
@@ -136,7 +119,7 @@
                                     Latest book entry
                                 </h4>
                                 <hr class="m-0">
-                            @if(isset($latestBook))
+                                @if(isset($latestBook))
                                     <div class="pos-relative px-3 py-3">
                                         <h6 class="text-primary text-sm">
                                             <a href="#" class="text-primary">{{$latestBook->book_title}}</a>
@@ -165,108 +148,46 @@
                                             class="d-block lead font-weight-bold" href="#">300</a> Authors
                                     </div>
                                     @if(isset($leastBook))
-                                    <div class="col-sm-6 flex-ew text-center py-3 mx-0">Least stock<a
-                                            class="d-block lead font-weight-bold" href="#">{{$leastBook->book_title}}</a> with: {{$leastBook->book_stock}} stock.
-                                    </div>
+                                        <div class="col-sm-6 flex-ew text-center py-3 mx-0">Least stock<a
+                                                class="d-block lead font-weight-bold"
+                                                href="#">{{$leastBook->book_title}}</a> with: {{$leastBook->book_stock}}
+                                            stock.
+                                        </div>
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {{--Book inserting modal--}}
                 <div class="modal fade" id="addBookModal">
-
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-
-                            <!-- Modal Header -->
                             <div class="modal-header d-block border-0">
                                 <h4 class="modal-title w-100 text-center">Add a new book</h4>
                             </div>
-                            <!-- Modal body -->
                             <div class="modal-body align-items-center">
                                 @yield('addbook form modal body')
                             </div>
-
-                            <!-- Modal footer -->
                             <div class="modal-footer border-0">
                                 <input type="submit" class="btn btn-primary" form="addBookForm" value="Submit">
                             </div>
                         </div>
                     </div>
                 </div>
+                {{--Book detail modal--}}
                 <div class="modal fade" id="viewModal">
-
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
-                            <!-- Modal body -->
                             <div class="modal-body align-items-center">
                                 @yield('book detail modal body')
                             </div>
-                            <!-- Modal footer -->
                             <div class="modal-footer border-0">
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-                <script type="text/javascript">
-                    //Get the clicked element from server
-                    $(document).on("click",".card", function () {
-                        var elemId = $(this).attr('id');
-                        $.ajax({
-                            type: 'GET',
-                            url:'getdetailbook/' + elemId,
-                            success: function (data){
-                                $('#book_dtl_title').text(data.book_title);
-                                $('#book_dtl_author').text(data.book_author);
-                                $('#book_dtl_explanation').text(data.book_explanation);
-                                $('#book_dtl_img').attr('src',data.book_img);
-                            },
-                        })
-                    });
-                    //Open new book inserting page
-                    $('#addModal').on('click', function (e) {
-                        $('#addBookModal').modal('show');
-                    });
-                    $('.bookName').on('click', function (e) {
-                        $('#viewModal').modal('show');
-                    });
-                    //Delete book
-                    $(document).on('click', '.deleteButton', function () {
-                        var id = $(this).data("id");
-                        $.ajax({
-                            type: 'get',
-                            url: '/deletebook/' + id,
-                            success: function () {
-                                $('#booklist').load(document.URL + ' #booklist');
-                                $('#latest_book').load(document.URL + ' #latest_book');
-                            }
-                        })
-                    });
-                    // Insert new book
-                    $('#addBookForm').on('submit', function (e) {
-                        e.preventDefault();
-                        var formData = $(this).serialize();
-                        $.ajax({
-                            type: 'POST',
-                            url: 'addbook',
-                            data: formData,
-                            success: function (response) {
-                                $('#booklist').load(document.URL + ' #booklist');
-                                $('#latest_book').load(document.URL + ' #latest_book');
-                                $('#addBookModal').modal('hide');
-                                window.scrollTo(0, document.body.scrollHeight);
-                            },
-                            error: function (xhr, status, error) {
-                                $('#validation-errors').empty().show().html('').delay(3000).fadeOut(500);
-                                $.each(xhr.responseJSON.errors, function (key, value) {
-                                    $('#validation-errors').append('<div class="alert alert-danger">' + value + '</div>');
-                                });
-                            }
-                        });
-                    });
-                </script>
         </div>
-    </div>
 @endsection
 

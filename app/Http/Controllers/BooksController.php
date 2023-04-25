@@ -8,6 +8,30 @@ use App\Models\Book;
 
 class BooksController extends Controller
 {
+    public function deleteBook(Request $request, $id)
+    {
+        Book::destroy($id);
+        return response()->json(['success' => 'Record deleted successfully!']);
+    }
+
+    public function getDetailBook($id)
+    {
+        $detailBook = Book::find($id);
+        return $detailBook;
+
+    }
+
+    public function addBook(Request $request)
+    {
+        $validationRequest = new ValidationRequest;
+        $validatedData = $validationRequest->bookValidate($request);
+
+        if ($validatedData) {
+            Book::create($validatedData);
+        }
+        return redirect(route('home'));
+    }
+
     public function index()
     {
         $books = Book::all();
@@ -21,17 +45,6 @@ class BooksController extends Controller
             ->with('latestBook', $latestBook)
             ->with('leastBook', $leastBook)
             ->with('count', $count);
-    }
-
-    public function addBook(Request $request)
-    {
-        $validationRequest = new ValidationRequest;
-        $validatedData = $validationRequest->bookValidate($request);
-
-        if ($validatedData) {
-            Book::create($validatedData);
-        }
-        return redirect(route('home'))->with('status', 'Book added successfully!');
     }
 
     public function editBook(Request $request, $id)
@@ -51,19 +64,6 @@ class BooksController extends Controller
                 ]
             );
         }
-    }
-
-    public function deleteBook(Request $request, $id)
-    {
-        Book::destroy($id);
-        return response()->json(['success' => 'Record deleted successfully!']);
-    }
-
-    public function getDetailBook($id)
-    {
-        $detailBook=Book::find($id);
-        return $detailBook;
-
     }
 }
 

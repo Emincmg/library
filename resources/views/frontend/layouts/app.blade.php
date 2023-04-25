@@ -1,3 +1,4 @@
+@include('frontend.layouts.scripts')
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@
     {{--    CSS Stylesheet Codes--}}
     <style>
         .bd-placeholder-img {
-            font-size: 1.125rem;
+            font-size: 1rem;
             text-anchor: middle;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -154,7 +155,7 @@
         </div>
     </div>
 </header>
-{{--/End of navbar section--}}
+{{--End of navbar section--}}
 {{--Body section--}}
 <main>
     @yield('content')
@@ -188,6 +189,7 @@
         <p class="float-end mb-1">
             <a href="#">Back to top</a>
     </div>
+    @yield('scripts')
 </footer>
 </body>
 </html>
