@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 @include('frontend.addbook')
 @include('frontend.viewbook')
+@include('frontend.editbook')
 
 
 @section('content')
@@ -67,14 +68,16 @@
                                         <div class="row">
                                             <h5>
                                                 <a href="javascript:void(0);"
-                                                   class="bookName text-primary" style="font-size: medium" id="{{ $key->id }}">{{ $key->book_title }} </a>
+                                                   class="bookName text-primary" style="font-size: medium"
+                                                   id="{{ $key->id }}">{{ $key->book_title }} </a>
                                                 <a href="">-</a>
                                                 <a href="#"
-                                                   class="bookAuthor text-primary" style="font-size: medium">{{ $key->book_author }}</a>
+                                                   class="bookAuthor text-primary"
+                                                   style="font-size: medium">{{ $key->book_author }}</a>
                                             </h5>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="row">
                                             <div class="col-md-auto px-1">
                                                         <span class="d-block text-sm"
@@ -85,6 +88,10 @@
                                                               style="font-size: 12px; margin-top: 5px;">Stock: {{ $key->book_stock }} </span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn editButton text-primary btn-close-white" id="editButton" data-id="{{$key->id}}"><i
+                                                class="ionicons ion-edit"></i></button>
                                     </div>
                                     <div class="col">
                                         <button data-id="{{$key->id}}"
@@ -103,7 +110,7 @@
                 {{--Sidebar content--}}
                 <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
                     <div class="d-flex flex-row op-7 btn-group ">
-                        <button id="addModal" type="button" class="btn btn-success m-2 rounded my-2">
+                        <button id="addModalButton" type="button" class="btn btn-success m-2 rounded my-2">
                             Add a new book
                         </button>
                     </div>
@@ -168,6 +175,23 @@
                             </div>
                             <div class="modal-body align-items-center">
                                 @yield('addbook form modal body')
+                            </div>
+                            <div class="modal-footer border-0">
+                                <input type="submit" class="btn btn-primary" form="addBookForm" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{--Book editing modal--}}
+                <div class="modal fade" id="editBookModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header d-block border-0">
+                                <h4 class="modal-title w-100 text-center">Edit Book</h4>
+                            </div>
+                            <div class="modal-body align-items-center">
+                                @yield('editbook form modal body')
                             </div>
                             <div class="modal-footer border-0">
                                 <input type="submit" class="btn btn-primary" form="addBookForm" value="Submit">
