@@ -1,8 +1,11 @@
 @section('editbook form modal body')
-    <form method="POST"  enctype="multipart/form-data" id="editBookForm">
+    <form method="POST" action="editbook" enctype="multipart/form-data" id="editBookForm">
         @csrf
-        <div id="validation-errors"></div>
+        <div id="editBook-errors"></div>
         <div class="container" style="width: 28rem; height: 28rem;">
+            <div class="form-group ">
+                <input type="hidden" class="form-control" name="id" id="id">
+            </div>
             <div class="form-group mt-2">
                 <label for="inputBookTitle">Title</label>
                 <input type="text" class="form-control" name="book_title" placeholder="Book title" id="book_title">
@@ -35,7 +38,7 @@
             </div>
             <div class="form-group ">
                 <br>
-                <label for="inputBookDate">Date Published &nbsp; : &nbsp; </label><input name="book_date" type="text" id="book_date">
+                <label for="inputBookDate">Date Published &nbsp; : &nbsp; </label><input name="book_date" type="date" id="book_date">
             </div>
             <div class="form-group">
                 <br>

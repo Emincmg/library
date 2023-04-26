@@ -47,23 +47,14 @@ class BooksController extends Controller
             ->with('count', $count);
     }
 
-    public function editBook(Request $request, $id)
+    public function editBook(Request $request)
     {
-        $foundBook = Book::find($id);
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
         if ($validatedData) {
-            Book::updateOrCreate(
-                [
-                    'book_title' => $validatedData . 'book_title',
-                    'book_author' => $validatedData . 'book_author',
-                    'book_explanation' => $validatedData . 'book_explanation',
-                    'book_category' => $validatedData . 'book_category',
-                    'book_img' => $validatedData . 'book_img',
-                    'book_date' => $validatedData . 'book_date',
-                ]
-            );
+            Book::Where('id',$request->id)->update($validatedData);
         }
     }
+
 }
 

@@ -194,7 +194,7 @@
                                 @yield('editbook form modal body')
                             </div>
                             <div class="modal-footer border-0">
-                                <input type="submit" class="btn btn-primary" form="addBookForm" value="Submit">
+                                <input type="submit" class="btn btn-primary" form="editBookForm" value="Submit">
                             </div>
                         </div>
                     </div>

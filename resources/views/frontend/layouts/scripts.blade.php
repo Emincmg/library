@@ -1,6 +1,13 @@
 @section('scripts')
     <script type="text/javascript">
-        //View clicked book modal
+
+            $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+    //View clicked book modal
         $(document).on('click','.bookName', function (e) {
             var elemId = $(this).attr('id');
             $.ajax({
@@ -28,6 +35,7 @@
                 type: 'GET',
                 url: 'getdetailbook/' + elemId,
                 success: function (data) {
+                    $('input[name="id"]').val(data.id);
                     $('input[name="book_title"]').val(data.book_title);
                     $('input[name="book_author"]').val(data.book_author);
                     $('input[name="book_explanation"]').val(data.book_explanation);
@@ -78,27 +86,33 @@
                     window.scrollTo(0, document.body.scrollHeight);
                 },
                 error: function (xhr, status, error) {
-                    $('#validation-errors').empty().show().html('').delay(3000).fadeOut(500);
+                    $('#addBook-errors').empty().show().html('').delay(3000).fadeOut(500);
                     $.each(xhr.responseJSON.errors, function (key, value) {
-                        $('#validation-errors').append('<div class="alert alert-danger">' + value + '</div>');
+                        $('#addBook-errors').append('<div class="alert alert-danger">' + value + '</div>');
                     });
                 }
             });
         });
-    $document().on('submit', '#editBookForm',function (e){
+        $(document).on('submit', '#editBookForm',function (e){
         e.preventDefault();
         var formData = $(this).serialize();
         $.ajax({
             type:'POST',
             url: 'editbook',
-            data: formdata,
+            data: formData,
             success: function (response,xhr,status){
                 $('#booklist').load(document.URL + ' #booklist');
                 $('#latest_book').load(document.URL + ' #latest_book');
-                $('#addBookModal').modal('hide');
+                $('#editBookModal').modal('hide');
                 $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
-                $('#alerts').append('<div class="alert alert-success">'+ "Book added successfully!" +'</div>');
+                $('#alerts').append('<div class="alert alert-success">'+ "Book edited successfully!" +'</div>');
                 window.scrollTo(0, document.body.scrollHeight);
+            },
+            error: function (xhr, status, error) {
+                $('#editBook-errors').empty().show().html('').delay(3000).fadeOut(500);
+                $.each(xhr.responseJSON.errors, function (key, value) {
+                    $('#editBook-errors').append('<div class="alert alert-danger">' + value + '</div>');
+                });
             }
         })
     })

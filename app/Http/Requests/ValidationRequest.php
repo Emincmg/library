@@ -16,7 +16,7 @@ class ValidationRequest extends FormRequest
     {
         return $request->validate([
             'book_title' => 'required|max:255|regex:/^[\pL\s\-]+$/u',
-            'book_author' => 'required|max:255|regex:/^[\pL\s\-]+$/u',
+            'book_author' => 'required|max:255',
             'book_explanation' => 'required|max:1000',
             'book_category' => 'required',
             'book_date' => 'required',

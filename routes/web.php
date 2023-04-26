@@ -25,7 +25,7 @@ Route::get('/deletebook/{id}', [App\Http\Controllers\BooksController::class, 'de
 Route::get('/getdetailbook/{id}', [App\Http\Controllers\BooksController::class, 'getDetailBook'])->name('getdetailbook');
 
 Route::post('/addbook', [App\Http\Controllers\BooksController::class, 'addBook'])->name('addbook');
-Route::post('/editbook/{id}', [App\Http\Controllers\BooksController::class, 'editBook'])->name('editbook');
+Route::post('/editbook', [App\Http\Controllers\BooksController::class, 'editBook'])->name('editbook');
 
 
 

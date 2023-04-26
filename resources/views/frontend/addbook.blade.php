@@ -1,7 +1,7 @@
 @section('addbook form modal body')
     <form method="POST" action="addbook" enctype="multipart/form-data" id="addBookForm">
         @csrf
-        <div id="validation-errors"></div>
+        <div id="addBook-errors"></div>
         <div class="container" style="width: 28rem; height: 28rem;">
             <div class="form-group mt-2">
                 <label for="inputBookTitle">Title</label>
