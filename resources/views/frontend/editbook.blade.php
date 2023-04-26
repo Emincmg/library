@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="bookCategorySelect">Book category</label>
                 <select class="form-control selectpicker" name="book_category[]" multiple
-                        id="bookCategorySelect" id="book_category">
+                        id="book_category">
                     <option>Novel</option>
                     <option>Science-Fiction</option>
                     <option>Grim Dark</option>
