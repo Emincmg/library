@@ -9,11 +9,6 @@ class Author extends Model
 {
     use HasFactory;
 
-    protected $casts =
-        [
-            'author_books' => 'array'
-        ];
-
     protected $fillable =
         [
             'author_name',

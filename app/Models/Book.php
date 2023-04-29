@@ -25,4 +25,8 @@ class Book extends Model
             'book_views',
             'book_stock'
         ];
+    public function categories()
+    {
+        return $this->belongsToMany('book_categories');
+    }
 }

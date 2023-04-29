@@ -21,11 +21,9 @@
                 <label for="bookCategorySelect">Book category</label>
                 <select class="form-control selectpicker" name="book_category[]" multiple
                         id="bookCategorySelect" id="book_category">
-                    <option>Novel</option>
-                    <option>Science-Fiction</option>
-                    <option>Grim Dark</option>
-                    <option>Fantasy</option>
-                    <option>Shitpost</option>
+                    @foreach($categories as $category)
+                        <option> {{$category->book_category}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group mt-2">

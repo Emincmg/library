@@ -6,18 +6,20 @@
             }
         });
 
+        //Create a public variable that contains all book data.
+        let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
+
+
         //View clicked book modal
         $(document).on('click', '.bookName', function (e) {
-            var elemId = $(this).attr('id');
-            $.ajax({
-                type: 'GET',
-                url: 'getdetailbook/' + elemId,
-                success: function (data) {
-                    $('#book_dtl_title').text(data.book_title + " - " + data.book_author);
-                    $('#book_dtl_explanation').text(data.book_explanation);
-                    $('#book_dtl_img').attr('src', data.book_img);
-                },
-            })
+            let bookID = $(this).data('id');
+            console.log(bookID)
+            let book = booksdata.find(book=> book.id === bookID);
+            console.log(book)
+
+            $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
+            $('#book_dtl_explanation').text(book.book_explanation);
+            $('#book_dtl_img').attr('src', book.book_img);
             $('#viewModal').modal('show');
         });
 
@@ -28,31 +30,29 @@
 
         //Open editing modal
         $(document).on('click', '.editButton', function (e) {
-            var elemId = $(this).data('id');
+            let bookID = $(this).data('id');
+            let book = booksdata.find(book => book.id === bookID);
+
             $('#editBookModal').modal('show');
-            $('#book_category option').each(function (index) {
+            $('input[name="id"]').val(book.id);
+            $('input[name="book_title"]').val(book.book_title);
+            $('input[name="book_author"]').val(book.book_author);
+            $('input[name="book_explanation"]').val(book.book_explanation);
+            $('input[name="book_date"]').val(book.book_date);
+            $('input[name="book_img"]').val(book.book_img);
+
+            $('#book_category option').each(function(index){
                 $('#book_category option').eq(index).prop('selected', false)
             });
-            $.ajax({
-                type: 'GET',
-                url: 'getdetailbook/' + elemId,
-                success: function (data) {
-                    $('input[name="id"]').val(data.id);
-                    $('input[name="book_title"]').val(data.book_title);
-                    $('input[name="book_author"]').val(data.book_author);
-                    $('input[name="book_explanation"]').val(data.book_explanation);
-                    $('input[name="book_date"]').val(data.book_date);
-                    $('input[name="book_img"]').val(data.book_img);
-                    $('#book_category option').each(function (index) {
-                        if (data.book_category.includes($('#book_category option').eq(index).val())) {
-                            $('#book_category option').eq(index).prop('selected', true)
-                            $('#book_category').change()
-                        }
-                    });
-                    $('input[name="book_category"]').val(data.book_category);
-                    $('input[name="book_stock"]').val(data.book_stock);
-                },
+            $('#book_category option').each(function (index) {
+                if (book.book_category.includes($('#book_category option').eq(index).val())) {
+                    $('#book_category option').eq(index).prop('selected', true)
+                    $('#book_category').change()
+                }
             });
+
+            $('input[name="book_category"]').val(book.book_category);
+            $('input[name="book_stock"]').val(book.book_stock);
         });
 
         //View featured book modal
@@ -79,6 +79,8 @@
 
         // Insert a new book to server
         $(document).on('submit', '#addBookForm', function (e) {
+            console.log(booksdata)
+
             e.preventDefault();
             var formData = $(this).serialize();
             $.ajax({
@@ -89,9 +91,13 @@
                     $('#booklist').load(document.URL + ' #booklist');
                     $('#latest_book').load(document.URL + ' #latest_book');
                     $('#addBookModal').modal('hide');
-                    $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
+                    $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
                     $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
                     window.scrollTo(0, document.body.scrollHeight);
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                    //TODO: manipulate createdbook variable into bookdata array.
                 },
                 error: function (xhr, status, error) {
                     $('#addBook-errors').empty().show().html('').delay(3000).fadeOut(500);
@@ -101,9 +107,10 @@
                 }
             });
         });
+        //Edit book
         $(document).on('submit', '#editBookForm', function (e) {
             e.preventDefault();
-            var formData = $(this).serialize();
+            let formData = $(this).serialize();
             $.ajax({
                 type: 'POST',
                 url: 'editbook',
@@ -114,7 +121,9 @@
                     $('#editBookModal').modal('hide');
                     $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
                     $('#alerts').append('<div class="alert alert-success">' + "Book edited successfully!" + '</div>');
-                    window.scrollTo(0, document.body.scrollHeight);
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
                 },
                 error: function (xhr, status, error) {
                     $('#editBook-errors').empty().show().html('').delay(3000).fadeOut(500);
@@ -124,5 +133,17 @@
                 }
             })
         })
+        // $('#authorDrpDown,#categoryDrpDown').on('change', (function filter() {
+        //     var author = $('#authorDrpDown').val();
+        //     var category = $('#categoryDrpDown').val();
+        //     $.ajax({
+        //         type: 'GET',
+        //         async: true,
+        //         url: '/filter/' + category + '/' + author,
+        //         success: function () {
+        //             $('#booklist').load(document.URL + ' #booklist');
+        //         }
+        //     })
+        // }));
     </script>
 @endsection

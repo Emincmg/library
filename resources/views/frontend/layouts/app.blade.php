@@ -85,7 +85,6 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
-
         body {
             height: 100%;
             background: #eee;

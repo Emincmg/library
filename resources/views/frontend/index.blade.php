@@ -17,6 +17,7 @@
                             <a href="#" class="btn btn-primary my-2" id="featuredBook">Inspect</a>
                         </p>
                     @endif
+                    @if(isset($flt_book)) @foreach($flt_book as $flt_book) <p>{{$flt_book->book_name}}</p> @endforeach @endif
                 </div>
             </div>
         </div>
@@ -27,32 +28,30 @@
             <div class="row">
                 <div class="col-lg-9 mb-3">
                     <div id="alerts">
-
                     </div>
-                    <div class="row text-left mb-5">
+                    <div class="row text-left mb-3">
                         <div class="col-lg-6 mb-3 mb-sm-0">
-                            <div
-                                class="dropdown form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
-                                style="width: 100%;">
-
+                            <div class="dropdown form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
+                                 style="width: 100%;">
                                 <div class="dropdown-header text-primary">Author</div>
-                                <select class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98">
-                                    <option> Novel</option>
-                                    <option> Science</option>
-                                    <option> Etc.</option>
+                                <select class="form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
+                                        data-toggle="select" tabindex="-98" id="authorDrpDown">
+                                    @foreach($authors as $author)
+                                        <option value="{{$author->author_name}}"> {{$author->author_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6 text-lg-right">
-                            <div
-                                class="dropdown form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                style="width: 100%;">
+                        <div class="col-lg-6">
+                            <div class="dropdown form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
+                                 style="width: 100%;">
                                 <div class="dropdown-header text-primary">Category</div>
-                                <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98">
-                                    <option> Votes</option>
-                                    <option> Views</option>
+                                <select class="form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
+                                        data-toggle="select" tabindex="-98" id="categoryDrpDown" onchange="{{route('filter')}}">
+                                    @foreach($categories as $category)
+                                        <option
+                                            value="{{$category->book_category}}"> {{$category->book_category}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -62,14 +61,14 @@
                     <div class="container" id="booklist">
                         @foreach($books as $key)
                             <div
-                                class="card row-hover pos-relative py-1 px-1 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0 display-flex">
+                                class="card row-hover pos-relative px-1 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <div class="row">
+                                        <div class="row pt-1">
                                             <h5>
                                                 <a href="javascript:void(0);"
                                                    class="bookName text-primary" style="font-size: medium"
-                                                   id="{{ $key->id }}">{{ $key->book_title }} </a>
+                                                    data-id="{{$key->id}}">{{ $key->book_title }} </a>
                                                 <a href="">-</a>
                                                 <a href="#"
                                                    class="bookAuthor text-primary"
@@ -78,7 +77,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                        <div class="row">
+                                        <div class="row pt-1">
                                             <div class="col-md-auto px-1">
                                                         <span class="d-block text-sm"
                                                               style="font-size: 12px; margin-top: 5px;">Last Update: {{ $key->updated_at }} </span>
@@ -90,7 +89,8 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <button class="btn editButton text-primary btn-close-white" id="editButton" data-id="{{$key->id}}"><i
+                                        <button class="btn editButton text-primary btn-close-white" id="editButton"
+                                                data-id="{{$key->id}}"><i
                                                 class="ionicons ion-edit"></i></button>
                                     </div>
                                     <div class="col">
@@ -122,42 +122,48 @@
                         data-toggle="sticky" class="sticky" style="top: 85px;">
                         <div class="sticky-inner" id="latest_book">
                             <div class="bg-white mb-3">
-                                <h4 class="px-3 py-4 op-5 m-0">
+                                <h5 class="px-3 py-4 op-5 m-0">
                                     Latest book entry
-                                </h4>
+                                </h5>
                                 <hr class="m-0">
                                 @if(isset($latestBook))
                                     <div class="pos-relative px-3 py-3">
                                         <h6 class="text-primary text-sm">
-                                            <a href="#" class="text-primary">{{$latestBook->book_title}}</a>
+                                            <a href="javascript:void(0);" class="text-primary bookName" data-id="{{$latestBook->id}}">{{$latestBook->book_title}}</a>
                                         </h6>
                                         <p class="mb-0 text-sm"><span class="op-6">Registered at</span> <a
                                                 class="text-black"
-                                                href="#">{{$latestBook->created_at}}</a>
+                                                href="javascript:void(0);">{{$latestBook->created_at}}</a>
                                     </div>
                                 @endif
                             </div>
                             <div class="bg-white text-sm">
-                                <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
+                                <h5 class="px-3 py-4 op-5 m-0 roboto-bold">
                                     Stats
-                                </h4>
+                                </h5>
                                 <hr class="my-0">
                                 <div class="row text-center d-flex flex-row op-7 mx-0">
                                     <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"><a
-                                            class="d-block lead font-weight-bold" href="#">58</a> Categories
+                                            class="d-block lead font-weight-bold" href="#"
+                                            style="font-size: medium">{{$categoryCount}}</a> Categories
                                     </div>
-                                    <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"><a
-                                            class="d-block lead font-weight-bold" href="#">{{$count}}</a> Books
+                                    <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"
+                                         style="font-size: medium"><a
+                                            class="d-block lead font-weight-bold" href="#"
+                                            style="font-size: medium">{{$bookCount}}</a> Books
                                     </div>
                                 </div>
                                 <div class="row d-flex flex-row op-7">
-                                    <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"><a
-                                            class="d-block lead font-weight-bold" href="#">300</a> Authors
+                                    <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"
+                                         style="font-size: medium"><a
+                                            class="d-block lead font-weight-bold" href="#"
+                                            style="font-size: medium">{{$authorCount}}</a> Authors
                                     </div>
                                     @if(isset($leastBook))
                                         <div class="col-sm-6 flex-ew text-center py-3 mx-0">Least stock<a
-                                                class="d-block lead font-weight-bold"
-                                                href="#">{{$leastBook->book_title}}</a> with: {{$leastBook->book_stock}}
+                                                class="d-block lead font-weight-bold bookName"
+                                                href="#" style="font-size: medium" data-id="{{$leastBook->id}}">{{$leastBook->book_title}}</a>
+                                            with: {{$leastBook->book_stock}}
                                             stock.
                                         </div>
                                     @endif
