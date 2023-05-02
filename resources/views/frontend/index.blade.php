@@ -47,7 +47,7 @@
                                  style="width: 100%;">
                                 <div class="dropdown-header text-primary">Category</div>
                                 <select class="form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98" id="categoryDrpDown" onchange="{{route('filter')}}">
+                                        data-toggle="select" tabindex="-98" id="categoryDrpDown" onchange="">
                                     @foreach($categories as $category)
                                         <option
                                             value="{{$category->book_category}}"> {{$category->book_category}}</option>

@@ -54,11 +54,14 @@ class BooksController extends Controller
 
     public function editBook(Request $request)
     {
+
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
         if ($validatedData) {
             Book::Where('id',$request->id)->update($validatedData);
         }
+        $editedBook= Book::find($request->id);
+        return response()->json(['edited'=>$editedBook]);
     }
 }
 

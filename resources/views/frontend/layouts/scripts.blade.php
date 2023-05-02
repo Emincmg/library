@@ -14,7 +14,7 @@
         $(document).on('click', '.bookName', function (e) {
             let bookID = $(this).data('id');
             console.log(bookID)
-            let book = booksdata.find(book=> book.id === bookID);
+            let book = booksdata.find(book => book.id === bookID);
             console.log(book)
 
             $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
@@ -26,6 +26,7 @@
         //Open new book inserting modal
         $(document).on('click', '#addModalButton', function (e) {
             $('#addBookModal').modal('show');
+            console.log(booksdata)
         });
 
         //Open editing modal
@@ -41,7 +42,7 @@
             $('input[name="book_date"]').val(book.book_date);
             $('input[name="book_img"]').val(book.book_img);
 
-            $('#book_category option').each(function(index){
+            $('#book_category option').each(function (index) {
                 $('#book_category option').eq(index).prop('selected', false)
             });
             $('#book_category option').each(function (index) {
@@ -82,22 +83,20 @@
             console.log(booksdata)
 
             e.preventDefault();
-            var formData = $(this).serialize();
+            let formData = $(this).serialize();
             $.ajax({
                 type: 'POST',
                 url: 'addbook',
                 data: formData,
                 success: function (response, xhr, status) {
-                    $('#booklist').load(document.URL + ' #booklist');
-                    $('#latest_book').load(document.URL + ' #latest_book');
-                    $('#addBookModal').modal('hide');
-                    $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
-                    $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
-                    window.scrollTo(0, document.body.scrollHeight);
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000);
-                    //TODO: manipulate createdbook variable into bookdata array.
+                    $.each(response, function (index, value) {
+                        booksdata.push(value)
+                        $('#booklist').load(document.URL + ' #booklist');
+                        $('#latest_book').load(document.URL + ' #latest_book');
+                        $('#addBookModal').modal('hide');
+                        $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
+                        $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
+                    })
                 },
                 error: function (xhr, status, error) {
                     $('#addBook-errors').empty().show().html('').delay(3000).fadeOut(500);
@@ -110,6 +109,7 @@
         //Edit book
         $(document).on('submit', '#editBookForm', function (e) {
             e.preventDefault();
+            let foundBook;
             let formData = $(this).serialize();
             $.ajax({
                 type: 'POST',
@@ -121,9 +121,11 @@
                     $('#editBookModal').modal('hide');
                     $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
                     $('#alerts').append('<div class="alert alert-success">' + "Book edited successfully!" + '</div>');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000);
+                    $.each(response, function (index, object) {
+                        foundBook = booksdata.findIndex(book => book.id === object.id);
+                        booksdata[foundBook] = object;
+                        console.log(booksdata);
+                    })
                 },
                 error: function (xhr, status, error) {
                     $('#editBook-errors').empty().show().html('').delay(3000).fadeOut(500);
@@ -133,17 +135,5 @@
                 }
             })
         })
-        // $('#authorDrpDown,#categoryDrpDown').on('change', (function filter() {
-        //     var author = $('#authorDrpDown').val();
-        //     var category = $('#categoryDrpDown').val();
-        //     $.ajax({
-        //         type: 'GET',
-        //         async: true,
-        //         url: '/filter/' + category + '/' + author,
-        //         success: function () {
-        //             $('#booklist').load(document.URL + ' #booklist');
-        //         }
-        //     })
-        // }));
     </script>
 @endsection
