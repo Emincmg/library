@@ -200,8 +200,7 @@ class BooksTableSeeder extends Seeder
             'book_date' => '1851-04-01',
             'book_stock' => 5
         ]);
-        Book::create(
-            [
+        Book::create([
                 'book_title' => 'Animal Farm',
                 'book_author' => 'George Orwell',
                 'book_explanation' => "Animal Farm is an allegorical novella by George Orwell, first published in England on 17 August 1945. The book tells the story of a group of farm animals who rebel against their human farmer, hoping to create a society where the animals can be equal, free, and happy. Ultimately, however, the rebellion is betrayed, and the farm ends up in a state as bad as it was before, under the dictatorship of a pig named Napoleon. The novella is widely regarded as a critique of Stalinism and totalitarianism.",
@@ -209,10 +208,8 @@ class BooksTableSeeder extends Seeder
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Animal_Farm_-_1st_edition.jpg',
                 'book_date' => '1945-08-17',
                 'book_stock' => 10
-            ]
-        );
-        Book::create(
-            [
+            ]);
+        Book::create([
                 'book_title' => 'Frankenstein',
                 'book_author' => 'Mary Shelley',
                 'book_explanation' => "Frankenstein; or, The Modern Prometheus is a novel written by English author Mary Shelley. It tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment. Shelley started writing the story when she was 18, and the first edition was published anonymously in London on 1 January 1818, when she was 20. Her name first appeared on the second edition, published in France in 1823.",
@@ -220,8 +217,7 @@ class BooksTableSeeder extends Seeder
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/3/35/Frankenstein_1818_edition_title_page.jpg',
                 'book_date' => '1818-01-01',
                 'book_stock' => 7
-            ]
-        );
+            ]);
         Book::create([
             'book_title' => 'Of Mice and Men',
             'book_author' => 'John Steinbeck',
@@ -290,7 +286,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'William Shakespeare',
             'book_explanation' => "Twelfth Night, or What You Will is a comedy by William Shakespeare, believed to have been written around 1601–1602 as a Twelfth Night's entertainment for the close of the Christmas season. The play centers on the twins Viola and Sebastian, who are separated in a shipwreck. Viola (who is disguised as a young man named Cesario) falls in love with Duke Orsino, who in turn is in love with Countess Olivia. Upon meeting Viola, Countess Olivia falls in love with her disguised persona. The play is often seen as a celebration of love and a festive comedy of errors.",
             'book_category' => ['Comedy', 'Romance'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Twelfth_Night_-Malvolio-William_Hamilton.jpg/220px-Twelfth_Night-Malvolio-_William_Hamilton.jpg',
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/5/58/Twelfth_Night_F1.jpg',
             'book_date' => '1602',
             'book_stock' => 6
         ]);
@@ -348,8 +344,7 @@ class BooksTableSeeder extends Seeder
             'book_date' => '441',
             'book_stock' => 5
         ]);
-        Book::create(
-            [
+        Book::create([
                 'book_title' => 'Oedipus Rex',
                 'book_author' => 'Sophocles',
                 'book_explanation' => "Oedipus Rex, also known by its Greek title, Oedipus Tyrannus, or Oedipus the King, is an Athenian tragedy by Sophocles that was first performed around 429 BC. The play tells the story of Oedipus, the king of Thebes, who unwittingly kills his father and marries his mother. When Oedipus discovers the truth about his past, he blinds himself and goes into exile. The play is considered a masterpiece of ancient Greek drama and is one of the most famous plays of all time.",
@@ -357,8 +352,7 @@ class BooksTableSeeder extends Seeder
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/6/69/Oedipus.jpg',
                 'book_date' => '429 BC',
                 'book_stock'=> 5
-            ]
-        );
+            ]);
 
     }
 }
