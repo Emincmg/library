@@ -18,7 +18,6 @@ class CategoriesTableSeeder extends Seeder
         // Array of book categories
         $categories = [
             'Novel',
-            'Grim Dark',
             'Science-Fiction',
             'Fantasy',
             'Adventure',
@@ -35,6 +34,10 @@ class CategoriesTableSeeder extends Seeder
             'History',
             'Poetry',
             'Biography',
+            'Satire',
+            'Fiction',
+            'Memoir',
+            'Gothic',
         ];
 
         // Loop through categories and create BookCategory model for each one

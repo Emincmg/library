@@ -140,9 +140,7 @@
         //Filter books by author
         $(document).on('change','#authorDrpDown,#categoryDrpDown',function (e){
             let authorFilter = $('#authorDrpDown').val();
-            console.log(authorFilter)
             let categoryFilter = $('#categoryDrpDown').val();
-            console.log(categoryFilter)
             if($('#authorDrpDown').val() !== "all" && $('#categoryDrpDown').val() !== "all"){
                 $('.card').each(function (){
                     let cardctg = $(this).data("category");
@@ -152,7 +150,26 @@
                         $(this).hide();
                     }
                 })
-            } else{
+            } else if($('#authorDrpDown').val() === "all" && $('#categoryDrpDown').val() !== "all") {
+                $('.card').each(function (){
+                    let cardctg = $(this).data("category");
+                    if (cardctg.indexOf(categoryFilter) != -1){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                })
+            }
+            else if ($('#authorDrpDown').val() !== "all" && $('#categoryDrpDown').val() === "all"){
+                $('.card').each(function (){
+                    if ($(this).data("author") === authorFilter){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                })
+            }
+            else{
                 $(".card").each(function (){
                     $(this).show();
                 })
