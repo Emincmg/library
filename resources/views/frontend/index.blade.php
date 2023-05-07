@@ -36,6 +36,7 @@
                                 <div class="dropdown-header text-primary">Author</div>
                                 <select class="form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
                                         data-toggle="select" tabindex="-98" id="authorDrpDown">
+                                    <option value="all">All</option>
                                     @foreach($authors as $author)
                                         <option value="{{$author->author_name}}"> {{$author->author_name}}</option>
                                     @endforeach
@@ -47,7 +48,8 @@
                                  style="width: 100%;">
                                 <div class="dropdown-header text-primary">Category</div>
                                 <select class="form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98" id="categoryDrpDown" onchange="">
+                                        data-toggle="select" tabindex="-98" id="categoryDrpDown">
+                                    <option value="all">All</option>
                                     @foreach($categories as $category)
                                         <option
                                             value="{{$category->book_category}}"> {{$category->book_category}}</option>
@@ -61,7 +63,7 @@
                     <div class="container" id="booklist">
                         @foreach($books as $key)
                             <div
-                                class="card row-hover pos-relative px-1 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex">
+                                class="card row-hover pos-relative px-1 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="{{$key->book_author}}" data-category="{{ json_encode($key->book_category,TRUE)}}">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="row pt-1">

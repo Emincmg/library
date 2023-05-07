@@ -106,6 +106,7 @@
                 }
             });
         });
+
         //Edit book
         $(document).on('submit', '#editBookForm', function (e) {
             e.preventDefault();
@@ -134,6 +135,30 @@
                     });
                 }
             })
+        })
+
+        //Filter books by author
+        $(document).on('change','#authorDrpDown,#categoryDrpDown',function (e){
+            let authorFilter = $('#authorDrpDown').val();
+            console.log(authorFilter)
+            let categoryFilter = $('#categoryDrpDown').val();
+            console.log(categoryFilter)
+            if($('#authorDrpDown').val() !== "all" && $('#categoryDrpDown').val() !== "all"){
+                $('.card').each(function (){
+                    let cardctg = $(this).data("category");
+                    if ($(this).data("author") === authorFilter && cardctg.indexOf(categoryFilter) != -1){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                })
+            } else{
+                $(".card").each(function (){
+                    $(this).show();
+                })
+            }
+            $('#authorDrpDown').val(authorFilter);
+            $('#categoryDrpDown').val(categoryFilter);
         })
     </script>
 @endsection
