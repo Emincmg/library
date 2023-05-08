@@ -1,6 +1,6 @@
 # Library
 
-This project is, a learning project made in times off work by Emin Çomoğlu, a library management system application that allows you to track and manage books in your library. The application was developed using the Laravel PHP framework.
+This project is, a learning project in the making in times off work by Emin Çomoğlu, a library management system application that allows you to track and manage books in your library. The application was developed using the Laravel PHP framework. Future improvements will be made when avaliable.
 
 ## Features
 
