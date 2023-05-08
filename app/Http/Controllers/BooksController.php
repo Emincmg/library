@@ -31,7 +31,7 @@ class BooksController extends Controller
 
     public function index()
     {
-        $books = Book::all();
+        $books = Book::orderBy('book_title','ASC')->get();
         $bookCount = count($books);
         $featuredBook = Book::inRandomOrder()->first();
         $latestBook = Book::latest()->first();
