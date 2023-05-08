@@ -28,7 +28,7 @@ class BooksTableSeeder extends Seeder
                 'book_title' => 'Dune',
                 'book_author' => 'Frank Harbert',
                 'book_explanation' => "Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine. It tied with Roger Zelazny's This Immortal for the Hugo Award in 1966 and it won the inaugural Nebula Award for Best Novel. It is the first installment of the Dune saga. In 2003, it was described as the world's best-selling science fiction novel. ",
-                'book_category' => ['Novel', 'Fantasy'],
+                'book_category' => ['Novel', 'Fantasy', 'Science-Fiction'],
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/en/d/de/Dune-Frank_Herbert_%281965%29_First_edition.jpg',
                 'book_date' => '1965-08-01',
                 'book_stock' => 12
@@ -159,7 +159,7 @@ class BooksTableSeeder extends Seeder
             'book_title' => 'Nineteen Eighty-Four',
             'book_author' => 'George Orwell',
             'book_explanation' => "Nineteen Eighty-Four is a dystopian novel by George Orwell, published in 1949. The novel is set in a totalitarian society where individualism is forbidden and conformity is enforced by the government. The protagonist, Winston Smith, works at the Ministry of Truth where he rewrites historical records to conform with the party's propaganda. The novel explores themes of government oppression, the dangers of totalitarianism, and the importance of individual freedom.",
-            'book_category' => ['Dystopian', 'Fiction'],
+            'book_category' => ['Dystopian', 'Fiction', 'Science-Fiction'],
             'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/c/c3/1984first.jpg',
             'book_date' => '1949-06-08',
             'book_stock' => 8
@@ -201,23 +201,23 @@ class BooksTableSeeder extends Seeder
             'book_stock' => 5
         ]);
         Book::create([
-                'book_title' => 'Animal Farm',
-                'book_author' => 'George Orwell',
-                'book_explanation' => "Animal Farm is an allegorical novella by George Orwell, first published in England on 17 August 1945. The book tells the story of a group of farm animals who rebel against their human farmer, hoping to create a society where the animals can be equal, free, and happy. Ultimately, however, the rebellion is betrayed, and the farm ends up in a state as bad as it was before, under the dictatorship of a pig named Napoleon. The novella is widely regarded as a critique of Stalinism and totalitarianism.",
-                'book_category' => ['Novel', 'Satire'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Animal_Farm_-_1st_edition.jpg',
-                'book_date' => '1945-08-17',
-                'book_stock' => 10
-            ]);
+            'book_title' => 'Animal Farm',
+            'book_author' => 'George Orwell',
+            'book_explanation' => "Animal Farm is an allegorical novella by George Orwell, first published in England on 17 August 1945. The book tells the story of a group of farm animals who rebel against their human farmer, hoping to create a society where the animals can be equal, free, and happy. Ultimately, however, the rebellion is betrayed, and the farm ends up in a state as bad as it was before, under the dictatorship of a pig named Napoleon. The novella is widely regarded as a critique of Stalinism and totalitarianism.",
+            'book_category' => ['Novel', 'Satire'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Animal_Farm_-_1st_edition.jpg',
+            'book_date' => '1945-08-17',
+            'book_stock' => 10
+        ]);
         Book::create([
-                'book_title' => 'Frankenstein',
-                'book_author' => 'Mary Shelley',
-                'book_explanation' => "Frankenstein; or, The Modern Prometheus is a novel written by English author Mary Shelley. It tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment. Shelley started writing the story when she was 18, and the first edition was published anonymously in London on 1 January 1818, when she was 20. Her name first appeared on the second edition, published in France in 1823.",
-                'book_category' => ['Horror', 'Gothic', 'Science Fiction'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/3/35/Frankenstein_1818_edition_title_page.jpg',
-                'book_date' => '1818-01-01',
-                'book_stock' => 7
-            ]);
+            'book_title' => 'Frankenstein',
+            'book_author' => 'Mary Shelley',
+            'book_explanation' => "Frankenstein; or, The Modern Prometheus is a novel written by English author Mary Shelley. It tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment. Shelley started writing the story when she was 18, and the first edition was published anonymously in London on 1 January 1818, when she was 20. Her name first appeared on the second edition, published in France in 1823.",
+            'book_category' => ['Horror', 'Gothic', 'Science-Fiction'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/3/35/Frankenstein_1818_edition_title_page.jpg',
+            'book_date' => '1818-01-01',
+            'book_stock' => 7
+        ]);
         Book::create([
             'book_title' => 'Of Mice and Men',
             'book_author' => 'John Steinbeck',
@@ -300,41 +300,41 @@ class BooksTableSeeder extends Seeder
             'book_stock' => 9
         ]);
         Book::create([
-                'book_title' => 'The Prince',
-                'book_author' => 'Niccolò Machiavelli',
-                'book_explanation' => "The Prince is a 16th-century political treatise written by Italian diplomat and political theorist Niccolò Machiavelli. The work is considered one of the most influential books in history, and it has been interpreted in many ways over the centuries. The book is primarily a guide to gaining and maintaining power, and it is known for its frank and sometimes ruthless advice on how to do so. Machiavelli's ideas about politics and power have had a significant impact on the way people think about leadership and government, and his name has become synonymous with cunning and deception.",
-                'book_category' => ['Political philosophy'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg',
-                'book_date' => '1532',
-                'book_stock'=> 8
-            ]);
+            'book_title' => 'The Prince',
+            'book_author' => 'Niccolò Machiavelli',
+            'book_explanation' => "The Prince is a 16th-century political treatise written by Italian diplomat and political theorist Niccolò Machiavelli. The work is considered one of the most influential books in history, and it has been interpreted in many ways over the centuries. The book is primarily a guide to gaining and maintaining power, and it is known for its frank and sometimes ruthless advice on how to do so. Machiavelli's ideas about politics and power have had a significant impact on the way people think about leadership and government, and his name has become synonymous with cunning and deception.",
+            'book_category' => ['Political philosophy'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg',
+            'book_date' => '1532',
+            'book_stock' => 8
+        ]);
         Book::create([
-                'book_title' => 'Inferno',
-                'book_author' => 'Dante Alighieri',
-                'book_explanation' => "Inferno is the first part of Italian writer Dante Alighieri's 14th-century epic poem Divine Comedy. It is followed by Purgatorio and Paradiso. The Inferno tells the journey of Dante through Hell, guided by the ancient Roman poet Virgil. In the poem, Hell is depicted as nine concentric circles of torment located within the Earth. It is the most famous and widely studied of the three parts, and its vivid descriptions of the punishments meted out to various sinners have helped to shape the popular idea of Hell.",
-                'book_category' => ['Epic poetry', 'Allegory'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Inferno.jpg',
-                'book_date' => '1320',
-                'book_stock'=> 5
-            ]);
+            'book_title' => 'Inferno',
+            'book_author' => 'Dante Alighieri',
+            'book_explanation' => "Inferno is the first part of Italian writer Dante Alighieri's 14th-century epic poem Divine Comedy. It is followed by Purgatorio and Paradiso. The Inferno tells the journey of Dante through Hell, guided by the ancient Roman poet Virgil. In the poem, Hell is depicted as nine concentric circles of torment located within the Earth. It is the most famous and widely studied of the three parts, and its vivid descriptions of the punishments meted out to various sinners have helped to shape the popular idea of Hell.",
+            'book_category' => ['Epic poetry', 'Allegory'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Inferno.jpg',
+            'book_date' => '1320',
+            'book_stock' => 5
+        ]);
         Book::create([
-                'book_title' => 'King Lear',
-                'book_author' => 'William Shakespeare',
-                'book_explanation' => "King Lear is a tragedy written by William Shakespeare. It depicts the gradual descent into madness of the title character, after he disposes of his kingdom by giving bequests to two of his three daughters, egged on by their continual flattery, bringing tragic consequences for all. Based on the legend of Leir of Britain, a mythological pre-Roman Celtic king, the play has been widely adapted for the stage and motion pictures, with the title role coveted by many of the world's most accomplished actors.",
-                'book_category' => ['Tragedy', 'Drama'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/0/09/King_Lear_by_George_Frederick_Bensell.jpg',
-                'book_date' => '1606',
-                'book_stock'=> 3
-            ]);
+            'book_title' => 'King Lear',
+            'book_author' => 'William Shakespeare',
+            'book_explanation' => "King Lear is a tragedy written by William Shakespeare. It depicts the gradual descent into madness of the title character, after he disposes of his kingdom by giving bequests to two of his three daughters, egged on by their continual flattery, bringing tragic consequences for all. Based on the legend of Leir of Britain, a mythological pre-Roman Celtic king, the play has been widely adapted for the stage and motion pictures, with the title role coveted by many of the world's most accomplished actors.",
+            'book_category' => ['Tragedy', 'Drama'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/0/09/King_Lear_by_George_Frederick_Bensell.jpg',
+            'book_date' => '1606',
+            'book_stock' => 3
+        ]);
         Book::create([
-                'book_title' => 'Othello',
-                'book_author' => 'William Shakespeare',
-                'book_explanation' => "Othello is a tragedy by William Shakespeare, believed to have been written in 1603. It is based on the story Un Capitano Moro by Cinthio, a disciple of Boccaccio, first published in 1565. The story revolves around its two central characters: Othello, a Moorish general in the Venetian army, and his unfaithful ensign, Iago. The play is set in a city-state, Venice, during the early modern period, and explores themes such as love, jealousy, betrayal, revenge, and racism.",
-                'book_category' => ['Tragedy', 'Drama'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Henry_Perronet_Briggs_-_Ira_Aldridge_as_Othello_-_Google_Art_Project.jpg/386px-Henry_Perronet_Briggs_-_Ira_Aldridge_as_Othello_-_Google_Art_Project.jpg',
-                'book_date' => '1603',
-                'book_stock'=> 6
-            ]);
+            'book_title' => 'Othello',
+            'book_author' => 'William Shakespeare',
+            'book_explanation' => "Othello is a tragedy by William Shakespeare, believed to have been written in 1603. It is based on the story Un Capitano Moro by Cinthio, a disciple of Boccaccio, first published in 1565. The story revolves around its two central characters: Othello, a Moorish general in the Venetian army, and his unfaithful ensign, Iago. The play is set in a city-state, Venice, during the early modern period, and explores themes such as love, jealousy, betrayal, revenge, and racism.",
+            'book_category' => ['Tragedy', 'Drama'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Henry_Perronet_Briggs_-_Ira_Aldridge_as_Othello_-_Google_Art_Project.jpg/386px-Henry_Perronet_Briggs_-_Ira_Aldridge_as_Othello_-_Google_Art_Project.jpg',
+            'book_date' => '1603',
+            'book_stock' => 6
+        ]);
         Book::create([
             'book_title' => 'Antigone',
             'book_author' => 'Sophocles',
@@ -342,17 +342,178 @@ class BooksTableSeeder extends Seeder
             'book_category' => ['Tragedy', 'Classical literature'],
             'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Lytras_nikiforos_antigone_polynices.jpeg',
             'book_date' => '441',
+            'book_stock' => 9
+        ]);
+        Book::create([
+            'book_title' => 'Oedipus Rex',
+            'book_author' => 'Sophocles',
+            'book_explanation' => "Oedipus Rex, also known by its Greek title, Oedipus Tyrannus, or Oedipus the King, is an Athenian tragedy by Sophocles that was first performed around 429 BC. The play tells the story of Oedipus, the king of Thebes, who unwittingly kills his father and marries his mother. When Oedipus discovers the truth about his past, he blinds himself and goes into exile. The play is considered a masterpiece of ancient Greek drama and is one of the most famous plays of all time.",
+            'book_category' => ['Tragedy', 'Greek Drama'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/6/69/Oedipus.jpg',
+            'book_date' => '429 BC',
+            'book_stock' => 4
+        ]);
+        Book::create([
+            'book_title' => 'Neuromancer',
+            'book_author' => 'William Gibson',
+            'book_explanation' => "Neuromancer is a science fiction novel by American-Canadian writer William Gibson. It is one of the most famous and influential works in the cyberpunk genre, and won the Nebula Award, the Hugo Award, and the Philip K. Dick Award. The novel tells the story of Case, a washed-up computer hacker who is given a second chance by a mysterious employer to pull off the ultimate hack, but the job is more dangerous than he anticipated. Along the way, he encounters a powerful artificial intelligence, a deadly street samurai, and a secretive ex-military officer, all of whom have their own agendas.",
+            'book_category' => ['Science-Fiction', 'Cyberpunk'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/4/4b/Neuromancer_%28Book%29.jpg',
+            'book_date' => '1984-07-01',
+            'book_stock' => 3
+        ]);
+        Book::create([
+            'book_title' => 'Fahrenheit 451',
+            'book_author' => 'Ray Bradbury',
+            'book_explanation' => "Fahrenheit 451 is a dystopian novel by American writer Ray Bradbury. It was first published in 1953 and presents a future American society where books are outlawed and 'firemen' burn any that are found. The book's title refers to the temperature at which book paper burns. The novel has been the subject of interpretations focusing on the historical role of book burning in suppressing dissenting ideas and works, as well as on Bradbury's own motivations for writing the story.",
+            'book_category' => ['Science-Fiction', 'Dystopia'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/d/db/Fahrenheit_451_1st_ed_cover.jpg',
+            'book_date' => '1953-10-19',
+            'book_stock' => 27
+        ]);
+        Book::create([
+            'book_title' => 'The Mystery of Edwin Drood',
+            'book_author' => 'Charles Dickens',
+            'book_explanation' => "The Mystery of Edwin Drood is the final novel by Charles Dickens, originally published in 1870. Though the novel is named after the character Edwin Drood, it focuses more on Drood's uncle, John Jasper, a precentor, choirmaster and opium addict, who is in love with his pupil, Rosa Bud. Miss Bud, Edwin Drood's fiancée, has also caught the eye of the high-spirited and hot-tempered Neville Landless. Landless and Edwin Drood take an instant dislike to one another. Later Drood disappears and it is feared that he has been murdered. The novel ends abruptly with the mystery unsolved.",
+            'book_category' => ['Mystery', 'Victorian Literature'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Drood_serial_cover.jpg/496px-Drood_serial_cover.jpg',
+            'book_date' => '1870-09-01',
+            'book_stock' => 8
+        ]);
+        Book::create([
+            'book_title' => 'William Wilson',
+            'book_author' => 'Edgar Allan Poe',
+            'book_explanation' => "William Wilson is a short story by Edgar Allan Poe, first published in 1839. The story follows the life of a man named William Wilson, who describes a supernatural encounter that happened when he was a young boy. Wilson's life is consumed by his obsession with outdoing a boy who bears the same name as him, and whose features are identical to his own. Wilson's doppelgänger appears to him throughout his life, leading him down a path of self-destruction and ultimately leading to his downfall.",
+            'book_category' => ['Gothic', 'Horror', 'Short Story'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/5/55/The_gift_1840_cover.jpg',
+            'book_date' => '1839-10-01',
             'book_stock' => 5
         ]);
         Book::create([
-                'book_title' => 'Oedipus Rex',
-                'book_author' => 'Sophocles',
-                'book_explanation' => "Oedipus Rex, also known by its Greek title, Oedipus Tyrannus, or Oedipus the King, is an Athenian tragedy by Sophocles that was first performed around 429 BC. The play tells the story of Oedipus, the king of Thebes, who unwittingly kills his father and marries his mother. When Oedipus discovers the truth about his past, he blinds himself and goes into exile. The play is considered a masterpiece of ancient Greek drama and is one of the most famous plays of all time.",
-                'book_category' => ['Tragedy', 'Greek Drama'],
-                'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/6/69/Oedipus.jpg',
-                'book_date' => '429 BC',
-                'book_stock'=> 5
-            ]);
-
+            'book_title' => 'The Gold-Bug',
+            'book_author' => 'Edgar Allan Poe',
+            'book_explanation' => "The Gold-Bug is a short story by Edgar Allan Poe, first published in 1843. The story follows an unnamed narrator who seeks the assistance of his friend, William Legrand, in deciphering a secret message. The message leads them on a treasure hunt that takes them to a remote island off the coast of South Carolina. The story is notable for its use of cryptography and includes a detailed description of how to decipher a message using a simple substitution cipher.",
+            'book_category' => ['Mystery', 'Short Story'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/a/ac/The_Dollar_The_Gold_Bug_1843.jpg',
+            'book_date' => '1843-06-21',
+            'book_stock' => 4
+        ]);
+        Book::create([
+            'book_title' => 'And Then There Were None',
+            'book_author' => 'Agatha Christie',
+            'book_explanation' => "And Then There Were None is a mystery novel by Agatha Christie, first published in 1939. The story follows ten strangers who are invited to an isolated island by a mysterious host. They soon realize that they are stranded and that someone is killing them off one by one. As they try to survive, they begin to suspect each other and realize that the killer is among them. The novel has sold over 100 million copies and is considered one of Christie's masterpieces.",
+            'book_category' => ['Mystery', 'Crime Fiction'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/4/4a/And_Then_There_Were_None_First_Edition_Cover_1939.jpg',
+            'book_date' => '1939-11-06',
+            'book_stock' => 8
+        ]);
+        Book::create([
+            'book_title' => 'American Psycho',
+            'book_author' => 'Bret Easton Ellis',
+            'book_explanation' => "American Psycho is a novel by Bret Easton Ellis, published in 1991. The story is told in the first person by Patrick Bateman, a serial killer and Manhattan businessman. Bateman comes from a wealthy family and spends his days working at a finance company, obsessing over designer clothes, eating at trendy restaurants and going to clubs. But at night, he indulges in increasingly sadistic and depraved fantasies, eventually escalating to actual murder. The novel is a commentary on 1980s yuppie culture and the emptiness and amorality of consumerism.",
+            'book_category' => ['Satire', 'Horror', 'Thriller'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/b/b5/American_Psycho_by_Bret_Easton_Ellis_first_US_paperback_edition_1991.jpg',
+            'book_date' => '1991-03-01',
+            'book_stock' => 53
+        ]);
+        Book::create([
+            'book_title' => 'Dracula',
+            'book_author' => 'Bram Stoker',
+            'book_explanation' => "Dracula is a novel by Bram Stoker, published in 1897. The story is told primarily through a collection of journal entries, letters, and telegrams written by the novel's main characters, including the young lawyer Jonathan Harker, his fiancée Mina Murray, and the vampire hunter Abraham Van Helsing. The novel is set in Transylvania and England, and follows Count Dracula's attempt to move from Transylvania to England to spread the undead curse. Dracula has been assigned various literary genres, including vampire literature, horror fiction, the gothic novel, and invasion literature. The novel has been adapted for film and television numerous times.",
+            'book_category' => ['Gothic', 'Horror', 'Paranormal'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Dracula_1st_ed_cover_reproduction.jpg/316px-Dracula_1st_ed_cover_reproduction.jpg',
+            'book_date' => '1897-05-26',
+            'book_stock' => 12
+        ]);
+        Book::create([
+            'book_title' => 'The Merry Adventures of Robin Hood',
+            'book_author' => 'Howard Pyle',
+            'book_explanation' => "The Merry Adventures of Robin Hood is a collection of stories about the legendary English outlaw Robin Hood, compiled and retold by Howard Pyle. The book follows Robin Hood and his band of Merry Men as they rob from the rich and give to the poor, all while evading the Sheriff of Nottingham and other enemies. Along the way, Robin Hood falls in love with Maid Marian and engages in various adventures and battles. Originally published in 1883, the book has been adapted into numerous films, television shows, and other media.",
+            'book_category' => ['Adventure', 'Folklore'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/e/e6/1883_decorative_title_page.jpg',
+            'book_date' => '1883-01-01',
+            'book_stock' => 12
+        ]);
+        Book::create([
+            'book_title' => 'Heidi',
+            'book_author' => 'Johanna Spyri',
+            'book_explanation' => "Heidi is a children's novel by Swiss author Johanna Spyri, first published in 1881. The book tells the story of Heidi, a young orphan girl who is sent to live with her grandfather in the Swiss Alps. At first, her grandfather is reluctant to take her in, but they soon develop a close bond. Heidi becomes close friends with Peter, a young goatherd, and she also befriends Clara, a wealthy but sickly girl who lives nearby. The novel follows Heidi's adventures in the mountains and her relationships with her friends and family. The book has been adapted into numerous films, television series, and stage productions.",
+            'book_category' => ["Children's', 'Fiction"],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Spyri_Heidi_Cover_1887.jpg',
+            'book_date' => '1881-01-01',
+            'book_stock' => 7
+        ]);
+        Book::create([
+            'book_title' => "Alice's Adventures in Wonderland",
+            'book_author' => 'Lewis Carroll',
+            'book_explanation' => "Alice's Adventures in Wonderland is a novel by Lewis Carroll, published in 1865. It tells the story of a young girl named Alice, who falls through a rabbit hole into a fantastical world populated by peculiar anthropomorphic creatures. The tale plays with logic, giving the story lasting popularity with adults as well as with children. It is considered to be one of the best examples of the literary nonsense genre. The book has been adapted numerous times into various media, including movies, stage plays, and video games.",
+            'book_category' => ['Children’s', 'Fantasy'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Alice%27s_Adventures_in_Wonderland_cover_%281865%29.jpg',
+            'book_date' => '1865-11-26',
+            'book_stock'=> 6
+        ]);
+        Book::create([
+        'book_title' => 'The Moonstone',
+        'book_author' => 'Wilkie Collins',
+        'book_explanation' => "The Moonstone is a 19th-century British epistolary novel, generally considered the first detective novel in the English language. The story centres around a large, yellow diamond called the Moonstone, which is stolen from an Indian temple and given to Rachel Verinder on her 18th birthday. That same night, the diamond is stolen again, and suspicion falls on all those in the house. The book is famous for its complex plot and multiple narrators, including Sergeant Cuff, a detective who has become one of the most famous characters in the history of detective fiction.",
+        'book_category' => ['Mystery', 'Detective Fiction', 'Victorian Literature'],
+        'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/The_Moonstone_1st_ed.jpg/284px-The_Moonstone_1st_ed.jpg',
+        'book_date' => '1868-07-01',
+        'book_stock'=> 10
+    ]);
+        Book::create([
+            'book_title' => 'The Murder of Roger Ackroyd',
+            'book_author' => 'Agatha Christie',
+            'book_explanation' => "The Murder of Roger Ackroyd is a detective novel by British author Agatha Christie, first published in the UK by William Collins & Sons in June 1926 and in the US by Dodd, Mead and Company on 19 June of the same year. It is the third novel to feature Hercule Poirot as the lead detective. The story follows Poirot as he investigates the murder of wealthy widower Roger Ackroyd, who is found dead in his study, stabbed with a dagger. As the investigation proceeds, nearly every character in the novel falls under suspicion and many secrets are revealed, leading to a surprising and controversial conclusion.",
+            'book_category' => ['Mystery', 'Detective Fiction'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/5/57/The_Murder_of_Roger_Ackroyd_First_Edition_Cover_1926.jpg',
+            'book_date' => '1926-06-19',
+            'book_stock'=> 13
+        ]);
+        Book::create([
+            'book_title' => 'Histories',
+            'book_author' => 'Herodotus',
+            'book_explanation' => "Histories is a historical account written by the ancient Greek historian Herodotus in the fifth century BCE. It recounts the events leading up to and including the Greco-Persian Wars, which took place between 492 and 449 BCE. Herodotus traveled extensively to conduct his research and included a wide range of subjects in his work, including geography, culture, and ethnography. Histories is considered one of the founding works of Western history and literature.",
+            'book_category' => ['History', 'Classical Literature'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/POxy_v0017_n2099_a_01_hires.jpg/512px-POxy_v0017_n2099_a_01_hires.jpg',
+            'book_date' => 'c. 440 BCE',
+            'book_stock'=> 12
+        ]);
+        Book::create([
+            'book_title' => 'Anabasis',
+            'book_author' => 'Xenophon',
+            'book_explanation' => "Anabasis is an autobiographical work by the Greek writer Xenophon. It narrates the story of ten thousand Greek mercenaries who fought in the army of Cyrus the Younger, a Persian prince who attempted to seize the throne from his brother Artaxerxes II. After Cyrus was killed in battle, the Greeks found themselves stranded in the heart of the Persian Empire, thousands of miles from home. They were forced to make their way back to Greece by marching through hostile territory, fighting their way through enemy forces, and overcoming numerous other obstacles. The story of their epic journey has been called one of the greatest adventure tales of all time.",
+            'book_category' => ['History', 'Adventure'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/1/13/Xenophon_Anabasis.jpg',
+            'book_date' => '4th Century BC',
+            'book_stock'=> 9
+        ]);
+        Book::create([
+            'book_title' => 'Iliad',
+            'book_author' => 'Homer',
+            'book_explanation' => "The Iliad is an epic poem written by Homer, most likely in the 8th century BCE. It tells the story of the Trojan War, specifically the wrath of the Greek hero Achilles and its consequences. The poem is divided into 24 books and contains around 15,000 lines of dactylic hexameter. It is considered one of the most important works of ancient Greek literature and has had a significant impact on Western culture.",
+            'book_category' => ['Poetry', 'History'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Iliad_VIII_245-253_in_cod_F205%2C_Milan%2C_Biblioteca_Ambrosiana%2C_late_5c_or_early_6c.jpg',
+            'book_date' => '-800',
+            'book_stock'=> 61
+        ]);
+        Book::create([
+        'book_title' => 'Odysseia',
+        'book_author' => 'Homer',
+        'book_explanation' => "Odysseia (The Odyssey) is an epic poem by the ancient Greek poet Homer, believed to have been composed near the end of the 8th century BC. It tells the story of Odysseus, the king of Ithaca, and his ten-year journey home after the Trojan War. Along the way, he faces numerous challenges and obstacles, including a battle with the Cyclops, a visit to the land of the dead, and a confrontation with the sea god Poseidon. The Odyssey is a foundational work of Western literature and has had a lasting influence on storytelling.",
+        'book_category' => ['Poetry', 'Adventure'],
+        'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Odyssey-crop.jpg/501px-Odyssey-crop.jpg',
+        'book_date' => '8th century BC',
+        'book_stock'=> 38
+    ]);
+        Book::create([
+            'book_title' => 'The Death of Ivan Ilyich',
+            'book_author' => 'Lev Tolstoy',
+            'book_explanation' => "Ivan Ilyich Golovin (Ilyich is a patronymic, his surname is Golovin) is a highly regarded official of the Court of Justice, described by Tolstoy as, 'neither as cold and formal as his elder brother nor as wild as the younger, but was a happy mean between them—an intelligent, polished, lively, and agreeable man.' As the story progresses, he becomes more and more introspective and emotional as he ponders the reason for his agonizing illness and death.",
+            'book_category' => ['Novel', 'Classic'],
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Death_of_Ivan_Ilyich.jpg/350px-The_Death_of_Ivan_Ilyich.jpg',
+            'book_date' => '1886-01-01',
+            'book_stock' => 21
+        ]);
     }
 }

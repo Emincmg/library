@@ -29,7 +29,6 @@ class CategoriesTableSeeder extends Seeder
             'Paranormal',
             'Historical Fiction',
             "Children's",
-            'Classics',
             'Detective',
             'History',
             'Poetry',
@@ -38,6 +37,7 @@ class CategoriesTableSeeder extends Seeder
             'Fiction',
             'Memoir',
             'Gothic',
+            'Cyberpunk',
         ];
 
         // Loop through categories and create BookCategory model for each one

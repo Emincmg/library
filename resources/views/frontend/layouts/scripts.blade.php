@@ -9,6 +9,14 @@
         //Create a public variable that contains all book data.
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
 
+        let authorsArray = $.map(booksdata, function(book){
+            return book.book_author;
+        });
+
+        let uniqueAuthorsArray = $.unique(authorsArray);
+
+        console.log(uniqueAuthorsArray);
+
 
         //View clicked book modal
         $(document).on('click', '.bookName', function (e) {
