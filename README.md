@@ -1,14 +1,14 @@
 # Library
 
-This project is a library management system application that allows you to track and manage books, authors, and publishers. The application was developed using the Laravel PHP framework.
+This project is a library management system application that allows you to track and manage books in your library. The application was developed using the Laravel PHP framework.
 
 ## Features
 
-- Add new books, authors, and publishers
-- Edit existing books, authors, and publishers
-- Delete existing books, authors, and publishers
-- Search to list books, authors, and publishers
-- Track the available copies of books
+- Add, Edit and delete books.
+- Manage book stocks.
+- Filter books via dropdown menu.
+- Get info about clicked book.
+
 
 ## Installation
 
@@ -61,4 +61,4 @@ This project is a library management system application that allows you to track
 
 ## Usage
 
-Once the installation is complete and the application is running, you can access it by visiting `http://localhost:8000` in your web browser. From there, you can use the application to manage books, authors, and publishers.
+Once the installation is complete and the application is running, you can access it by visiting `http://localhost:8000` in your web browser. From there, you can use the application to manage your library.
