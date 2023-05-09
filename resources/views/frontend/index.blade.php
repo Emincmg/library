@@ -63,7 +63,7 @@
                     <div class="container" id="booklist">
                         @foreach($books as $key)
                             <div
-                                class="card row-hover pos-relative px-1 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="{{$key->book_author}}" data-category="{{ json_encode($key->book_category,TRUE)}}">
+                                class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="{{$key->book_author}}" data-category="{{ json_encode($key->book_category,TRUE)}}">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="row pt-1">
