@@ -10,16 +10,14 @@
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
 
 
-
         //View clicked book modal
         $(document).on('click', '.bookName', function (e) {
             let bookID = $(this).data('id');
-            console.log(bookID)
             let book = booksdata.find(book => book.id === bookID);
-            console.log(book)
 
             $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
             $('#book_dtl_explanation').text(book.book_explanation);
+            $('#book_dtl_category_date').text("Categories : " + book.book_category + " | " + "Published : " + book.book_date);
             $('#book_dtl_img').attr('src', book.book_img);
             $('#viewModal').modal('show');
         });
@@ -27,7 +25,6 @@
         //Open new book inserting modal
         $(document).on('click', '#addModalButton', function (e) {
             $('#addBookModal').modal('show');
-            console.log(booksdata)
         });
 
         //Open editing modal
@@ -81,7 +78,6 @@
 
         // Insert a new book to server
         $(document).on('submit', '#addBookForm', function (e) {
-            console.log(booksdata)
 
             e.preventDefault();
             let formData = $(this).serialize();
