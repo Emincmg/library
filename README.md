@@ -8,6 +8,7 @@ This project, a learning project in the making by Emin Çomoğlu, is a library m
 - Manage book stocks.
 - Filter books via dropdown menu.
 - Get info about clicked book.
+- Automatically create new author if it doesn't exist.
 
 ## Future functionalities in development
 
