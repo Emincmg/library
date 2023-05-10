@@ -16,4 +16,8 @@ class Author extends Model
             'author_born',
             'author_demise',
         ];
+
+    public function books(){
+        return $this->hasMany('App\Book');
+    }
 }

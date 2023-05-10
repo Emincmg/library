@@ -8,6 +8,7 @@
 
         //Create a public variable that contains all book data.
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
+        let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
 
         //View clicked book modal
@@ -91,6 +92,11 @@
                         $('#booklist').load(document.URL + ' #booklist');
                         $('#latest_book').load(document.URL + ' #latest_book');
                         $('#addBookModal').modal('hide');
+                        if (jQuery.inArray(value.book_author, authorsdata) !== -1) {
+                            console.log('var');
+                        } else {
+                            $('#authorDrpDown').append('<select>+ value.book_author +</select>');
+                        }
                         $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
                         $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
                     })
@@ -122,7 +128,6 @@
                     $.each(response, function (index, object) {
                         foundBook = booksdata.findIndex(book => book.id === object.id);
                         booksdata[foundBook] = object;
-                        console.log(booksdata);
                     })
                 },
                 error: function (xhr, status, error) {
@@ -134,7 +139,7 @@
             })
         })
 
-        //Filter books by author
+        //Filter books
         $(document).on('change','#authorDrpDown,#categoryDrpDown',function (e){
             let authorFilter = $('#authorDrpDown').val();
             let categoryFilter = $('#categoryDrpDown').val();
