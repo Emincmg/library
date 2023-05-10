@@ -13,7 +13,7 @@ This project, a learning project in the making by Emin Çomoğlu, is a library m
 
 - Search bar.
 - Author detail page.
-- - ~~Ability to insert new Authors.~~ ✔️ Done
+- ~~Ability to insert new Authors.~~ ✔️ Done
 - Better design.
 - New books.
 
