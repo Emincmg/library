@@ -98,7 +98,7 @@
                         if (jQuery.inArray(value.book_author, authorsdata) !== -1) {
                             console.log('var');
                         } else {
-                            $('#authorDrpDown').append('<select>+ value.book_author +</select>');
+                            $('<option>').text(value.book_author).appendTo('#authorDrpDown');
                         }
                         $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
                         $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');

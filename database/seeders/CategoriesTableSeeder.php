@@ -38,6 +38,7 @@ class CategoriesTableSeeder extends Seeder
             'Memoir',
             'Gothic',
             'Cyberpunk',
+            'Tragedy',
         ];
 
         // Loop through categories and create BookCategory model for each one
