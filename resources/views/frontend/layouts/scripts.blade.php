@@ -6,21 +6,23 @@
             }
         });
 
-        //Create a public variable that contains all book data.
+        //Public variables.
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
         let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
         //Index
         $( document ).ready(function() {
             $.each(booksdata,function (index,book){
-                var author = book.book_author
-                var category = JSON.stringify(book.book_category);
-                var id = book.id;
-                var title = book.book_title;
-                var updatedAt = book.updated_at;
-                var stock = book.book_stock;
+                let author = book.book_author
+                let category = JSON.stringify(book.book_category);
+                let id = book.id;
+                let title = book.book_title;
+                let updatedAt = book.updated_at;
+                let formattedUpdate = new Date(updatedAt).toLocaleString();
+                console.log(updatedAt)
+                let stock = book.book_stock;
 
-                var newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\'>'
+                let newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\'>'
                     + '<div class="row">'
                     + '<div class="col-md-5">'
                     + '<div class="row pt-1">'
@@ -34,7 +36,7 @@
                     + '<div class="col-md-5">'
                     + '<div class="row pt-1">'
                     + '<div class="col-md-auto px-1">'
-                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Last Update: ' + updatedAt + '</span>'
+                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Last Update: ' + formattedUpdate + '</span>'
                     + '</div>'
                     + '<div class="col-md-auto px-1">'
                     + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Stock: ' + stock + '</span>'
