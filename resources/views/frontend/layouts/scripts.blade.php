@@ -10,6 +10,53 @@
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
         let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
+        //Index
+        $( document ).ready(function() {
+            $.each(booksdata,function (index,book){
+                var author = book.book_author
+                var category = JSON.stringify(book.book_category);
+                var id = book.id;
+                var title = book.book_title;
+                var updatedAt = book.updated_at;
+                var stock = book.book_stock;
+
+                var newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\'>'
+                    + '<div class="row">'
+                    + '<div class="col-md-5">'
+                    + '<div class="row pt-1">'
+                    + '<h5>'
+                    + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">' + title + '</a>'
+                    + '<a href=""> - </a>'
+                    + '<a href="#" class="bookAuthor text-primary" style="font-size: medium">' + author + '</a>'
+                    + '</h5>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="col-md-5">'
+                    + '<div class="row pt-1">'
+                    + '<div class="col-md-auto px-1">'
+                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Last Update: ' + updatedAt + '</span>'
+                    + '</div>'
+                    + '<div class="col-md-auto px-1">'
+                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Stock: ' + stock + '</span>'
+                    + '</div>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="col">'
+                    + '<button class="btn editButton text-primary btn-close-white" id="editButton" data-id="' + id + '">'
+                    + '<i class="ionicons ion-edit"></i>'
+                    + '</button>'
+                    + '</div>'
+                    + '<div class="col">'
+                    + '<button data-id="' + id + '" class="btn deleteButton text-danger btn-close-white" style="font-size: 14px;">'
+                    + '<i class="bi bi-trash-fill"></i>'
+                    + '</button>'
+                    + '</div>'
+                    + '</div>'
+                    + '</div>';
+
+                $('#booklist').append(newBook);
+            });
+        });
 
         //View clicked book modal
         $(document).on('click', '.bookName', function (e) {

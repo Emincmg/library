@@ -61,50 +61,50 @@
 
                     {{--Book list section--}}
                     <div class="container" id="booklist">
-                        @foreach($books as $key)
-                            <div
-                                class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="{{$key->book_author}}" data-category="{{ json_encode($key->book_category,TRUE)}}">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="row pt-1">
-                                            <h5>
-                                                <a href="javascript:void(0);"
-                                                   class="bookName text-primary" style="font-size: medium"
-                                                    data-id="{{$key->id}}">{{ $key->book_title }} </a>
-                                                <a href="">-</a>
-                                                <a href="#"
-                                                   class="bookAuthor text-primary"
-                                                   style="font-size: medium">{{ $key->book_author }}</a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="row pt-1">
-                                            <div class="col-md-auto px-1">
-                                                        <span class="d-block text-sm"
-                                                              style="font-size: 12px; margin-top: 5px;">Last Update: {{ $key->updated_at }} </span>
-                                            </div>
-                                            <div class="col-md-auto px-1">
-                                                        <span class="d-block text-sm"
-                                                              style="font-size: 12px; margin-top: 5px;">Stock: {{ $key->book_stock }} </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <button class="btn editButton text-primary btn-close-white" id="editButton"
-                                                data-id="{{$key->id}}"><i
-                                                class="ionicons ion-edit"></i></button>
-                                    </div>
-                                    <div class="col">
-                                        <button data-id="{{$key->id}}"
-                                                class="btn deleteButton text-danger btn-close-white"
-                                                style="font-size: 14px;">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+{{--                        @foreach($books as $key)--}}
+{{--                            <div--}}
+{{--                                class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="{{$key->book_author}}" data-category="{{ json_encode($key->book_category,TRUE)}}">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-5">--}}
+{{--                                        <div class="row pt-1">--}}
+{{--                                            <h5>--}}
+{{--                                                <a href="javascript:void(0);"--}}
+{{--                                                   class="bookName text-primary" style="font-size: medium"--}}
+{{--                                                    data-id="{{$key->id}}">{{$key->book_title}} </a>--}}
+{{--                                                <a href="">-</a>--}}
+{{--                                                <a href="#"--}}
+{{--                                                   class="bookAuthor text-primary"--}}
+{{--                                                   style="font-size: medium">{{ $key->book_author }}</a>--}}
+{{--                                            </h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-5">--}}
+{{--                                        <div class="row pt-1">--}}
+{{--                                            <div class="col-md-auto px-1">--}}
+{{--                                                        <span class="d-block text-sm"--}}
+{{--                                                              style="font-size: 12px; margin-top: 5px;">Last Update: {{ $key->updated_at }} </span>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-auto px-1">--}}
+{{--                                                        <span class="d-block text-sm"--}}
+{{--                                                              style="font-size: 12px; margin-top: 5px;">Stock: {{ $key->book_stock }} </span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col">--}}
+{{--                                        <button class="btn editButton text-primary btn-close-white" id="editButton"--}}
+{{--                                                data-id="{{$key->id}}"><i--}}
+{{--                                                class="ionicons ion-edit"></i></button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col">--}}
+{{--                                        <button data-id="{{$key->id}}"--}}
+{{--                                                class="btn deleteButton text-danger btn-close-white"--}}
+{{--                                                style="font-size: 14px;">--}}
+{{--                                            <i class="bi bi-trash-fill"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
                     </div>
                 </div>
                 {{--End of book list section--}}
