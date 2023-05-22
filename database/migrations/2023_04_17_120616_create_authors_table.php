@@ -17,6 +17,8 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('author_name')->nullable();
+            $table->string('author_explanation',1000)->nullable();
+            $table->string('author_img')->nullable();
             $table->json('author_books')->nullable();
             $table->string('author_born')->nullable();
             $table->string('author_demise')->nullable();
