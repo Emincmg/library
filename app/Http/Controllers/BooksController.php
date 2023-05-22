@@ -38,15 +38,15 @@ class BooksController extends Controller
     {
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
-
-        if ($validatedData) {
-            $createdBook = Book::create($validatedData);
-        }
         $createdAuthor = Author::where('author_name', $request->book_author)->first();
 
         if(!$createdAuthor){
-            Author::create(['author_name' => $request->book_author]);
+            Author::create(['author_name' => $request->book_author,'author_books'=>$request->book_title]);
         }
+        if ($validatedData) {
+            $createdBook = Book::create($validatedData);
+        }
+
         return response()->json(['created' => $createdBook]);
     }
 
