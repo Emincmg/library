@@ -10,8 +10,8 @@
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
         let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
-        //Index
-        $( document ).ready(function() {
+        //Book loading function
+        function loadbooks(){
             $.each(booksdata,function (index,book){
                 let author = book.book_author
                 let category = JSON.stringify(book.book_category);
@@ -28,8 +28,8 @@
                     + '<div class="row pt-1">'
                     + '<h5>'
                     + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">' + title + '</a>'
-                    + '<a href=""> - </a>'
-                    + '<a href="#" class="bookAuthor text-primary" style="font-size: medium">' + author + '</a>'
+                    + '<a href="javascript:void(0);"> - </a>'
+                    + '<a href="javascript:void(0);" class="bookAuthor text-primary" style="font-size: medium">' + author + '</a>'
                     + '</h5>'
                     + '</div>'
                     + '</div>'
@@ -58,18 +58,11 @@
 
                 $('#booklist').append(newBook);
             });
-        });
+        }
 
-        //View clicked book modal
-        $(document).on('click', '.bookName', function (e) {
-            let bookID = $(this).data('id');
-            let book = booksdata.find(book => book.id === bookID);
-
-            $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
-            $('#book_dtl_explanation').text(book.book_explanation);
-            $('#book_dtl_category_date').text("Categories : " + book.book_category + " | " + "Published : " + book.book_date);
-            $('#book_dtl_img').attr('src', book.book_img);
-            $('#viewModal').modal('show');
+        //Index
+        $( document ).ready(function() {
+          loadbooks();
         });
 
         //Open new book inserting modal
@@ -102,6 +95,31 @@
 
             $('input[name="book_category"]').val(book.book_category);
             $('input[name="book_stock"]').val(book.book_stock);
+        });
+
+        //View clicked book modal
+        $(document).on('click', '.bookName', function (e) {
+            let bookID = $(this).data('id');
+            let book = booksdata.find(book => book.id === bookID);
+
+            $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
+            $('#book_dtl_explanation').text(book.book_explanation);
+            $('#book_dtl_category_date').text("Categories : " + book.book_category + " | " + "Published : " + book.book_date);
+            $('#book_dtl_img').attr('src', book.book_img);
+            $('#bookViewModal').modal('show');
+        });
+
+        //View clicked author modal
+        $(document).on('click', '.bookAuthor', function (e) {
+            let authorName = $(this).text();
+            let author = authorsdata.find(author => author.author_name === authorName);
+            console.log(author);
+
+            $('#author_dtl_img').attr('src', author.author_img);
+            $('#author_dtl_name').text(author.author_name);
+            $('#author_dtl_born_demise').text("Born: " + author.author_born + ", Demise: " + author.author_demise);
+            $('#author_dtl_explanation').text(author.author_explanation);
+            $('#authorViewModal').modal('show');
         });
 
         //View featured book modal
@@ -141,7 +159,8 @@
                 success: function (response, xhr, status) {
                     $.each(response, function (index, value) {
                         booksdata.push(value)
-                        $('#booklist').load(document.URL + ' #booklist');
+                        // $('#booklist').load(document.URL + ' #booklist');
+                        loadbooks();
                         $('#latest_book').load(document.URL + ' #latest_book');
                         $('#addBookModal').modal('hide');
                         if (jQuery.inArray(value.book_author, authorsdata) !== -1) {

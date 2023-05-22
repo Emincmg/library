@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 @include('frontend.addbook')
 @include('frontend.viewbook')
+@include('frontend.viewauthor')
 @include('frontend.editbook')
 
 
@@ -13,7 +14,7 @@
                     @if(isset($featuredBook))
                         <h1><span class="text-white">{{$featuredBook->book_title}}</span></h1>
                         <p class="lead text-white">by {{$featuredBook->book_author}}</p>
-{{--                    TODO: JQuery--}}
+                        {{--                    TODO: JQuery--}}
                         <p>
                             <a href="#" class="btn btn-primary my-2" id="featuredBook">Inspect</a>
                         </p>
@@ -88,7 +89,8 @@
                                 @if(isset($latestBook))
                                     <div class="pos-relative px-3 py-3">
                                         <h6 class="text-primary text-sm">
-                                            <a href="javascript:void(0);" class="text-primary bookName" data-id="{{$latestBook->id}}">{{$latestBook->book_title}}</a>
+                                            <a href="javascript:void(0);" class="text-primary bookName"
+                                               data-id="{{$latestBook->id}}">{{$latestBook->book_title}}</a>
                                         </h6>
                                         <p class="mb-0 text-sm"><span class="op-6">Registered at</span> <a
                                                 class="text-black"
@@ -121,7 +123,8 @@
                                     @if(isset($leastBook))
                                         <div class="col-sm-6 flex-ew text-center py-3 mx-0">Least stock<a
                                                 class="d-block lead font-weight-bold bookName"
-                                                href="#" style="font-size: medium" data-id="{{$leastBook->id}}">{{$leastBook->book_title}}</a>
+                                                href="#" style="font-size: medium"
+                                                data-id="{{$leastBook->id}}">{{$leastBook->book_title}}</a>
                                             with: {{$leastBook->book_stock}}
                                             stock.
                                         </div>
@@ -165,11 +168,23 @@
                     </div>
                 </div>
                 {{--Book detail modal--}}
-                <div class="modal fade" id="viewModal">
+                <div class="modal fade" id="bookViewModal">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body align-items-center">
                                 @yield('book detail modal body')
+                            </div>
+                            <div class="modal-footer border-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--Author detail modal--}}
+                <div class="modal fade" id="authorViewModal">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body align-items-center">
+                                @yield('author detail modal body')
                             </div>
                             <div class="modal-footer border-0">
                             </div>
