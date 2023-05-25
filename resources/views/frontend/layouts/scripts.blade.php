@@ -10,16 +10,15 @@
         let booksdata = {!! str_replace("'", "\'", json_encode($books)) !!};
         let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
-        //Book loading function
+        //List all books
         function loadbooks(){
             $.each(booksdata,function (index,book){
-                let author = book.book_author
+                let author = book.book_author;
                 let category = JSON.stringify(book.book_category);
                 let id = book.id;
                 let title = book.book_title;
                 let updatedAt = book.updated_at;
                 let formattedUpdate = new Date(updatedAt).toLocaleString();
-                console.log(updatedAt)
                 let stock = book.book_stock;
 
                 let newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\'>'
@@ -60,9 +59,18 @@
             });
         }
 
+        //List author dropdown selections
+        function authorDropdownLoad(){
+            $.each(authorsdata,function (index,author){
+                let authorName = author.author_name;
+                $('<option>').text(authorName).appendTo('#authorDrpDown');
+            })
+        }
+
         //Index
         $( document ).ready(function() {
           loadbooks();
+          authorDropdownLoad();
         });
 
         //Open new book inserting modal
@@ -113,7 +121,6 @@
         $(document).on('click', '.bookAuthor', function (e) {
             let authorName = $(this).text();
             let author = authorsdata.find(author => author.author_name === authorName);
-            console.log(author);
 
             $('#author_dtl_img').attr('src', author.author_img);
             $('#author_dtl_name').text(author.author_name);
@@ -127,7 +134,7 @@
             let bookID = {{$featuredBook->id}};
             let book = booksdata.find(book => book.id === bookID);
 
-            $('#viewModal').modal('show');
+            $('#bookViewModal').modal('show');
             $('#book_dtl_title').text(book.book_title + " - " + book.book_author);
             $('#book_dtl_explanation').text(book.book_explanation);
             $('#book_dtl_category_date').text("Categories : " + book.book_category + " | " + "Published : " + book.book_date);
@@ -136,20 +143,26 @@
 
         //Delete clicked book from server
         $(document).on('click', '.deleteButton', function () {
-            var id = $(this).data("id");
+            let id = $(this).data("id");
+            var index = booksdata.map(x => {
+                return x.Id;
+            }).indexOf(id);
             $.ajax({
                 type: 'get',
                 url: '/deletebook/' + id,
                 success: function () {
-                    $('#booklist').load(document.URL + ' #booklist');
                     $('#latest_book').load(document.URL + ' #latest_book');
+                    $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
+                    $('#alerts').append('<div class="alert alert-info">' + "Book deleted successfully" + '</div>');
                 }
             })
+            booksdata.splice(index,1);
+            $('#booklist').empty();
+            loadbooks();
         });
 
         // Insert a new book to server
         $(document).on('submit', '#addBookForm', function (e) {
-
             e.preventDefault();
             let formData = $(this).serialize();
             $.ajax({
@@ -159,7 +172,7 @@
                 success: function (response, xhr, status) {
                     $.each(response, function (index, value) {
                         booksdata.push(value)
-                        // $('#booklist').load(document.URL + ' #booklist');
+                        $('#booklist').empty();
                         loadbooks();
                         $('#latest_book').load(document.URL + ' #latest_book');
                         $('#addBookModal').modal('hide');
@@ -191,7 +204,6 @@
                 url: 'editbook',
                 data: formData,
                 success: function (response, xhr, status) {
-                    $('#booklist').load(document.URL + ' #booklist');
                     $('#latest_book').load(document.URL + ' #latest_book');
                     $('#editBookModal').modal('hide');
                     $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
@@ -200,6 +212,8 @@
                         foundBook = booksdata.findIndex(book => book.id === object.id);
                         booksdata[foundBook] = object;
                     })
+                    $('#booklist').empty();
+                    loadbooks();
                 },
                 error: function (xhr, status, error) {
                     $('#editBook-errors').empty().show().html('').delay(3000).fadeOut(500);

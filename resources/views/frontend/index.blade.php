@@ -38,9 +38,6 @@
                                 <select class="form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
                                         data-toggle="select" tabindex="-98" id="authorDrpDown">
                                     <option value="all">All</option>
-                                    @foreach($authors as $author)
-                                        <option value="{{$author->author_name}}"> {{$author->author_name}}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -125,7 +122,7 @@
                                                 class="d-block lead font-weight-bold bookName"
                                                 href="#" style="font-size: medium"
                                                 data-id="{{$leastBook->id}}">{{$leastBook->book_title}}</a>
-                                            with: {{$leastBook->book_stock}}
+                                            with {{$leastBook->book_stock}}
                                             stock.
                                         </div>
                                     @endif
