@@ -7,13 +7,15 @@ This project, a learning project in the making by Emin Çomoğlu, is a library m
 - Add, Edit and delete books.
 - Manage book stocks.
 - Filter books via dropdown menu.
+- Filter authors via dropdown menu
 - Get info about clicked book.
+- Get info about clicked author.
 - Automatically create new author if it doesn't exist.
 
 ## Future functionalities in development
 
 - Search bar.
-- Author detail page.
+- ~~Author detail page.~~ ✔️ Done
 - ~~Ability to insert new Authors.~~ ✔️ Done
 - Better design.
 - New books.
