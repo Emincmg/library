@@ -26,7 +26,7 @@ class BooksTableSeeder extends Seeder
         Book::create(
             [
                 'book_title' => 'Dune',
-                'book_author' => 'Frank Harbert',
+                'book_author' => 'Frank Herbert',
                 'book_explanation' => "Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine. It tied with Roger Zelazny's This Immortal for the Hugo Award in 1966 and it won the inaugural Nebula Award for Best Novel. It is the first installment of the Dune saga. In 2003, it was described as the world's best-selling science fiction novel. ",
                 'book_category' => ['Novel', 'Fantasy', 'Science-Fiction'],
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/en/d/de/Dune-Frank_Herbert_%281965%29_First_edition.jpg',
@@ -37,7 +37,7 @@ class BooksTableSeeder extends Seeder
         Book::create(
             [
                 'book_title' => 'The Lord of the Rings',
-                'book_author' => 'J. R. R. Tolkien',
+                'book_author' => 'J.R.R. Tolkien',
                 'book_explanation' => "The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien's 1937 children's book The Hobbit, but eventually developed into a much larger work. Written in stages between 1937 and 1949, The Lord of the Rings is one of the best-selling books ever written, with over 150 million copies sold.",
                 'book_category' => ['Novel', 'Fiction', 'Fantasy'],
                 'book_img' => 'https://upload.wikimedia.org/wikipedia/en/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif',
@@ -287,7 +287,7 @@ class BooksTableSeeder extends Seeder
             'book_explanation' => "Twelfth Night, or What You Will is a comedy by William Shakespeare, believed to have been written around 1601–1602 as a Twelfth Night's entertainment for the close of the Christmas season. The play centers on the twins Viola and Sebastian, who are separated in a shipwreck. Viola (who is disguised as a young man named Cesario) falls in love with Duke Orsino, who in turn is in love with Countess Olivia. Upon meeting Viola, Countess Olivia falls in love with her disguised persona. The play is often seen as a celebration of love and a festive comedy of errors.",
             'book_category' => ['Comedy', 'Romance'],
             'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/5/58/Twelfth_Night_F1.jpg',
-            'book_date' => '1602',
+            'book_date' => '1602-01-01',
             'book_stock' => 6
         ]);
         Book::create([
@@ -506,14 +506,5 @@ class BooksTableSeeder extends Seeder
         'book_date' => '8th century BC',
         'book_stock'=> 38
     ]);
-        Book::create([
-            'book_title' => 'The Death of Ivan Ilyich',
-            'book_author' => 'Lev Tolstoy',
-            'book_explanation' => "Ivan Ilyich Golovin (Ilyich is a patronymic, his surname is Golovin) is a highly regarded official of the Court of Justice, described by Tolstoy as, 'neither as cold and formal as his elder brother nor as wild as the younger, but was a happy mean between them—an intelligent, polished, lively, and agreeable man.' As the story progresses, he becomes more and more introspective and emotional as he ponders the reason for his agonizing illness and death.",
-            'book_category' => ['Novel', 'Classic'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Death_of_Ivan_Ilyich.jpg/350px-The_Death_of_Ivan_Ilyich.jpg',
-            'book_date' => '1886-01-01',
-            'book_stock' => 21
-        ]);
     }
 }

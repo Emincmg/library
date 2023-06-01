@@ -21,12 +21,13 @@
                 let formattedUpdate = new Date(updatedAt).toLocaleString();
                 let stock = book.book_stock;
 
-                let newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\'>'
+
+                let newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\' data-id="' + id + '">'
                     + '<div class="row">'
                     + '<div class="col-md-5">'
                     + '<div class="row pt-1">'
                     + '<h5>'
-                    + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">' + title + '</a>'
+                    + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">'+title+ '</a>'
                     + '<a href="javascript:void(0);"> - </a>'
                     + '<a href="javascript:void(0);" class="bookAuthor text-primary" style="font-size: medium">' + author + '</a>'
                     + '</h5>'
@@ -35,10 +36,10 @@
                     + '<div class="col-md-5">'
                     + '<div class="row pt-1">'
                     + '<div class="col-md-auto px-1">'
-                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Last Update: ' + formattedUpdate + '</span>'
+                    + '<span class="bookDate d-block text-sm" style="font-size: 12px; margin-top: 5px;">Last Update: ' + formattedUpdate + '</span>'
                     + '</div>'
                     + '<div class="col-md-auto px-1">'
-                    + '<span class="d-block text-sm" style="font-size: 12px; margin-top: 5px;">Stock: ' + stock + '</span>'
+                    + '<span class="bookStock d-block text-sm" style="font-size: 12px; margin-top: 5px;">Stock: ' + stock + '</span>'
                     + '</div>'
                     + '</div>'
                     + '</div>'
@@ -56,22 +57,29 @@
                     + '</div>';
 
                 $('#booklist').append(newBook);
+
             });
         }
 
-        //List author dropdown selections
-        function authorDropdownLoad(){
+        //List dropdown selections
+        function dropdownsLoad(){
             $.each(authorsdata,function (index,author){
                 let authorName = author.author_name;
                 $('<option>').text(authorName).appendTo('#authorDrpDown');
-            })
+            });
+            let authLastVal = $('#authorDrpDown option:last').val();
+            let categoryLastVal = $('#categoryDrpDown option:last').val();
+            $('#authorDrpDown').val(authLastVal);
+            $('#categoryDrpDown').val(categoryLastVal);
+
+            $("#authorDrpDown option:last").attr("selected", "selected");
+            $("#categoryDrpDown option:last").attr("selected", "selected");
+
         }
 
-        //Index
-        $( document ).ready(function() {
+        //Initial functions
           loadbooks();
-          authorDropdownLoad();
-        });
+          dropdownsLoad();
 
         //Open new book inserting modal
         $(document).on('click', '#addModalButton', function (e) {
@@ -144,9 +152,6 @@
         //Delete clicked book from server
         $(document).on('click', '.deleteButton', function () {
             let id = $(this).data("id");
-            var index = booksdata.map(x => {
-                return x.Id;
-            }).indexOf(id);
             $.ajax({
                 type: 'get',
                 url: '/deletebook/' + id,
@@ -156,9 +161,7 @@
                     $('#alerts').append('<div class="alert alert-info">' + "Book deleted successfully" + '</div>');
                 }
             })
-            booksdata.splice(index,1);
-            $('#booklist').empty();
-            loadbooks();
+            $(this).closest('.card').hide();
         });
 
         // Insert a new book to server
@@ -183,6 +186,7 @@
                         }
                         $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
                         $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
+                        dropdownsLoad();
                     })
                 },
                 error: function (xhr, status, error) {
@@ -197,8 +201,8 @@
         //Edit book
         $(document).on('submit', '#editBookForm', function (e) {
             e.preventDefault();
-            let foundBook;
-            let formData = $(this).serialize();
+            var formData = $(this).serialize();
+
             $.ajax({
                 type: 'POST',
                 url: 'editbook',
@@ -207,13 +211,23 @@
                     $('#latest_book').load(document.URL + ' #latest_book');
                     $('#editBookModal').modal('hide');
                     $('#alerts').empty().show().html('').delay(3000).fadeOut(500);
-                    $('#alerts').append('<div class="alert alert-success">' + "Book edited successfully!" + '</div>');
+                    $('#alerts').append('<div class="alert alert-success">Book edited successfully!</div>');
+
                     $.each(response, function (index, object) {
-                        foundBook = booksdata.findIndex(book => book.id === object.id);
-                        booksdata[foundBook] = object;
-                    })
-                    $('#booklist').empty();
-                    loadbooks();
+                        var foundBook = booksdata.find(function (book) {
+                            return book.id === object.id;
+                        });
+
+                        if (foundBook) {
+                            var bookIndex = booksdata.indexOf(foundBook);
+                            booksdata.splice(bookIndex, 1, object);
+                            $('.card[data-id="' + foundBook.id + '"] .bookName').text(object.book_title);
+                            let updatedAt = object.updated_at;
+                            let formattedUpdate = new Date(updatedAt).toLocaleString();
+                            $('.card[data-id="' + foundBook.id + '"] .bookDate').text('Last Update: ' + formattedUpdate);
+                            $('.card[data-id="' + foundBook.id + '"] .bookStock').text('Stock: ' + object.book_stock);
+                        }
+                    });
                 },
                 error: function (xhr, status, error) {
                     $('#editBook-errors').empty().show().html('').delay(3000).fadeOut(500);
@@ -221,8 +235,8 @@
                         $('#editBook-errors').append('<div class="alert alert-danger">' + value + '</div>');
                     });
                 }
-            })
-        })
+            });
+        });
 
         //Filter books
         $(document).on('change','#authorDrpDown,#categoryDrpDown',function (e){

@@ -59,7 +59,6 @@
 
                     {{--Book list section--}}
                     <div class="container" id="booklist">
-
                     </div>
                 </div>
                 {{--End of book list section--}}
