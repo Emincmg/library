@@ -14,7 +14,7 @@
                     @if(isset($featuredBook))
                         <h1><span class="text-white">{{$featuredBook->book_title}}</span></h1>
                         <p class="lead text-white">by {{$featuredBook->book_author}}</p>
-                        {{--                    TODO: JQuery--}}
+
                         <p>
                             <a href="#" class="btn btn-primary my-2" id="featuredBook">Inspect</a>
                         </p>
@@ -30,35 +30,11 @@
                 <div class="col-lg-9 mb-3">
                     <div id="alerts">
                     </div>
-                    <div class="row text-left mb-3">
-                        <div class="col-lg-6 mb-3 mb-sm-0">
-                            <div class="dropdown form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
-                                 style="width: 100%;">
-                                <div class="dropdown-header text-primary">Author</div>
-                                <select class="form-control form-control-sm bg-white bg-op-9 text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98" id="authorDrpDown">
-                                    <option value="all">All</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="dropdown form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                 style="width: 100%;">
-                                <div class="dropdown-header text-primary">Category</div>
-                                <select class="form-control form-control-sm bg-white bg-op-9 ml-auto text-sm w-lg-50"
-                                        data-toggle="select" tabindex="-98" id="categoryDrpDown">
-                                    <option value="all">All</option>
-                                    @foreach($categories as $category)
-                                        <option
-                                            value="{{$category->book_category}}"> {{$category->book_category}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
                     {{--Book list section--}}
+
                     <div class="container" id="booklist">
+                        @livewire('search-books')
                     </div>
                 </div>
                 {{--End of book list section--}}

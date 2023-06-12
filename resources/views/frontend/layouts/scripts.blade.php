@@ -11,8 +11,8 @@
         let authorsdata = {!! str_replace("'", "\'", json_encode($authors)) !!};
 
         //List all books
-        function loadbooks(){
-            $.each(booksdata,function (index,book){
+        function booksLoad() {
+            $.each(booksdata, function (index, book) {
                 let author = book.book_author;
                 let category = JSON.stringify(book.book_category);
                 let id = book.id;
@@ -22,12 +22,12 @@
                 let stock = book.book_stock;
 
 
-                let newBook =  '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\' data-id="' + id + '">'
+                let newBook = '<div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex" data-author="' + author + '" data-category=\'' + category + '\' data-id="' + id + '">'
                     + '<div class="row">'
                     + '<div class="col-md-5">'
                     + '<div class="row pt-1">'
                     + '<h5>'
-                    + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">'+title+ '</a>'
+                    + '<a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="' + id + '">' + title + '</a>'
                     + '<a href="javascript:void(0);"> - </a>'
                     + '<a href="javascript:void(0);" class="bookAuthor text-primary" style="font-size: medium">' + author + '</a>'
                     + '</h5>'
@@ -61,25 +61,11 @@
             });
         }
 
-        //List dropdown selections
-        function dropdownsLoad(){
-            $.each(authorsdata,function (index,author){
-                let authorName = author.author_name;
-                $('<option>').text(authorName).appendTo('#authorDrpDown');
-            });
-            let authLastVal = $('#authorDrpDown option:last').val();
-            let categoryLastVal = $('#categoryDrpDown option:last').val();
-            $('#authorDrpDown').val(authLastVal);
-            $('#categoryDrpDown').val(categoryLastVal);
 
-            $("#authorDrpDown option:last").attr("selected", "selected");
-            $("#categoryDrpDown option:last").attr("selected", "selected");
-
-        }
 
         //Initial functions
-          loadbooks();
-          dropdownsLoad();
+        //  booksLoad()
+
 
         //Open new book inserting modal
         $(document).on('click', '#addModalButton', function (e) {
@@ -175,8 +161,6 @@
                 success: function (response, xhr, status) {
                     $.each(response, function (index, value) {
                         booksdata.push(value)
-                        $('#booklist').empty();
-                        loadbooks();
                         $('#latest_book').load(document.URL + ' #latest_book');
                         $('#addBookModal').modal('hide');
                         if (jQuery.inArray(value.book_author, authorsdata) !== -1) {
@@ -186,7 +170,6 @@
                         }
                         $('#alerts').empty().show().html('').delay(2000).fadeOut(500);
                         $('#alerts').append('<div class="alert alert-success">' + "Book added successfully!" + '</div>');
-                        dropdownsLoad();
                     })
                 },
                 error: function (xhr, status, error) {
@@ -238,45 +221,6 @@
             });
         });
 
-        //Filter books
-        $(document).on('change','#authorDrpDown,#categoryDrpDown',function (e){
-            let authorFilter = $('#authorDrpDown').val();
-            let categoryFilter = $('#categoryDrpDown').val();
-            if($('#authorDrpDown').val() !== "all" && $('#categoryDrpDown').val() !== "all"){
-                $('.card').each(function (){
-                    let cardctg = $(this).data("category");
-                    if ($(this).data("author") === authorFilter && cardctg.indexOf(categoryFilter) != -1){
-                        $(this).show();
-                    }else{
-                        $(this).hide();
-                    }
-                })
-            } else if($('#authorDrpDown').val() === "all" && $('#categoryDrpDown').val() !== "all") {
-                $('.card').each(function (){
-                    let cardctg = $(this).data("category");
-                    if (cardctg.indexOf(categoryFilter) != -1){
-                        $(this).show();
-                    }else{
-                        $(this).hide();
-                    }
-                })
-            }
-            else if ($('#authorDrpDown').val() !== "all" && $('#categoryDrpDown').val() === "all"){
-                $('.card').each(function (){
-                    if ($(this).data("author") === authorFilter){
-                        $(this).show();
-                    }else{
-                        $(this).hide();
-                    }
-                })
-            }
-            else{
-                $(".card").each(function (){
-                    $(this).show();
-                })
-            }
-            $('#authorDrpDown').val(authorFilter);
-            $('#categoryDrpDown').val(categoryFilter);
-        })
+
     </script>
 @endsection

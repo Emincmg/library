@@ -7,6 +7,8 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class BooksController extends Controller
 {
@@ -68,5 +70,15 @@ class BooksController extends Controller
         Book::destroy($id);
         return response()->json(['success' => 'Record deleted successfully!']);
     }
+
+//    public function __invoke(Request $request): JsonResponse
+//    {
+//        return new JsonResponse(
+//            data: Book::search(
+//                query: trim($request->get('search')) ?? '',
+//            )->get(),
+//            status: Response::HTTP_OK,
+//        );
+//    }
 }
 

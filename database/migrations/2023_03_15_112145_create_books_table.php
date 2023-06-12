@@ -24,8 +24,7 @@ class CreateBooksTable extends Migration
             $table->string('book_date')->nullable();
             $table->integer('book_views')->nullable();
             $table->integer('book_stock')->nullable();
-
-
+            $table->boolean('searchable')->default(true);
         });
     }
 

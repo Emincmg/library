@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Author extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $casts =
         [
@@ -23,7 +25,7 @@ class Author extends Model
             'author_demise',
         ];
 
-    public function books(){
-        return $this->hasMany('App\Book');
-    }
+//    public function books(){
+//        return $this->hasMany('App\Book');
+//    }
 }
