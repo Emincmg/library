@@ -40,7 +40,7 @@
         </div>
     </div>
    @endforeach
-        {{$lvpBooks->links()}}
+        <div class="container d-flex align-items-center justify-content-center">{{$lvpBooks->links()}}</div>
     @else
         @foreach($lvBooks as $book)
             <div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex"  data-author="{{ $book->book_author }}" data-category='{{ json_encode($book->book_category) }}' data-id="{{ $book->id }}">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         @endforeach
-            {{$lvBooks->links()}}
+    <div class="container d-flex align-items-center justify-content-center">{{$lvBooks->links()}}</div>
     @endif
 
 </div>

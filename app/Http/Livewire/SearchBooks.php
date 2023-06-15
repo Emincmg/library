@@ -11,16 +11,17 @@ use Livewire\WithPagination;
 class SearchBooks extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    protected $queryString = ['search'];
 
     public $search;
-    protected $queryString = ['search'];
     public function render()
     {
         $lvBooks=[];
         if($this->search){
-            $lvBooks = Book::search($this->search)->simplePaginate(10);
+            $lvBooks = Book::search($this->search)->paginate(10);
         }
-        $lvpBooks = Book::simplePaginate(10);
+        $lvpBooks = Book::orderBy('book_title', 'ASC')->paginate(10);
         $lvAuthors = Author::all();
         $lvCategories = Categories::all();
         return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors','lvpBooks'));
