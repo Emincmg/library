@@ -12,9 +12,10 @@ This project, a learning project in the making by Emin Çomoğlu, is a library m
 - Get info about clicked author.
 - Automatically create new author if it doesn't exist.
 
-## Future functionalities in development
+## Roadmap
 
-- Search bar.
+- Elasticsearch integration.
+- MongoDB integration
 - ~~Author detail page.~~ ✔️ Done
 - ~~Ability to insert new Authors.~~ ✔️ Done
 - Better design.
