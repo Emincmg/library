@@ -8,20 +8,27 @@ use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
 class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('book_title', 'ASC')->get();
+        $books = Cache::remember('books',60*60,function (){
+            return Book::orderBy('book_title', 'ASC')->get();
+        });
         $bookCount = count($books);
         $featuredBook = Book::inRandomOrder()->first();
         $latestBook = Book::latest()->first();
         $leastBook = Book::orderBy('book_stock', 'ASC')->first();
-        $categories = Categories::all('book_category');
+        $categories = Cache::remember('categories',60*60,function (){
+           return Categories::all('book_category');
+        });
         $categoryCount = count($categories);
-        $authors = Author::all();
+        $authors = Cache::remember('authors',60*60,function (){
+            return Author::all();
+        });
         $authorCount = count($authors);
         return view('frontend.index')
             ->with('books', $books)
@@ -35,7 +42,12 @@ class BooksController extends Controller
             ->with('bookCount', $bookCount);
     }
 
-
+    private function bookCacheRefresh(){
+        Cache::forget('books');
+        Cache::remember('books',60*60,function (){
+            return Book::orderBy('book_title', 'ASC')->get();
+        });
+    }
     public function addBook(Request $request)
     {
         $validationRequest = new ValidationRequest;
@@ -47,6 +59,7 @@ class BooksController extends Controller
         }
         if ($validatedData) {
             $createdBook = Book::create($validatedData);
+            $this->bookCacheRefresh();
         }
 
         return response()->json(['created' => $createdBook]);
@@ -60,6 +73,7 @@ class BooksController extends Controller
         $validatedData = $validationRequest->bookValidate($request);
         if ($validatedData) {
             Book::Where('id', $request->id)->update($validatedData);
+            $this->bookCacheRefresh();
         }
         $editedBook = Book::find($request->id);
         return response()->json(['edited' => $editedBook]);
@@ -68,17 +82,10 @@ class BooksController extends Controller
     public function deleteBook(Request $request, $id)
     {
         Book::destroy($id);
+        $this->bookCacheRefresh();
         return response()->json(['success' => 'Record deleted successfully!']);
     }
 
-//    public function __invoke(Request $request): JsonResponse
-//    {
-//        return new JsonResponse(
-//            data: Book::search(
-//                query: trim($request->get('search')) ?? '',
-//            )->get(),
-//            status: Response::HTTP_OK,
-//        );
-//    }
+
 }
 

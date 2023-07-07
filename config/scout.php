@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'algolia'),
+    'driver' => env('SCOUT_DRIVER', 'meilisearch'),
 
     /*
     |--------------------------------------------------------------------------
@@ -138,7 +138,7 @@ return [
             // ],
             App\Models\Book::class=>[
                 'searchableAttributes'=>['book_title', 'book_author','book_category'],
-                'filterableAttributes'=> ['book_title', 'book_author','book_category'],
+//                'filterableAttributes'=> ['book_title', 'book_author','book_category'],
             ],
         ],
     ],

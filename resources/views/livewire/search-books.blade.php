@@ -1,4 +1,4 @@
-{{--    <input wire:model="search" type="search" placeholder="Search books by title...">--}}
+@include('frontend.layouts.livewire-scripts')
 <div>
 <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -6,12 +6,12 @@
 </div>
     @if(Empty($lvBooks))
     @foreach($lvpBooks as $book)
-    <div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex"  data-author="{{ $book->book_author }}" data-category='{{ json_encode($book->book_category) }}' data-id="{{ $book->id }}">
+    <div class="card row-hover pos-relative px-2 mb-2 border-warning border-top-0 border-right-0 border-bottom-0 rounded-1 display-flex"  data-author="{{ $book->book_author }}" data-category='{{ json_encode($book->book_category) }}' data-id="{{$book->id}}">
         <div class="row">
             <div class="col-md-5">
                 <div class="row pt-1">
                     <h5>
-                        <a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="{{$book->id }}">{{$book->book_title }}</a>
+                        <a href="javascript:void(0);" class="bookName text-primary" style="font-size: medium" data-id="{{$book->id}}">{{$book->book_title}}</a>
                         <a href="javascript:void(0);"> - </a>
                         <a href="javascript:void(0);" class="bookAuthor text-primary" style="font-size: medium">{{$book->book_author }}</a>
                     </h5>
@@ -81,3 +81,4 @@
     @endif
 
 </div>
+@yield('lv-scripts')

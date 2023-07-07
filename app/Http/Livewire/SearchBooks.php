@@ -15,6 +15,8 @@ class SearchBooks extends Component
     protected $queryString = ['search'];
 
     public $search;
+
+
     public function render()
     {
         $lvBooks=[];
@@ -22,8 +24,11 @@ class SearchBooks extends Component
             $lvBooks = Book::search($this->search)->paginate(10);
         }
         $lvpBooks = Book::orderBy('book_title', 'ASC')->paginate(10);
+        $lvaBooks = Book::all();
         $lvAuthors = Author::all();
         $lvCategories = Categories::all();
-        return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors','lvpBooks'));
+
+        return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors','lvpBooks','lvaBooks'));
     }
+
 }
