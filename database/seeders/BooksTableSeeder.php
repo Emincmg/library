@@ -79,7 +79,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Mark Twain',
             'book_explanation' => "Adventures of Huckleberry Finn is a novel by Mark Twain, first published in the United States in 1885. The book is noted for its colorful descriptions of people and places along the Mississippi River. It is set in the 1830s and follows the adventures of Huckleberry Finn, a young boy who escapes from his abusive father and runs away with an escaped slave named Jim. The novel explores themes of race, identity, and freedom, and is often considered a masterpiece of American literature.",
             'book_category' => ['Novel', 'Satire'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/6/61/Huckleberry_Finn_book.JPG',
+            'book_img' => 'https://i0.wp.com/piccadillybooks.com/wp-content/uploads/2015/10/Adventures-of-Huckleberry-Finn-Front-Cover.png?fit=600%2C600&ssl=1',
             'book_date' => '1885-12-10',
             'book_stock' => 10
         ]);
