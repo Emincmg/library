@@ -93,7 +93,15 @@ h6 {
 #header .logo img {
   max-height: 40px;
 }
+.navbar {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
 
+.navbar-hide {
+    pointer-events: none;
+    opacity: 0;
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1015,7 +1023,46 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+.portfolio-insert {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.portfolio-insert .icon-box {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolio-insert .icon-box i {
+    font-size: 50px;
+    color: #5c9f24;
+    justify-self: center;
+    align-self: center;
+}
+
+.portfolio-insert .icon-box i:hover {
+    color: #fff;
+    background: #5c9f24;
+    transition: 0.5s;
+}
+
+.portfolio-insert .icon-box a {
+    justify-self: center;
+    align-self: center;
+}
+
+.portfolio-insert .icon-box p {
+    font-size: 16px;
+    font-weight: bold;
+    justify-self: center;
+    align-self: center;
+}
+.portfolio-insert .icon-box p:hover {
+    color: #5c9f24;
+}
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
@@ -1615,4 +1662,74 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Addbook form
+--------------------------------------------------------------*/
+.form .add-book-form{
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+.form .add-book-form .error-message br+br {
+    margin-top: 25px;
+}
+
+.form .add-book-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.form .add-book-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.form .add-book-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    animation: animate-loading 1s linear infinite;
+}
+
+.form .add-book-form input,
+.form .add-book-form textarea,
+.form .add-book-form select
+{
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    height: auto;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.form .add-book-form  input:focus,
+.form .add-book-form textarea:focus,
+.form .add-book-form select{
+    border-color: #5c9f24;
+}
+
+.form .add-book-form button[type=submit] {
+    background: #5c9f24;
+    border: 0;
+    padding: 10px 30px 12px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.form .add-book-form button[type=submit]:hover {
+    background: #6ab82a;
 }

@@ -49,7 +49,12 @@ class BooksController extends Controller
             $createdBook = Book::create($validatedData);
         }
 
-        return response()->json(['created' => $createdBook]);
+        return redirect('/');
+    }
+
+    public function addBookPage(){
+        $categories = Categories::all('book_category');
+        return view('frontend.addbook',compact('categories'));
     }
 
 
