@@ -79,7 +79,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Mark Twain',
             'book_explanation' => "Adventures of Huckleberry Finn is a novel by Mark Twain, first published in the United States in 1885. The book is noted for its colorful descriptions of people and places along the Mississippi River. It is set in the 1830s and follows the adventures of Huckleberry Finn, a young boy who escapes from his abusive father and runs away with an escaped slave named Jim. The novel explores themes of race, identity, and freedom, and is often considered a masterpiece of American literature.",
             'book_category' => ['Novel', 'Satire'],
-            'book_img' => 'https://i0.wp.com/piccadillybooks.com/wp-content/uploads/2015/10/Adventures-of-Huckleberry-Finn-Front-Cover.png?fit=600%2C600&ssl=1',
+            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Huckleberry-finn-with-rabbit.jpg/325px-Huckleberry-finn-with-rabbit.jpg',
             'book_date' => '1885-12-10',
             'book_stock' => 10
         ]);
@@ -106,7 +106,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Robert Louis Stevenson',
             'book_explanation' => "Treasure Island is an adventure novel by Robert Louis Stevenson, published in 1883. The story follows Jim Hawkins, a young boy who discovers a map leading to a treasure buried by the infamous pirate Captain Flint. Jim sets sail on the Hispaniola with a crew of pirates, including the one-legged Long John Silver, in search of the treasure. The novel is known for its colorful characters and vivid descriptions of life at sea, and has become a classic of children's literature.",
             'book_category' => ['Novel', 'Adventure'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/3/33/Treasure_Island%2C_first_edition.png',
+            'book_img' => 'https://storage.googleapis.com/lr-assets/kids/covers/_hires_imported/9780141321004.jpg',
             'book_date' => '1883-11-14',
             'book_stock' => 8
         ]);
@@ -142,7 +142,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Geoffrey Chaucer',
             'book_explanation' => "The Canterbury Tales is a collection of 24 stories written by Geoffrey Chaucer between 1387 and 1400. The stories are told by a group of pilgrims who are traveling to the shrine of Saint Thomas Becket at Canterbury Cathedral. The pilgrims come from various social classes and professions, and each tells a story on the way to and from the shrine. The tales are written in Middle English, which was spoken in England at the time, and they provide a vivid portrait of life in medieval England.",
             'book_category' => ['Fiction', 'Classic'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Canterbury_Tales.png',
+            'book_img' => 'https://149645218.v2.pressablecdn.com/wp-content/uploads/2018/02/canterbury-sales.jpg',
             'book_date' => '1400-01-01',
             'book_stock' => 8
         ]);
@@ -187,7 +187,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'J.R.R. Tolkien',
             'book_explanation' => "The Hobbit, or There and Back Again is a children's fantasy novel by English author J.R.R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction. The book remains popular and is recognized as a classic in children's literature.",
             'book_category' => ['Novel', 'Fantasy'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/4/4a/TheHobbit_FirstEdition.jpg',
+            'book_img' => 'https://m.media-amazon.com/images/I/71k--OLmZKL._AC_UF1000,1000_QL80_.jpg',
             'book_date' => '1937-09-21',
             'book_stock' => 8
         ]);
@@ -259,7 +259,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Charles Dickens',
             'book_explanation' => "Oliver Twist is a novel by Charles Dickens, published in serial form between 1837 and 1839. It tells the story of an orphan named Oliver Twist, who endures a miserable existence in a workhouse and then is placed with an undertaker. He escapes and travels to London, where he meets the Artful Dodger, a member of a gang of juvenile pickpockets led by the criminal Fagin. Oliver is caught up in their criminal activities and struggles to escape their influence.",
             'book_category' => ['Novel', 'Social criticism'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Olivertwist_front.jpg',
+            'book_img' => 'https://img.kitapyurdu.com/v1/getImage/fn:4638315/wh:true/miw:200/mih:200',
             'book_date' => '1837-1839',
             'book_stock' => 10
         ]);
@@ -322,7 +322,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'William Shakespeare',
             'book_explanation' => "King Lear is a tragedy written by William Shakespeare. It depicts the gradual descent into madness of the title character, after he disposes of his kingdom by giving bequests to two of his three daughters, egged on by their continual flattery, bringing tragic consequences for all. Based on the legend of Leir of Britain, a mythological pre-Roman Celtic king, the play has been widely adapted for the stage and motion pictures, with the title role coveted by many of the world's most accomplished actors.",
             'book_category' => ['Tragedy', 'Drama'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/0/09/King_Lear_by_George_Frederick_Bensell.jpg',
+            'book_img' => 'https://img.kitapyurdu.com/v1/getImage/fn:9788677/wh:true/miw:200/mih:200',
             'book_date' => '1606',
             'book_stock' => 3
         ]);
@@ -340,7 +340,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Sophocles',
             'book_explanation' => 'Antigone is a tragedy by Sophocles written in or before 441 BC. It is the third of the three Theban plays chronologically, but was the first written. The play expands on the Theban legend that predated it and picks up where Aeschylus\' Seven Against Thebes ends.',
             'book_category' => ['Tragedy', 'Classical literature'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Lytras_nikiforos_antigone_polynices.jpeg',
+            'book_img' => 'https://m.media-amazon.com/images/I/81-BiXpotuL._AC_UF1000,1000_QL80_.jpg',
             'book_date' => '441',
             'book_stock' => 9
         ]);
@@ -385,7 +385,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Edgar Allan Poe',
             'book_explanation' => "William Wilson is a short story by Edgar Allan Poe, first published in 1839. The story follows the life of a man named William Wilson, who describes a supernatural encounter that happened when he was a young boy. Wilson's life is consumed by his obsession with outdoing a boy who bears the same name as him, and whose features are identical to his own. Wilson's doppelgänger appears to him throughout his life, leading him down a path of self-destruction and ultimately leading to his downfall.",
             'book_category' => ['Gothic', 'Horror', 'Short Story'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/5/55/The_gift_1840_cover.jpg',
+            'book_img' => 'https://m.media-amazon.com/images/I/41YutFZ6yFL._AC_UF894,1000_QL80_.jpg',
             'book_date' => '1839-10-01',
             'book_stock' => 5
         ]);
@@ -394,7 +394,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Edgar Allan Poe',
             'book_explanation' => "The Gold-Bug is a short story by Edgar Allan Poe, first published in 1843. The story follows an unnamed narrator who seeks the assistance of his friend, William Legrand, in deciphering a secret message. The message leads them on a treasure hunt that takes them to a remote island off the coast of South Carolina. The story is notable for its use of cryptography and includes a detailed description of how to decipher a message using a simple substitution cipher.",
             'book_category' => ['Mystery', 'Short Story'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/a/ac/The_Dollar_The_Gold_Bug_1843.jpg',
+            'book_img' => 'https://m.media-amazon.com/images/I/612pWwBb-TL._AC_UF1000,1000_QL80_.jpg',
             'book_date' => '1843-06-21',
             'book_stock' => 4
         ]);
@@ -475,7 +475,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Herodotus',
             'book_explanation' => "Histories is a historical account written by the ancient Greek historian Herodotus in the fifth century BCE. It recounts the events leading up to and including the Greco-Persian Wars, which took place between 492 and 449 BCE. Herodotus traveled extensively to conduct his research and included a wide range of subjects in his work, including geography, culture, and ethnography. Histories is considered one of the founding works of Western history and literature.",
             'book_category' => ['History', 'Classical Literature'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/POxy_v0017_n2099_a_01_hires.jpg/512px-POxy_v0017_n2099_a_01_hires.jpg',
+            'book_img' => 'https://cdn.kobo.com/book-images/90d2406c-16bf-4676-9c97-c4f742656133/1200/1200/False/the-histories-36.jpg',
             'book_date' => 'c. 440 BCE',
             'book_stock'=> 12
         ]);
@@ -493,7 +493,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Homer',
             'book_explanation' => "The Iliad is an epic poem written by Homer, most likely in the 8th century BCE. It tells the story of the Trojan War, specifically the wrath of the Greek hero Achilles and its consequences. The poem is divided into 24 books and contains around 15,000 lines of dactylic hexameter. It is considered one of the most important works of ancient Greek literature and has had a significant impact on Western culture.",
             'book_category' => ['Poetry', 'History'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Iliad_VIII_245-253_in_cod_F205%2C_Milan%2C_Biblioteca_Ambrosiana%2C_late_5c_or_early_6c.jpg',
+            'book_img' => 'https://cdn.kobo.com/book-images/484791ab-f4a8-43f8-b9fa-a6dc4575840b/1200/1200/False/the-iliad-96.jpg',
             'book_date' => '-800',
             'book_stock'=> 61
         ]);
@@ -502,7 +502,7 @@ class BooksTableSeeder extends Seeder
         'book_author' => 'Homer',
         'book_explanation' => "Odysseia (The Odyssey) is an epic poem by the ancient Greek poet Homer, believed to have been composed near the end of the 8th century BC. It tells the story of Odysseus, the king of Ithaca, and his ten-year journey home after the Trojan War. Along the way, he faces numerous challenges and obstacles, including a battle with the Cyclops, a visit to the land of the dead, and a confrontation with the sea god Poseidon. The Odyssey is a foundational work of Western literature and has had a lasting influence on storytelling.",
         'book_category' => ['Poetry', 'Adventure'],
-        'book_img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Odyssey-crop.jpg/501px-Odyssey-crop.jpg',
+        'book_img' => 'https://1k-cdn.com/resimler/kitaplar/91428_828f1_1606467680.jpg',
         'book_date' => '8th century BC',
         'book_stock'=> 38
     ]);
