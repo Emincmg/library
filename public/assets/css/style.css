@@ -963,6 +963,16 @@ section {
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
+.portfolio-container .links-container{
+
+    flex: 0 0 640px;
+}
+.portfolio-container .search-container{
+    position:relative;
+    top:-4rem;
+    display:block;
+}
+
 .portfolio-details {
   padding-top: 40px;
 }
@@ -1885,4 +1895,3 @@ input[type=number] {
 .category-option-class-2{
     color:#FFFFFF;
 }
-

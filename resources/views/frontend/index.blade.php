@@ -234,28 +234,8 @@
 
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
-            <div class="container">
+            @livewire('search-books')
 
-                <div class="section-title">
-                    <h2>Books</h2>
-                    <p>Browse through books</p>
-                </div>
-
-                {{--            <div class="row">--}}
-                {{--                <div class="col-lg-12 d-flex justify-content-center">--}}
-                {{--                    <ul id="portfolio-flters">--}}
-                {{--                        <li data-filter=".filter-all">All</li>--}}
-                {{--                        <li data-filter=".filter-app">App</li>--}}
-                {{--                        <li data-filter="*">Card</li>--}}
-                {{--                        <li data-filter=".filter-web">Web</li>--}}
-                {{--                    </ul>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                <div class="row portfolio-container">
-                    @livewire('search-books')
-
-                </div>
-            </div>
             <div class="col">
                 <div class="container portfolio-insert">
                     <div class="col-md-6 icon-box">
