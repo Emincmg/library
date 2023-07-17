@@ -21,9 +21,9 @@ class SearchBooks extends Component
     {
         $lvBooks=[];
         if($this->search){
-            $lvBooks = Book::search($this->search)->paginate(10);
+            $lvBooks = Book::search($this->search)->paginate(12);
         }
-        $lvpBooks = Book::orderBy('book_title', 'ASC')->paginate(10);
+        $lvpBooks = Book::orderBy('book_title', 'ASC')->paginate(12);
         $lvaBooks = Book::all();
         $lvAuthors = Author::all();
         $lvCategories = Categories::all();
