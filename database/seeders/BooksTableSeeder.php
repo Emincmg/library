@@ -177,7 +177,7 @@ class BooksTableSeeder extends Seeder
             'book_title' => 'The Good Earth',
             'book_author' => 'Pearl S. Buck',
             'book_explanation' => "The Good Earth is a novel by Pearl S. Buck published in 1931 that dramatizes family life in a Chinese village in the early 20th century. It is the first book in a trilogy that includes Sons and A House Divided. It was the best-selling novel in the United States in both 1931 and 1932, won the Pulitzer Prize for Fiction in 1932, and was influential in Buck's winning the Nobel Prize for Literature in 1938.",
-            'book_category' => 'Novel, Historical Fiction',
+            'book_category' => ['Novel', 'Historical Fiction'],
             'book_img' => 'https://upload.wikimedia.org/wikipedia/en/5/5b/GoodEarthNovel.JPG',
             'book_date' => '1931-03-02',
             'book_stock' => 4

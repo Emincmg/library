@@ -25,17 +25,23 @@
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/alertifyjs/css/alertify.css" rel="stylesheet">
+    <link href="assets/vendor/alertifyjs/css/themes/semantic.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/jquery-select-picker/picker.css" rel="stylesheet">
+    @livewireStyles
+    <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+
+
+
 </head>
-
 <body>
-
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="#">Library</a></h1>
+        <h1 class="logo"><a href="{{route('home')}}">Library</a></h1>
 
         <nav id="navbar" class="navbar">
             <ul>
@@ -125,23 +131,23 @@
         class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
 <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/js/jquery-1.8.3.min.js" integrity="sha512-J9QfbPuFlqGD2CYVCa6zn8/7PEgZnGpM5qtFOBZgwujjDnG5w5Fjx46YzqvIh/ORstcj7luStvvIHkisQi5SKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/vendor/alertifyjs/alertify.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+<script src="assets/vendor/jquery-select-picker/picker.min.js"></script>
+
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select').selectpicker({
-            showTick: true,
-        });
-    });
-</script>
+@include('frontend.scripts')
+@yield('scripts')
+@livewireScripts
 </body>
 
 </html>

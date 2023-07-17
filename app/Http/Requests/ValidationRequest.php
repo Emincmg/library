@@ -16,12 +16,22 @@ class ValidationRequest extends FormRequest
     {
         return $request->validate([
             'book_title' => 'required|max:255|regex:/^[\pL\s\- A-Za-z0-9]+$/u',
-            'book_author' => 'required|max:255',
+            "book_author' => 'required|max:255|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u",
             'book_explanation' => 'required|max:1000',
             'book_category' => 'required',
             'book_date' => 'required',
             'book_img' => 'required|url',
             'book_stock'=>'required'
+        ]);
+    }
+
+    public function authorValidate($request): array
+    {
+        return $request->validate([
+            "author_name"=>"required|max:255|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u",
+            'author_explanation'=>'required|max:255',
+            'author_born'=>'required',
+            'author_img'=>'required|url'
         ]);
     }
 }
