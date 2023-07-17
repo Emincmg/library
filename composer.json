@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.12",
-        "meilisearch/meilisearch-php": "^0.21.0"
+        "meilisearch/meilisearch-php": "^0.21.0",
+        "snapappointments/bootstrap-select": "^1.13"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

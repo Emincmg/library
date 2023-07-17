@@ -7,7 +7,6 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class BooksController extends Controller
@@ -16,23 +15,11 @@ class BooksController extends Controller
     {
         $books = Book::orderBy('book_title', 'ASC')->get();
         $bookCount = count($books);
-        $featuredBook = Book::inRandomOrder()->first();
-        $latestBook = Book::latest()->first();
-        $leastBook = Book::orderBy('book_stock', 'ASC')->first();
         $categories = Categories::all('book_category');
         $categoryCount = count($categories);
         $authors = Author::all();
         $authorCount = count($authors);
-        return view('frontend.index')
-            ->with('books', $books)
-            ->with('featuredBook', $featuredBook)
-            ->with('latestBook', $latestBook)
-            ->with('leastBook', $leastBook)
-            ->with('categories', $categories)
-            ->with('categoryCount', $categoryCount)
-            ->with('authors', $authors)
-            ->with('authorCount', $authorCount)
-            ->with('bookCount', $bookCount);
+        return view('frontend.index',compact(['books','bookCount','categories','categoryCount','authors','authorCount']));
     }
 
 
@@ -40,16 +27,25 @@ class BooksController extends Controller
     {
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
-        $createdAuthor = Author::where('author_name', $request->book_author)->first();
 
-        if(!$createdAuthor){
-            Author::create(['author_name' => $request->book_author,'author_books'=>$request->book_title]);
-        }
         if ($validatedData) {
-            $createdBook = Book::create($validatedData);
+
+            //Author database check if exists
+            $createdAuthor = Author::where('author_name', $request->book_author)->first();
+            if (!$createdAuthor) {
+                abort(404, "Author you provided doesnt exists in the application database. Go to author creation page?");
+            }
+
+            //Book database check if exists
+            $bookDbCheck= Book::where('book_title',$request->book_title)->first();
+            if($bookDbCheck){
+                abort(409, "Book already exists.");
+            }
+
+            Book::create($validatedData);
         }
 
-        return redirect('/');
+        return response()->json(['message'=>'Book created successfully!'],201);
     }
 
     public function addBookPage(){
@@ -57,33 +53,42 @@ class BooksController extends Controller
         return view('frontend.addbook',compact('categories'));
     }
 
+    public function addAuthor(Request $request){
+
+        $validationRequest = new ValidationRequest;
+        $validatedData = $validationRequest->authorValidate($request);
+
+        if($validatedData){
+            //Author database check if exists
+            $createdAuthor = Author::where('author_name', $request->author_name)->first();
+            if ($createdAuthor) {
+                abort(409, "Author already exists.");
+            }
+            Author::create($validatedData);
+        }
+
+        return response()->json(['message'=>'Author created successfully!'],201);
+    }
+
+    public function addAuthorPage(){
+        return view('frontend.addauthor');
+    }
 
     public function editBook(Request $request)
     {
-
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
         if ($validatedData) {
             Book::Where('id', $request->id)->update($validatedData);
         }
-        $editedBook = Book::find($request->id);
-        return response()->json(['edited' => $editedBook]);
+        Book::find($request->id);
+        return response()->json(['message'=>'Book edited successfully!'],204);
     }
 
-    public function deleteBook(Request $request, $id)
+    public function deleteBook($id)
     {
         Book::destroy($id);
-        return response()->json(['success' => 'Record deleted successfully!']);
+        return Response::json(['Book deleted!'],204);
     }
-
-//    public function __invoke(Request $request): JsonResponse
-//    {
-//        return new JsonResponse(
-//            data: Book::search(
-//                query: trim($request->get('search')) ?? '',
-//            )->get(),
-//            status: Response::HTTP_OK,
-//        );
-//    }
 }
 

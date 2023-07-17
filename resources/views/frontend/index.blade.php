@@ -251,25 +251,9 @@
                 {{--                    </ul>--}}
                 {{--                </div>--}}
                 {{--            </div>--}}
-
                 <div class="row portfolio-container">
-                    @foreach($books as $book)
-                        <div class="col-lg-2 col-md-5 portfolio-item filter-card">
-                            <div class="portfolio-wrap rounded-1 " style="height: 220px;">
-                                <img src="{{url($book->book_img)}}" class="h-100 w-100 img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4></h4>
-                                    <p>{{$book->book_title}}</p>
-                                    <div class="portfolio-links">
-                                        <a href="{{url($book->book_img)}}" data-gallery="portfolioGallery"
-                                           class="portfolio-lightbox" title="{{$book->book_title}}"><i
-                                                class="bx bx-plus"></i></a>
-                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    @livewire('search-books')
+
                 </div>
             </div>
             <div class="col">
@@ -299,12 +283,12 @@
                     @foreach($authors as $author)
                         <div class="col-xl-2 col-lg-4 col-md-6 rounded-1">
                             <div class="member rounded-1">
-                                <img src="{{url($author->author_img)}}" class="w-100 img-fluid rounded-1" alt=""
+                                <img src="{{$author->author_img}}" class="w-100 img-fluid rounded-1"  alt=""
                                      style="height: 220px;">
                                 <div class="member-info">
                                     <div class="member-info-content">
                                         <h4>{{$author->author_name}}</h4>
-                                        <span>{{json_encode($author->author_books)}}</span>
+                                        <span>{{$author->author_books}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -518,3 +502,4 @@
 
     </main><!-- End #main -->
 @endsection
+
