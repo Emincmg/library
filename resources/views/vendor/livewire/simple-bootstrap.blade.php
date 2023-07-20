@@ -5,7 +5,7 @@
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true">
-                        <span class="page-link">@lang('pagination.previous')</span>
+                        <span class="">@lang('pagination.previous')</span>
                     </li>
                 @else
                     @if(method_exists($paginator,'getCursorName'))

@@ -11,24 +11,23 @@ use Livewire\WithPagination;
 class SearchBooks extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
-    protected $queryString = ['search'];
 
     public $search;
-
+    protected $queryString = ['search'];
 
     public function render()
     {
-        $lvBooks=[];
+        $lvsBooks=[];
         if($this->search){
-            $lvBooks = Book::search($this->search)->paginate(12);
+            $lvsBooks = Book::search($this->search);
+        }else{
+            $lvsBooks = Book::orderBy('book_title', 'ASC');
         }
-        $lvpBooks = Book::orderBy('book_title', 'ASC')->paginate(12);
-        $lvaBooks = Book::all();
+        $lvBooks=$lvsBooks->paginate(12);
         $lvAuthors = Author::all();
         $lvCategories = Categories::all();
 
-        return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors','lvpBooks','lvaBooks'));
+        return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors'));
     }
 
 }
