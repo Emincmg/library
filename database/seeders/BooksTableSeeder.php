@@ -403,7 +403,7 @@ class BooksTableSeeder extends Seeder
             'book_author' => 'Agatha Christie',
             'book_explanation' => "And Then There Were None is a mystery novel by Agatha Christie, first published in 1939. The story follows ten strangers who are invited to an isolated island by a mysterious host. They soon realize that they are stranded and that someone is killing them off one by one. As they try to survive, they begin to suspect each other and realize that the killer is among them. The novel has sold over 100 million copies and is considered one of Christie's masterpieces.",
             'book_category' => ['Mystery', 'Crime Fiction'],
-            'book_img' => 'https://upload.wikimedia.org/wikipedia/en/4/4a/And_Then_There_Were_None_First_Edition_Cover_1939.jpg',
+            'book_img' => 'https://cdn.dsmcdn.com/mnresize/1200/1800/ty890/product/media/images/20230517/19/351365698/940536262/1/1_org_zoom.jpg',
             'book_date' => '1939-11-06',
             'book_stock' => 8
         ]);

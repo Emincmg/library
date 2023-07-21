@@ -884,7 +884,7 @@ section {
     z-index: 1;
     background: rgba(42, 42, 42, 0.7);
     justify-content: center;
-    width:10rem;
+    width:10.5rem;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -978,11 +978,8 @@ section {
     flex: 0 0 640px;
 }
 
-.portfolio-container .search-container {
-    position: relative;
-    top: -4rem;
-    display: block;
-    margin: 1dvi;
+.search-container {
+    width: 79rem;
 }
 
 .portfolio-details {
