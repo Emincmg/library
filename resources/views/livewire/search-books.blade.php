@@ -25,6 +25,17 @@
                     </div>
                 </div>
             @endforeach
+
+    </div>
+    <div class="col">
+        <div class="container portfolio-insert">
+            <div class="col-md-6 icon-box">
+                <div class="d-flex flex-column">
+                    <a href="{{route('addbookpage')}}"><i class="bx bx-plus rounded-1"></i></a>
+                    <p>Add new book</p>
+                </div>
+            </div>
+        </div>
     </div>
      {{$lvBooks->links('frontend.layouts.pagination-links')}}
 </div>
