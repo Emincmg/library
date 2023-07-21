@@ -3,7 +3,7 @@
 
 {{--Previous--}}
         @if($paginator->onFirstPage())
-            <a style="background-color: white; cursor: default; color: white">< Previous</a>
+            <a style="background-color: white; cursor: default; color: white" href=javascript:void(0);>< Previous</a>
         @else
             <a wire:click="previousPage" href=javascript:void(0);>< Previous</a>
         @endif
@@ -33,5 +33,4 @@
         @endif
     @endif
 {{--end Next--}}
-
 </div>

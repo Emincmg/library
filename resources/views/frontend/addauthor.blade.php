@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <div class="addauthor-container container-xxl">
+    <div class="addauthor-container">
         <div class="form">
             <form action="addauthor" method="post" enctype="multipart/form-data" role="form" id="addAuthorForm" class="add-author-form">
                 @csrf
