@@ -1,12 +1,12 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <div class="addbook-container container-xxl">
+    <div class="addbook-container">
         <div class="form">
             <form action="addbook" method="post" enctype="multipart/form-data" role="form" id="addBookForm" class="add-book-form">
                 @csrf
                 <h4>Add a new book</h4>
                 <div id="addBook-errors"></div>
-               <div class="form-gruop">
+               <div class="form-group">
                    <div class="row mt-lg-5">
                        <div class="col-md-6 form-group">
                            <input type="text" name="book_title" class="form-control" id="book_title" placeholder="Book title"
