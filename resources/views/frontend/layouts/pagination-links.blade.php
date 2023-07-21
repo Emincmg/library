@@ -15,7 +15,7 @@
         @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                    <a class="active" href="javascript:void(0);">{{ $page }}</a>
+                    <a class="active" href="javascript:void(0);"  wire:click="gotoPage({{ $page }})">{{ $page }}</a>
                 @else
                     <a href="javascript:void(0);" wire:click="gotoPage({{ $page }})">{{ $page }}</a>
                     @endif
