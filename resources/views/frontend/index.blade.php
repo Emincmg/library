@@ -135,7 +135,7 @@
                     <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                         <div class="count-box">
                             <i class='bx bx-list-plus'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{$bookEntries}}" data-purecounter-duration="1"
                                   class="purecounter"></span>
                             <p><strong>Book</strong> entries</p>
                         </div>
@@ -246,22 +246,7 @@
                     <p>Browse through authors</p>
                 </div>
 
-                <div class="row">
-                    @foreach($authors as $author)
-                        <div class="col-xl-2 col-lg-4 col-md-6 rounded-1">
-                            <div class="member rounded-1">
-                                <img src="{{$author->author_img}}" class="w-100 img-fluid rounded-1"  alt=""
-                                     style="height: 220px;">
-                                <div class="member-info">
-                                    <div class="member-info-content">
-                                        <h4>{{$author->author_name}}</h4>
-                                        <span>{{$author->author_books}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                @livewire('authors')
 
             </div>
         </section><!-- End Team Section -->
