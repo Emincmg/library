@@ -119,7 +119,7 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>Library</span></strong>. All Rights Reserved
+             <strong><span>Library application</span></strong>
         </div>
         <div class="credits">
             Designed by <a href="">Ali Emin Çomoğlu</a>
