@@ -7,6 +7,7 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response;
 
 class BooksController extends Controller
@@ -19,7 +20,8 @@ class BooksController extends Controller
         $categoryCount = count($categories);
         $authors = Author::all();
         $authorCount = count($authors);
-        return view('frontend.index',compact(['books','bookCount','categories','categoryCount','authors','authorCount']));
+        $bookEntries =0;
+        return view('frontend.index',compact(['books','bookCount','categories','categoryCount','authors','authorCount','bookEntries']));
     }
 
 
@@ -28,23 +30,31 @@ class BooksController extends Controller
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
 
+        //Store the form data
+        session_start();
+        $_SESSION['book_title'] = $_POST['book_title'];
+        $_SESSION['book_author'] = $_POST['book_author'];
+        $_SESSION['book_explanation'] = $_POST['book_explanation'];
+        $_SESSION['book_img'] = $_POST['book_img'];
+        $_SESSION['book_date'] = $_POST['book_date'];
+        $_SESSION['book_stock'] = $_POST['book_stock'];
+
         if ($validatedData) {
 
             //Author database check if exists
-            $createdAuthor = Author::where('author_name', $request->book_author)->first();
-            if (!$createdAuthor) {
-                abort(404, "Author you provided doesnt exists in the application database. Go to author creation page?");
+            $authorDbCheck = Author::where('author_name', $request->book_author)->first();
+            if (!$authorDbCheck) {
+                return abort('404','Author you provided doesnt exists in the application database. Go to author creation page?');
             }
 
             //Book database check if exists
             $bookDbCheck= Book::where('book_title',$request->book_title)->first();
             if($bookDbCheck){
-                abort(409, "Book already exists.");
+                return abort('409','Book already exits.');
             }
-
             Book::create($validatedData);
+            session_destroy();
         }
-
         return response()->json(['message'=>'Book created successfully!'],201);
     }
 
@@ -58,11 +68,13 @@ class BooksController extends Controller
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->authorValidate($request);
 
+        $_SESSION['author_name'] = $request->author_name;
+
         if($validatedData){
             //Author database check if exists
             $createdAuthor = Author::where('author_name', $request->author_name)->first();
             if ($createdAuthor) {
-                abort(409, "Author already exists.");
+                return response()->json(['message'=>'Author already exists.'],409);
             }
             Author::create($validatedData);
         }

@@ -10,29 +10,26 @@
         $('#addBookForm').on('submit', function (e) {
             e.preventDefault();
             var formData = $(this).serialize();
-
             $.ajax({
                 url: '/addbook',
                 type: 'POST',
                 data: formData,
-                success:function (response) {
+                success: function (response) {
                     alertify.notify(response.message, 'success', 2, function () {
                         window.location.href = '{{'/'}}';
                     });
                 },
                 error: function (xhr, status, error) {
                     let message = JSON.parse(xhr.responseText).message;
-                    if(xhr.status === 404){
+                    if (xhr.status === 404) {
                         alertify.confirm(message, function () {
                         }).setHeader('Notice').set('labels', {ok: 'Yes', cancel: 'No'}).set('onok', function () {
-                            window.location.href = '{{'addauthorpage'}}'
+                            window.location.href = '{{'addauthorpage'}}';
                         });
-                    }else{
+                    } else {
                         $('#addBook-errors').empty().show().html('').delay(3000).fadeOut(500);
-                        $.each(xhr.responseJSON.errors, function (key, value) {
-                            $('#addBook-errors').append('<div class="alert alert-danger">' + value + '</div>');
-                        });
-                        alertify.error(message,2)
+                        $('#addBook-errors').append('<div class="alert alert-danger">' + message + '</div>');
+                        alertify.error(message, 2)
                     }
                 },
             });
@@ -49,33 +46,32 @@
                 data: formData,
                 success: function (response) {
                     alertify.notify(response.message, 'success', 2, function () {
-                        window.location.href = '{{'/'}}';
+                            window.location.href = '{{'addbookpage'}}';
                     });
                 },
                 error: function (xhr, status, error) {
                     let message = JSON.parse(xhr.responseText).message;
-
                     $('#addAuthor-errors').empty().show().html('').delay(3000).fadeOut(500);
-                    $.each(xhr.responseJSON.errors, function (key, value) {
+                    $.each(xhr.responseJSON, function (key, value) {
                         $('#addAuthor-errors').append('<div class="alert alert-danger">' + value + '</div>');
                     });
-                    alertify.error(message,2);
+                    alertify.error(message, 2);
                 }
             });
         })
 
-        //Addbook category select
-        $( document ).ready(function() {
+        //Addbook category select jQuery plugin
+        $(document).ready(function () {
             var classes = {
-                1 : 'category-option-class-1',
-                2 : 'category-option-class-2',
+                1: 'category-option-class-1',
+                2: 'category-option-class-2',
             };
             $('#category-select').picker({
                 search: true,
                 containerClass: 'category-select',
                 containerWidth: 1080,
                 width: 200,
-                coloring:classes,
+                coloring: classes,
             });
         });
     </script>

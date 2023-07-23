@@ -24,10 +24,10 @@ class SearchBooks extends Component
             $lvsBooks = Book::orderBy('book_title', 'ASC');
         }
         $lvBooks=$lvsBooks->paginate(18);
-        $lvAuthors = Author::all();
+
         $lvCategories = Categories::all();
 
-        return view('livewire.search-books',compact('lvBooks','lvCategories','lvAuthors'));
+        return view('livewire.search-books',compact('lvBooks','lvCategories'));
     }
 
 }
