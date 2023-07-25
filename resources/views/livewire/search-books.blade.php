@@ -9,9 +9,9 @@
     </div>
     <div class="row portfolio-container mt-4">
             @foreach($lvBooks as $book)
-                <div class="col-lg-2 col-md-5 portfolio-item filter-card">
+                <div class="col-lg-2 col-md-3 portfolio-item filter-card">
                     <div class="portfolio-wrap rounded-1 " style="height: 220px;">
-                        <img src="{{$book->book_img}}" class="h-100 w-100 img-fluid" alt="">
+                        <img src="{{$book->book_img}}" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4></h4>
                             <p>{{$book->book_title}}</p>
@@ -24,7 +24,6 @@
                     </div>
                 </div>
             @endforeach
-
     </div>
     <div class="col">
         <div class="container portfolio-insert">

@@ -12,7 +12,7 @@ class Authors extends Component
 
     public function render()
     {
-        $lvAuthors = Author::orderBy('author_name','ASC')->paginate(6);
+        $lvAuthors = Author::orderBy('author_name','ASC')->paginate(12);
 
         return view('livewire.authors',compact('lvAuthors'));
     }

@@ -23,7 +23,7 @@ class SearchBooks extends Component
         }else{
             $lvsBooks = Book::orderBy('book_title', 'ASC');
         }
-        $lvBooks=$lvsBooks->paginate(18);
+        $lvBooks=$lvsBooks->paginate(12);
 
         $lvCategories = Categories::all();
 

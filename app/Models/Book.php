@@ -46,15 +46,12 @@ class Book extends Model
 //        return $this->published || $this->searchable;
 //    }
 //
-//    public function toSearchableArray(): array
-//    {
-//        return [
-//            'book_title' => $this->book_title,
-//            'book_author' => $this->book_content,
-//            'category' => [
-//                'book_category' => $this->book_category,
-//            ],
-//            'book_date'=>$this->book_date
-//        ];
-//    }
+    public function toSearchableArray(): array
+    {
+        return [
+            'book_title' => $this->book_title,
+            'book_author' => $this->book_content,
+            'book_date'=>$this->book_date
+        ];
+    }
 }
