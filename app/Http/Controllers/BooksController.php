@@ -7,7 +7,6 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response;
 
 class BooksController extends Controller
@@ -93,8 +92,13 @@ class BooksController extends Controller
         if ($validatedData) {
             Book::Where('id', $request->id)->update($validatedData);
         }
-        Book::find($request->id);
         return response()->json(['message'=>'Book edited successfully!'],204);
+    }
+
+    public function editBookPage($id){
+        $book = Book::Where('id',$id)->first();
+        $categories = Categories::all('book_category');
+        return view('frontend.editbook',compact('categories', 'book'));
     }
 
     public function deleteBook($id)

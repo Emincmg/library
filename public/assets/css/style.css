@@ -1909,6 +1909,113 @@ input[type=number] {
 }
 
 /*--------------------------------------------------------------
+# Add book form
+--------------------------------------------------------------*/
+.editbook-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 110px;
+    margin-bottom:15vh;
+    margin-left: 15vh;
+    margin-right: 15vh;
+}
+
+.form .edit-book-form {
+    justify-self: center;
+}
+
+.form .edit-book-form .error-message br + br {
+    margin-top: 2.5rem;
+}
+
+.form .edit-book-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.form .edit-book-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.form .edit-book-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    animation: animate-loading 1s linear infinite;
+}
+
+.form .edit-book-form input,
+.form .edit-book-form textarea,
+.form .edit-book-form select {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.form .edit-book-form input:focus,
+.form .edit-book-form textarea:focus,
+.form .edit-book-form select:focus {
+    border-color: #5c9f24;
+}
+
+.form .edit-book-form button[type=submit] {
+    background: #5c9f24;
+    border: 0;
+    padding: 10px 30px 12px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.form .edit-book-form button[type=submit]:hover {
+    background: #6ab82a;
+}
+
+
+form .add-book-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.form .add-book-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    animation: animate-loading 1s linear infinite;
+}
+
+.form .add-book-form .category-select {
+    width: 100rem;
+}
+
+.form .add-book-form .pc-select,
+.form .add-book-form .pc-element {
+    border-color: #5c9f24;
+    border-radius: 5px;
+}
+
+/*--------------------------------------------------------------
 # Pagination
 --------------------------------------------------------------*/
 

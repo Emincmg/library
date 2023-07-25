@@ -16,8 +16,7 @@
                             <h4></h4>
                             <p>{{$book->book_title}}</p>
                             <div class="portfolio-links">
-                                <a href="{{$book->book_img}}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="{{$book->book_title}}"><i
+                                <a href="{{route('editbookpage',$book->id)}}"><i
                                         class="bx bx-plus"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                             </div>

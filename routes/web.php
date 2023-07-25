@@ -7,7 +7,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index'])->name('home');
 Route::get('/addbookpage', [App\Http\Controllers\BooksController::class, 'addBookPage'])->name('addbookpage');
 Route::get('/addauthorpage', [App\Http\Controllers\BooksController::class, 'addAuthorPage'])->name('addauthorpage');
-Route::get('/addauthorpagecheck', [App\Http\Controllers\BooksController::class, ''])->name('addauthorpagecheck');
+Route::get('/editbookpage/{id}', [App\Http\Controllers\BooksController::class, 'editBookPage'])->name('editbookpage');
 Route::get('/deletebook/{id}', [App\Http\Controllers\BooksController::class, 'deleteBook'])->name('deletebook');
 
 

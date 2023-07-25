@@ -60,6 +60,31 @@
             });
         })
 
+        //Editbook Form Submit
+        $('#editBookForm').on('submit',function (e){
+            e.preventDefault();
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: '/editbook',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    alertify.notify(response.message, 'success', 2, function () {
+                        window.location.href = '{{'/'}}';
+                    });
+                },
+                error: function (xhr, status, error) {
+                    let message = JSON.parse(xhr.responseText).message;
+                    $('#addAuthor-errors').empty().show().html('').delay(3000).fadeOut(500);
+                    $.each(xhr.responseJSON, function (key, value) {
+                        $('#editBook-errors').append('<div class="alert alert-danger">' + value + '</div>');
+                    });
+                    alertify.error(message, 2);
+                }
+            });
+        })
+
         //Addbook category select jQuery plugin
         $(document).ready(function () {
             var classes = {
