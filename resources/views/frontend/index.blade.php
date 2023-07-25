@@ -297,27 +297,27 @@
             <div class="row">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/php.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/php.png" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/laravel2.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/laravel2.png" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/meilisearch.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/meilisearch.png" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/redis.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/redis.png" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/jquery.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/jquery.png" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="/public/assets/img/clients/css.png" class="img-fluid" alt="">
+                    <img src="assets/img/clients/css.png" class="img-fluid" alt="">
                 </div>
 
             </div>

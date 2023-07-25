@@ -9,9 +9,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+html{
+    height:100%;
+}
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    width:100%;
+    min-height: 100%;
+    height:100%;
 }
 
 a {
@@ -1547,6 +1553,9 @@ section {
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
 #footer .footer-top {
@@ -1691,18 +1700,12 @@ section {
 # Add book form
 --------------------------------------------------------------*/
 .addbook-container {
-    gap: 20px;
+    display:flex;
     justify-content: center;
     align-items: center;
-    margin-top: 110px;
-    margin-bottom:15vh;
-    margin-left: 15vh;
-    margin-right: 15vh;
+    max-height: 100%;
 }
 
-.form .add-book-form {
-    justify-self: center;
-}
 
 .form .add-book-form .error-message br + br {
     margin-top: 2.5rem;
@@ -1786,10 +1789,6 @@ form .add-book-form .loading {
     animation: animate-loading 1s linear infinite;
 }
 
-.form .add-book-form .category-select {
-    width: 100rem;
-}
-
 .form .add-book-form .pc-select,
 .form .add-book-form .pc-element {
     border-color: #5c9f24;
@@ -1807,6 +1806,7 @@ form .add-book-form .loading {
     margin-bottom:15vh;
     margin-left: 15vh;
     margin-right: 15vh;
+    max-height: 1080px;
 }
 
 
@@ -1912,7 +1912,7 @@ input[type=number] {
 }
 
 /*--------------------------------------------------------------
-# Add book form
+# Edit book form
 --------------------------------------------------------------*/
 .editbook-container {
     justify-content: center;
@@ -1989,14 +1989,14 @@ input[type=number] {
 }
 
 
-form .add-book-form .loading {
+form .edit-book-form .loading {
     display: none;
     background: #fff;
     text-align: center;
     padding: 15px;
 }
 
-.form .add-book-form .loading:before {
+.form .edit-book-form .loading:before {
     content: "";
     display: inline-block;
     border-radius: 50%;
@@ -2008,12 +2008,12 @@ form .add-book-form .loading {
     animation: animate-loading 1s linear infinite;
 }
 
-.form .add-book-form .category-select {
+.form .edit-book-form .category-select {
     width: 100rem;
 }
 
-.form .add-book-form .pc-select,
-.form .add-book-form .pc-element {
+.form .edit-book-form .pc-select,
+.form .edit-book-form .pc-element {
     border-color: #5c9f24;
     border-radius: 5px;
 }

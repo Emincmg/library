@@ -93,9 +93,6 @@
             };
             $('#category-select').picker({
                 search: true,
-                containerClass: 'category-select',
-                containerWidth: 1080,
-                width: 200,
                 coloring: classes,
             });
         });
