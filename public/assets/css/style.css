@@ -841,9 +841,12 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.portfolio .portfolio-container{
+
+}
+
 .portfolio .portfolio-item {
     margin-bottom: 30px;
-
 }
 
 .portfolio #portfolio-flters {
@@ -884,7 +887,7 @@ section {
     z-index: 1;
     background: rgba(42, 42, 42, 0.7);
     justify-content: center;
-    width:10.5rem;
+    max-width:10.5rem;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -974,7 +977,6 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-container .links-container {
-
     flex: 0 0 640px;
 }
 
