@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('/public/assets/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('/public/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -19,19 +19,19 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{asset('assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/alertifyjs/css/alertify.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/alertifyjs/css/themes/semantic.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/alertifyjs/css/alertify.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/alertifyjs/css/themes/semantic.css')}}" rel="stylesheet">
     <link href="{{asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/jquery-select-picker/picker.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/vendor/jquery-select-picker/picker.css')}}" rel="stylesheet">
     @livewireStyles
     <!-- Template Main CSS File -->
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/assets/css/style.css')}}" rel="stylesheet">
 
 
 
@@ -75,19 +75,19 @@
 
 <!-- Vendor JS Files -->
 <script src="{{asset('//code.jquery.com/jquery.min.js')}}"></script>
-<script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-<script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-<script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-<script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-<script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
-<script src="{{asset('assets/vendor/alertifyjs/alertify.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/alertifyjs/alertify.min.js')}}"></script>
 <script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
-<script src="{{asset('assets/vendor/jquery-select-picker/picker.min.js')}}"></script>
+<script src="{{asset('/public/assets/vendor/jquery-select-picker/picker.min.js')}}"></script>
 
 
 <!-- Template Main JS File -->
-<script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{asset('/public/assets/js/main.js')}}"></script>
 @include('frontend.scripts')
 @yield('scripts')
 @livewireScripts
