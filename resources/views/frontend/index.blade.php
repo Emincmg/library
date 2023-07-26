@@ -166,7 +166,6 @@
         <!-- ======= Team Section ======= -->
         <section id="team" class="team">
             <div class="container">
-
                 <div class="section-title">
                     <h2>Authors</h2>
                     <p>Browse through authors</p>

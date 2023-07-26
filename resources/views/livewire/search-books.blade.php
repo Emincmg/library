@@ -11,13 +11,13 @@
             @foreach($lvBooks as $book)
                 <div class="col-lg-2 col-md-3 portfolio-item filter-card">
                     <div class="portfolio-wrap rounded-1 " style="height: 220px;">
-                        <img src="{{$book->book_img}}" class="img-fluid" alt="">
+                        <img src="{{$book->book_img}}" class="img-fluid w-100" alt="">
                         <div class="portfolio-info">
                             <h4></h4>
                             <p>{{$book->book_title}}</p>
                             <div class="portfolio-links">
                                 <a href="{{route('editbookpage',$book->id)}}"><i
-                                        class="bx bx-plus"></i></a>
+                                        class="bx bx-edit-alt" title ="Edit book"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
@@ -30,7 +30,6 @@
             <div class="col-md-6 icon-box">
                 <div class="d-flex flex-column">
                     <a href="{{route('addbookpage')}}"><i class="bx bx-plus rounded-1"></i></a>
-{{--                    <p>Add new book</p>--}}
                 </div>
             </div>
         </div>

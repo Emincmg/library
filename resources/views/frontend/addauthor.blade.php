@@ -1,15 +1,30 @@
 @php
 session_start();
 @endphp
-@extends('frontend.layouts.app')
+
+@extends('frontend.layouts.inner-page')
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Edit Book</h2>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Edit Book</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
     <div class="addauthor-container">
         <div class="form">
             <form action="addauthor" method="post" enctype="multipart/form-data" role="form" id="addAuthorForm" class="add-author-form">
                 @csrf
-                <h4>Add an author</h4>
                 <div id="addAuthor-errors"></div>
-                <div class="form-group mt-3">
+                <div class="form-group">
                         <input type="text" name="author_name" class="form-control" id="author_name" placeholder="Author name"
                                data-rule="minlen:2" data-msg="Please enter at least 2 chars" required value="@if(isset($_SESSION['book_author'])){{$_SESSION['book_author']}}@endif">
                 </div>

@@ -1,7 +1,7 @@
 <div>
-    <div class="row">
+    <div class="member-container">
         @foreach($lvAuthors as $author)
-            <div class="col-xl-2 col-lg-4 col-md-6 rounded-1">
+            <div class="col-xl-2 rounded-1">
                 <div class="member rounded-1">
                     <img src="{{$author->author_img}}" class="w-100 img-fluid rounded-1"  alt=""
                          style="height: 220px;">

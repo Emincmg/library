@@ -1,14 +1,28 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.inner-page')
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Edit Book</h2>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Edit Book</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
     <div class="editbook-container">
         <div class="form">
             <form action="{{route('editbook')}}" method="post" enctype="multipart/form-data" role="form" id="editBookForm" class="edit-book-form">
                 @csrf
-                <h4>Edit book</h4>
                 <div id="editBook-errors"></div>
                 <div class="form-group">
-                    <div class="row mt-lg-5">
-                        <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
                             <input value="{{$book->id}}"  name="id" id="id" type="hidden">
                             <input type="text" name="book_title" class="form-control" id="book_title" placeholder="Book title"
                                    data-rule="minlen:2" data-msg="Please enter at least 2 chars" required value="{{$book->book_title}}">
@@ -25,8 +39,8 @@
                 </div>
                 <div class="form-group mt-4">
                     <div class="row">
-                        <span class="col-sm-2 form-group">
-                            <label for="category-select">Book category :</label>
+                        <span class="col-sm-3 form-group">
+                            <label for="category-select">Category :</label>
                         </span>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
                             <select name="book_category[]" id="category-select" multiple>
