@@ -19,8 +19,8 @@ class BooksController extends Controller
         $categoryCount = count($categories);
         $authors = Author::all();
         $authorCount = count($authors);
-        $bookEntries =0;
-        return view('frontend.index',compact(['books','bookCount','categories','categoryCount','authors','authorCount','bookEntries']));
+        $bookStockSum = $books->sum('book_stock');
+        return view('frontend.index',compact(['books','bookCount','categories','categoryCount','authors','authorCount','bookStockSum']));
     }
 
 

@@ -134,19 +134,19 @@
 
                     <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                         <div class="count-box">
-                            <i class='bx bx-list-plus'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{$bookEntries}}" data-purecounter-duration="1"
+                            <i class='bx bx-objects-horizontal-left'></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{$categoryCount}}" data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Book</strong> entries</p>
+                            <p>Book <strong>Categories.</strong> </p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                         <div class="count-box">
                             <i class='bx bx-objects-horizontal-left'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{$bookStockSum}}" data-purecounter-duration="1"
                                   class="purecounter"></span>
-                            <p><strong>Book stocks</strong> summary</p>
+                            <p><strong>Book stocks</strong> total.</p>
                         </div>
                     </div>
 
