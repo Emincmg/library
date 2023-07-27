@@ -9,15 +9,9 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-html{
-    height:100%;
-}
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
-    width:100%;
-    min-height: 100%;
-    height:100%;
 }
 
 a {
@@ -857,7 +851,7 @@ section {
 
 .portfolio .portfolio-item {
     margin-bottom: 30px;
-
+    width: 12rem;
 }
 
 .portfolio #portfolio-flters {
@@ -916,7 +910,6 @@ section {
     transition: all ease-in-out 0.3s;
     height: 100%;
     width: 100%;
-    object-fit: scale-down;
     background-color: #FFFFFF;
     border-radius: 3px;
 }
@@ -1718,12 +1711,10 @@ section {
     align-items: center;
 }
 @media screen and (min-height: 1000px) {
-    .add-book-form{
-        display:  flex;
-        flex-direction: column;
-        min-height: 100vh;
-        justify-content: space-around;
-        align-items: space-around;
+    .addbook-container{
+        padding-top: 5rem;
+        display:  block;
+        min-height: 700px;
 }
 }
 
@@ -1826,11 +1817,10 @@ form .add-book-form .loading {
     padding: 10px;
 }
 @media screen and (min-height: 1000px) {
-    .add-author-form{
-        display:  flex;
-        flex-direction: column;
-        min-height: 100vh;
-        justify-content: space-around;
+    .addauthor-container{
+        padding-top: 5rem;
+        display:  block;
+        min-height: 700px;
     }
 }
 
@@ -1946,17 +1936,11 @@ input[type=number] {
 }
 
 @media screen and (min-height: 1000px) {
-    .edit-book-form{
-        display:  flex;
-        flex-direction: column;
-        min-height: 100vh;
-        justify-content: space-around;
-        align-items: space-around;
+    .editbook-container{
+        padding-top: 5rem;
+        display:  block;
+        min-height: 700px;
     }
-}
-
-.form .edit-book-form {
-    justify-self: center;
 }
 
 .form .edit-book-form .error-message br + br {
