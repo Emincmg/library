@@ -841,48 +841,16 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
-.portfolio-container{
+.portfolio-ccontainer{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 .portfolio .portfolio-item {
-    margin-bottom: 30px;
-    width: 12rem;
-}
-
-.portfolio #portfolio-flters {
-    padding: 0;
-    margin: 0 auto 20px auto;
-    list-style: none;
-    text-align: center;
-}
-
-.portfolio #portfolio-flters li {
-    cursor: pointer;
-    display: inline-block;
-    padding: 8px 15px 10px 15px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
-    text-transform: uppercase;
-    color: #444444;
-    margin-bottom: 5px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 3px;
-}
-
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
-    color: #fff;
-    background: #5c9f24;
-}
-
-.portfolio #portfolio-flters li:last-child {
-    margin-right: 0;
+    margin: 5px;
+    width:10rem;
 }
 
 .portfolio .portfolio-wrap {
@@ -983,11 +951,6 @@ section {
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
-
-.portfolio-container .links-container {
-
-    flex: 0 0 640px;
-}
 
 .portfolio-details {
     padding-top: 40px;
@@ -1102,18 +1065,17 @@ section {
 }
 .team .member-container{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 .team .member {
     text-align: center;
-    margin-bottom: 20px;
     background: #343a40;
     position: relative;
-    width: 11.5rem;
+    width:10rem;
+    margin: 5px;
 }
 
 .team .member .member-info {
@@ -1414,7 +1376,7 @@ section {
     margin-bottom: 20px;
 }
 
-.contact .php-email-form .error-message {
+.contact .email-form .error-message {
     display: none;
     color: #fff;
     background: #ed3c0d;
@@ -1423,11 +1385,11 @@ section {
     font-weight: 600;
 }
 
-.contact .php-email-form .error-message br + br {
+.contact .email-form .error-message br + br {
     margin-top: 25px;
 }
 
-.contact .php-email-form .sent-message {
+.contact .email-form .sent-message {
     display: none;
     color: #fff;
     background: #18d26e;
@@ -1436,14 +1398,14 @@ section {
     font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.contact .email-form .loading {
     display: none;
     background: #fff;
     text-align: center;
     padding: 15px;
 }
 
-.contact .php-email-form .loading:before {
+.contact .email-form .loading:before {
     content: "";
     display: inline-block;
     border-radius: 50%;
@@ -1455,8 +1417,8 @@ section {
     animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .email-form input,
+.contact .email-form textarea {
     border-radius: 0;
     box-shadow: none;
     font-size: 14px;
@@ -1465,12 +1427,12 @@ section {
     border-radius: 4px;
 }
 
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
+.contact .email-form input:focus,
+.contact .email-form textarea:focus {
     border-color: #5c9f24;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .email-form button[type=submit] {
     background: #5c9f24;
     border: 0;
     padding: 10px 30px 12px 30px;
@@ -1479,7 +1441,7 @@ section {
     border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .email-form button[type=submit]:hover {
     background: #6ab82a;
 }
 

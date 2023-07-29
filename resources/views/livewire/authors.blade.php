@@ -1,7 +1,10 @@
 <div>
+    <div class="input-group search-container mt-4">
+        <span class="input-group-text" id="basic-addon1" style="background-color: #5c9f24"><i class="bi bi-search" style="color: white"></i></span>
+        <input wire:model="search" type="search" class="form-control search-box" placeholder="Search Authors">
+    </div>
     <div class="member-container">
         @foreach($lvAuthors as $author)
-            <div class="col-xl-2 rounded-1">
                 <div class="member rounded-1">
                     <img src="{{$author->author_img}}" class="w-100 img-fluid rounded-1"  alt=""
                          style="height: 220px;">
@@ -12,7 +15,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         @endforeach
     </div>
     {{$lvAuthors->links('frontend.layouts.pagination-links')}}

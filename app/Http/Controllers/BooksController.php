@@ -26,6 +26,7 @@ class BooksController extends Controller
 
     public function addBook(Request $request)
     {
+
         $validationRequest = new ValidationRequest;
         $validatedData = $validationRequest->bookValidate($request);
 
@@ -37,6 +38,7 @@ class BooksController extends Controller
         $_SESSION['book_img'] = $_POST['book_img'];
         $_SESSION['book_date'] = $_POST['book_date'];
         $_SESSION['book_stock'] = $_POST['book_stock'];
+        $_SESSION['book_category']=$_POST['book_category'];
 
         if ($validatedData) {
 

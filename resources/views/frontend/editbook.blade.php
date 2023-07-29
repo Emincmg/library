@@ -53,7 +53,7 @@
                                     <select name="book_category[]" id="category-select" multiple>
                                         @foreach($categories as $category)
                                             <option
-                                                value="{{$category->book_category}}"> {{$category->book_category}}</option>
+                                                value="{{$category->book_category}}" <?= in_array($category->book_category, $book->book_category) ? 'selected="selected">' : '>' ?> {{$category->book_category}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -50,7 +50,8 @@ session_start();
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
                                     <select name="book_category[]" id="category-select" multiple>
                                         @foreach($categories as $category)
-                                            <option value="{{$category->book_category}}"> {{$category->book_category}}</option>
+                                            <option
+                                                value="{{$category->book_category}}" @if(isset($_SESSION['book_category']))<?= in_array($category->book_category, $_SESSION['book_category']) ? 'selected="selected">' : '>' ?>@else > @endif{{$category->book_category}}</option>
                                         @endforeach
                                     </select>
                                 </div>

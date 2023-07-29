@@ -25,6 +25,13 @@ class Author extends Model
             'author_demise',
         ];
 
+    public function toSearchableArray(): array
+    {
+        return [
+            'author_name' => $this->author_name
+        ];
+    }
+
 //    public function books(){
 //        return $this->hasMany('App\Book');
 //    }

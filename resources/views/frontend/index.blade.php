@@ -160,7 +160,15 @@
 
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Books</h2>
+                    <p>Browse through books</p>
+                </div>
+
             @livewire('search-books')
+
+            </div>
         </section><!-- End Portfolio Section -->
 
         <!-- ======= Team Section ======= -->
@@ -255,7 +263,8 @@
                 </div>
 
                 <div class="form">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form action="{{ route('contact') }}" method="post" role="form" class="email-form">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
@@ -265,6 +274,10 @@
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
                                        data-rule="email" data-msg="Please enter a valid email">
                             </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone"
+                                   required>
                         </div>
                         <div class="form-group mt-3">
                             <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
@@ -281,10 +294,11 @@
                         </div>
                         <div class="text-center">
                             <button type="submit">Send Message</button>
+
                         </div>
                     </form>
                 </div>
-
+                <a href="{{url('contactpage')}}"> tık</a>
             </div>
         </section><!-- End Contact Section -->
 
