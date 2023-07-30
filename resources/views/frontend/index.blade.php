@@ -293,12 +293,11 @@
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="text-center">
-                            <button type="submit">Send Message</button>
+                            <button type="submit" disabled aria-disabled="true" class="btn btn-primary disabled">(Under Development)</button>
 
                         </div>
                     </form>
                 </div>
-                <a href="{{url('contactpage')}}"> tık</a>
             </div>
         </section><!-- End Contact Section -->
 

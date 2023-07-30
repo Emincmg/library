@@ -38,16 +38,26 @@
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="{{route('home')}}">Library</a></h1>
+        <h1 class="logo"><a href="{{route('index')}}">Library</a></h1>
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{route('home')}}#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="{{route('home')}}#about">About</a></li>
-                <li><a class="nav-link scrollto " href={{route('home')}}#portfolio>Books</a></li>
-                <li><a class="nav-link scrollto" href="{{route('home')}}#team">Authors</a></li>
-                <li><a class="nav-link scrollto" href="{{route('home')}}#contact">Contact</a></li>
-                <li><a class="getstarted scrollto" href="{{route('home')}}#portfolio">Get Started</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
+                <li><a class="nav-link scrollto " href={{route('index')}}#portfolio>Books</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#team">Authors</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
+                @auth
+                <li><a class="nav-link scrollto" href="{{route('logout')}}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+                @endauth
+                @guest
+                <li><a class="getstarted scrollto" href="{{route('login')}}">Get Started</a></li>
+                @endguest
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -67,7 +77,7 @@
             <strong><span>Library application</span></strong>
         </div>
         <div class="credits">
-            Designed by <a href="">Ali Emin Çomoğlu</a>
+            Developed by <a href="">Ali Emin Çomoğlu</a>
         </div>
     </div>
 </footer><!-- End Footer -->
