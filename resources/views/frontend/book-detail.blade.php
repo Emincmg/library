@@ -3,7 +3,7 @@
     <div class="container dtl-container">
         <div class="card dtl-card">
             <div class="row p-3">
-                <div class="col-md-3">
+                <div class="col-md-3 img-container">
                     <img src="{{$book->book_img}}" class="img-fluid">
                 </div>
                 <div class="col-md-8">

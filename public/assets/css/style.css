@@ -2062,7 +2062,18 @@ form .edit-book-form .loading {
     border-radius: 10px;
 }
 
-.dtl-container .dtl-card p{
+@media (max-width: 600px){
+    .dtl-container .dtl-card .img-container{
+        display: flex;
+        justify-content: center;
+    }
+    .dtl-container .dtl-card img{
+        max-width: 35%;
+        margin: 20px;
+    }
+}
+
+    .dtl-container .dtl-card p{
     font-size: 15px;
     color: #848484;
 }
