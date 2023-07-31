@@ -48,15 +48,25 @@
                 <li><a class="nav-link scrollto" href="{{route('index')}}#team">Authors</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
                 @auth
-                <li><a class="nav-link scrollto" href="{{route('logout')}}"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
+                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#">My book list</a></li>
+                            {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
+                            {{--                                <ul>--}}
+                            {{--                                    <li><a href="#">Deep Drop Down 1</a></li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </li>--}}
+                            <li><a href="{{route('logout')}}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
                 @endauth
                 @guest
-                <li><a class="getstarted scrollto" href="{{route('login')}}">Get Started</a></li>
+                    <li><a class="getstarted scrollto" href="{{route('login')}}">Get Started</a></li>
                 @endguest
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

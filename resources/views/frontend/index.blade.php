@@ -15,10 +15,11 @@
                             <div class="carousel-content">
                                 <h2 class="animate__animated animate__fadeInDown">Library Application</h2>
                                 <p class="animate__animated animate__fadeInUp">Library management application.</p>
+                                @guest
                                 <div>
-                                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
-                                        More</a>
+                                    <a href="{{route('login')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
                                 </div>
+                                @endguest
                             </div>
                         </div>
                     </div>

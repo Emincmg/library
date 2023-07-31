@@ -2036,3 +2036,37 @@ form .edit-book-form .loading {
     border-color: #5c9f24;
     box-shadow: none;
 }
+
+
+/*--------------------------------------------------------------
+# Edit book form
+--------------------------------------------------------------*/
+ .dtl-container{
+    display: flex;
+    height: 100vh;
+     align-items: center;
+     justify-content: center;
+}
+
+ .dtl-container .dtl-card{
+     display: flex;
+     border-radius: 15px;
+     box-shadow: 5px 5px 25px  #6c757d;
+ }
+
+.dtl-container .dtl-card .row{
+    align-items: center;
+}
+
+.dtl-container .dtl-card img{
+    border-radius: 10px;
+}
+
+.dtl-container .dtl-card p{
+    font-size: 15px;
+    color: #848484;
+}
+
+.dtl-container .dtl-card hr.solid {
+    border-top: 3px solid #bbb;
+}
