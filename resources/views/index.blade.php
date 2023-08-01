@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('layouts.app')
 @section('content')
     <!-- ======= Hero Section ======= -->
     <section id="hero">
@@ -84,106 +84,30 @@
                                 <div class="col-md-6 icon-box">
                                     <i class='bx bx-book-open'></i>
                                     <h4>Browse through books</h4>
-                                    <p>Browse and look up general information about books</p>
-                                </div>
-                                <div class="col-md-6 icon-box">
-                                    <i class='bx bx-user-pin'></i>
-                                    <h4>Browse through authors</h4>
-                                    <p>Browse and look up general information about authors</p>
+                                    <p>Browse and look up general information about books via Google Books Store API.</p>
                                 </div>
                                 <div class="col-md-6 icon-box">
                                     <i class='bx bx-list-plus'></i>
-                                    <h4>Add new books to the list</h4>
-                                    <p>Add your desired books to the list and browse through.</p>
+                                    <h4>Make your lists</h4>
+                                    <p>Create your list based on the books you have read before or will read later.</p>
+                                </div>
+                                <div class="col-md-6 icon-box">
+                                    <i class='bx bx-star'></i>
+                                    <h4>Rate your books.</h4>
+                                    <p>Take notes, rate your books and more</p>
                                 </div>
                                 <div class="col-md-6 icon-box">
                                     <i class='bx bxs-edit'></i>
-                                    <h4>Edit your library.</h4>
-                                    <p>Edit your stocks, see stats etc.</p>
+                                    <h4>Visit Store </h4>
+                                    <p>Directly navigate to the Google Book Store page of a specific book.</p>
                                 </div>
                             </div>
-                        </div><!-- End .content-->
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section><!-- End About Section -->
 
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts">
-            <div class="container">
-
-                <div class="row no-gutters">
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class='bx bx-book-open'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{$bookCount}}"
-                                  data-purecounter-duration="1" class="purecounter"></span>
-                            <p><strong>Books</strong> registered.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class='bx bx-user-pin'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{$authorCount}}"
-                                  data-purecounter-duration="1" class="purecounter"></span>
-                            <p><strong>Authors</strong> registered.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class='bx bx-objects-horizontal-left'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{$categoryCount}}" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p>Book <strong>Categories.</strong> </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class='bx bx-objects-horizontal-left'></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{$bookStockSum}}" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p><strong>Book stocks</strong> total.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Counts Section -->
-
-
-
-
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Books</h2>
-                    <p>Browse through books</p>
-                </div>
-
-            @livewire('search-books')
-
-            </div>
-        </section><!-- End Portfolio Section -->
-
-        <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Authors</h2>
-                    <p>Browse through authors</p>
-                </div>
-
-                @livewire('authors')
-
-            </div>
-        </section><!-- End Team Section -->
 
             <!-- ======= Why Us Section ======= -->
             <section id="why-us" class="why-us">

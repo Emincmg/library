@@ -17,5 +17,5 @@
                 </div>
         @endforeach
     </div>
-    {{$lvAuthors->links('frontend.layouts.pagination-links')}}
+    {{$lvAuthors->links('layouts.pagination-links')}}
 </div>

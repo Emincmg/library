@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\book_category;
+use App\Models\category;
 use App\Models\Categories;
 use Illuminate\Database\Seeder;
 
@@ -44,7 +44,7 @@ class CategoriesTableSeeder extends Seeder
         // Loop through categories and create BookCategory model for each one
         foreach ($categories as $category) {
             Categories::create([
-                'book_category' => $category,
+                'category' => $category,
             ]);
         };
     }

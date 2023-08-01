@@ -7,6 +7,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
 
+    Route::get('/listindex', [App\Http\Controllers\ListController::class, 'index'])->name('listindex');
     Route::get('/addbookpage', [App\Http\Controllers\BooksController::class, 'addBookPage'])->name('addbookpage');
     Route::get('/addauthorpage', [App\Http\Controllers\BooksController::class, 'addAuthorPage'])->name('addauthorpage');
     Route::get('/contactpage', [App\Http\Controllers\ContactController::class, 'index'])->name('contactpage');
@@ -15,13 +16,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/deletebook/{id}', [App\Http\Controllers\BooksController::class, 'deleteBook'])->name('deletebook');
 
 
-    Route::post('/addbook', [App\Http\Controllers\BooksController::class, 'addBook'])->name('addbook');
+    Route::get('/insertBook/{volumeID}', [App\Http\Controllers\BooksController::class, 'insertBook'])->name('insertBook');
     Route::post('/editbook', [App\Http\Controllers\BooksController::class, 'editBook'])->name('editbook');
     Route::post('/addauthor', [App\Http\Controllers\BooksController::class, 'addAuthor'])->name('addauthor');
     Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact');
 });
 
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index'])->name('index');
+Route::get('/apitest', [App\Http\Controllers\BooksController::class, 'getBooksFromGoogleAPI']);
 
 
 

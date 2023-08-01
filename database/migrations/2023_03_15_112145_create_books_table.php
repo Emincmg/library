@@ -16,15 +16,20 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('book_title')->nullable();
-            $table->string('book_author')->nullable();
-            $table->string('book_explanation', 1000)->nullable();
-            $table->json('book_category')->nullable();
-            $table->string('book_img')->nullable();
-            $table->string('book_date')->nullable();
-            $table->integer('book_views')->nullable();
-            $table->integer('book_stock')->nullable();
+            $table->string('title')->nullable();
+            $table->json('authors')->nullable();
+            $table->string('explanation', 5000)->nullable();
+            $table->string('notes', 5000)->default(null)->nullable();
+            $table->json('category')->nullable();
+            $table->string('img',1000)->nullable();
+            $table->string('date')->nullable();
+            $table->integer('pages')->nullable();
+            $table->integer('rate')->nullable();
+            $table->boolean('readBefore')->default(false);
             $table->boolean('searchable')->default(true);
+            $table->string('link')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -14,19 +14,23 @@ class Book extends Model
 
     protected $casts =
         [
-            'book_category'=>'array'
+            'category'=>'array',
+            'authors'=>'array'
         ];
 
     protected $fillable =
         [
-            'book_title',
-            'book_author',
-            'book_explanation',
-            'book_category',
-            'book_img',
-            'book_date',
-            'book_views',
-            'book_stock'
+            'title',
+            'authors',
+            'explanation',
+            'category',
+            'img',
+            'date',
+            'views',
+            'pages',
+            'rate',
+            'notes',
+            'link'
         ];
 
     public function searchableAs()
@@ -39,7 +43,7 @@ class Book extends Model
 //    }
 //    public function author()
 //    {
-//        return $this->belongsTo(Author::class,'book_author');
+//        return $this->belongsTo(Author::class,'author');
 //    }
 //    public function searchable(): bool
 //    {
@@ -49,9 +53,9 @@ class Book extends Model
     public function toSearchableArray(): array
     {
         return [
-            'book_title' => $this->book_title,
-            'book_author' => $this->book_content,
-            'book_date'=>$this->book_date
+            'title' => $this->title,
+            'authors' => $this->authors,
+            'date'=>$this->date
         ];
     }
 }

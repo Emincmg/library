@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Categories;
 use Livewire\WithPagination;
+use GuzzleHttp;
 
 class SearchBooks extends Component
 {
@@ -17,17 +18,17 @@ class SearchBooks extends Component
 
     public function render()
     {
-        $lvsBooks=[];
-        if($this->search){
-            $lvsBooks = Book::search($this->search);
-        }else{
-            $lvsBooks = Book::orderBy('book_title', 'ASC');
+        $bookData = [];
+
+        $client = new GuzzleHttp\Client();
+        if ($this->search){
+            $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes?q=' . $this->search);
+            $books = json_decode($response->getBody()->getContents(), 1);
+            $bookData = $books['items'];
         }
-        $lvBooks=$lvsBooks->paginate(14);
 
-        $lvCategories = Categories::all();
 
-        return view('livewire.search-books',compact('lvBooks','lvCategories'));
+        return view('livewire.search-books', compact('bookData'));
     }
 
 }

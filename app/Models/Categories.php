@@ -9,13 +9,13 @@ use Laravel\Scout\Searchable;
 class Categories extends Model
 {
     use Searchable;
-    protected $primaryKey = 'book_category';
+    protected $primaryKey = 'category';
 
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable=
         [
-            'book_category'
+            'category'
         ];
 
 //    public function books()

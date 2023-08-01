@@ -2,7 +2,7 @@
     session_start();
 @endphp
 
-@extends('frontend.layouts.inner-page')
+@extends('layouts.inner-page')
 @section('content')
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
@@ -31,7 +31,7 @@
                             <input type="text" name="author_name" class="form-control" id="author_name"
                                    placeholder="Author name"
                                    data-rule="minlen:2" data-msg="Please enter at least 2 chars" required
-                                   value="@if(isset($_SESSION['book_author'])){{$_SESSION['book_author']}}@endif">
+                                   value="@if(isset($_SESSION['author'])){{$_SESSION['author']}}@endif">
                         </div>
                         <div class="form-group mt-3">
                         <textarea class="form-control" name="author_explanation" id="author_explanation" rows="5"

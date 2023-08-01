@@ -841,7 +841,7 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
-.portfolio-ccontainer{
+.portfolio-ccontainer {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -850,7 +850,7 @@ section {
 
 .portfolio .portfolio-item {
     margin: 5px;
-    width:10rem;
+    width: 10rem;
 }
 
 .portfolio .portfolio-wrap {
@@ -1063,7 +1063,8 @@ section {
     background: #fff;
     padding: 60px 0;
 }
-.team .member-container{
+
+.team .member-container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -1074,7 +1075,7 @@ section {
     text-align: center;
     background: #343a40;
     position: relative;
-    width:10rem;
+    width: 10rem;
     margin: 5px;
 }
 
@@ -1252,41 +1253,42 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Frequently Asked Questions
+# My List Page
 --------------------------------------------------------------*/
-.faq .faq-list {
+.myList .myList-list {
     padding: 0 100px;
 }
 
-.faq .faq-list ul {
+.myList .myList-list ul {
     padding: 0;
     list-style: none;
 }
 
-.faq .faq-list li + li {
+.myList .myList-list li + li {
     margin-top: 15px;
 }
 
-.faq .faq-list li {
+.myList .myList-list li {
     padding: 20px;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 15px;
     position: relative;
+    box-shadow: 0 6px 9px rgba(0, 0, 0, 0.16);
 }
 
-.faq .faq-list a {
+.myList .myList-list a {
     display: block;
     position: relative;
     font-family: "Poppins", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     font-weight: 500;
-    padding: 0 30px;
+    padding: 0 10px;
     outline: none;
     cursor: pointer;
 }
 
-.faq .faq-list .icon-help {
+.myList .myList-list .icon-help {
     font-size: 24px;
     position: absolute;
     right: 0;
@@ -1294,44 +1296,184 @@ section {
     color: #9cdc66;
 }
 
-.faq .faq-list .icon-show,
-.faq .faq-list .icon-close {
+.myList .myList-list .icon-show,
+.myList .myList-list .icon-close {
     font-size: 24px;
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.faq .faq-list p {
+.myList .myList-list p {
     margin-bottom: 0;
-    padding: 10px 0 0 0;
+    padding: 15px 0 0 10px;
+    font-size: 14px;
 }
 
-.faq .faq-list .icon-show {
+
+
+.myList .myList-list .icon-show {
     display: none;
 }
 
-.faq .faq-list a.collapsed {
+.myList .myList-list a.collapsed {
     color: #343a40;
 }
 
-.faq .faq-list a.collapsed:hover {
+.myList .myList-list a.collapsed:hover {
     color: #5c9f24;
 }
 
-.faq .faq-list a.collapsed .icon-show {
+.myList .myList-list a.collapsed .icon-show {
     display: inline-block;
 }
 
-.faq .faq-list a.collapsed .icon-close {
+.myList .myList-list a.collapsed .icon-close {
     display: none;
 }
 
+.myList .myList-list .img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @media (max-width: 1200px) {
-    .faq .faq-list {
+    .myList .myList-list {
         padding: 0;
     }
 }
+
+@media (max-width: 600px) {
+    .myList .myList-list .row {
+        justify-content: center;
+    }
+
+    .myList .myList-list .img-container {
+        max-width: 45%;
+    }
+
+    .myList .myList-list .title {
+        margin: 10px 0 10px;
+    }
+
+    .myList .myList-list .read-links {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .myList .myList-list .store-link{
+        position: relative;
+        display: flex;
+    }
+}
+
+.myList .myList-list .rating {
+    display: flex;
+
+}
+
+.myList .myList-list .rating input {
+    display: none;
+}
+
+.myList .myList-list .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.myList .myList-list .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+.myList .myList-list .rating input:checked ~ label,
+.myList .myList-list .rating label:hover,
+.myList .myList-list .rating label:hover ~ label {
+    color: #ffc720;
+    transition: color 0.3s;
+}
+
+.myList .myList-list .store-link {
+    position: absolute;
+    right: 150px;
+    bottom: 10px;
+}
+
+.read-links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.read-links button {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #5c9f24;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    color: #5c9f24;
+    z-index: 1;
+    margin: 5px;
+    background-color: #FFFFFF;
+}
+
+.read-links button i {
+    font-size: 20px;
+}
+
+.read-links button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.read-links button:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #5c9f24;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.read-links button:hover {
+    color: #ffffff;
+    border: 1px solid #5c9f24;
+}
+
+.read-links button:hover:before {
+    top: -35%;
+    background-color: #5c9f24;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.read-links button:hover:after {
+    top: -45%;
+    background-color: #5c9f24;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
 
 /*--------------------------------------------------------------
 # Contact
@@ -1668,16 +1810,17 @@ section {
 # Add book form
 --------------------------------------------------------------*/
 .addbook-container {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
 @media screen and (min-height: 1000px) {
-    .addbook-container{
+    .addbook-container {
         padding-top: 5rem;
-        display:  block;
+        display: block;
         min-height: 700px;
-}
+    }
 }
 
 
@@ -1773,15 +1916,16 @@ form .add-book-form .loading {
 # Add author form
 --------------------------------------------------------------*/
 .addauthor-container {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
+
 @media screen and (min-height: 1000px) {
-    .addauthor-container{
+    .addauthor-container {
         padding-top: 5rem;
-        display:  block;
+        display: block;
         min-height: 700px;
     }
 }
@@ -1891,16 +2035,16 @@ input[type=number] {
 # Edit book form
 --------------------------------------------------------------*/
 .editbook-container {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
 
 @media screen and (min-height: 1000px) {
-    .editbook-container{
+    .editbook-container {
         padding-top: 5rem;
-        display:  block;
+        display: block;
         min-height: 700px;
     }
 }
@@ -2032,52 +2176,88 @@ form .edit-book-form .loading {
 
 }
 
-.search-box:focus{
-    border-color: #5c9f24;
-    box-shadow: none;
+.search-container {
+    position: center;
 }
 
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
 
-/*--------------------------------------------------------------
-# Edit book form
---------------------------------------------------------------*/
- .dtl-container{
+.form {
+    --timing: 0.3s;
+    --width-of-input: 40%;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #fff;
+    --border-color: #5c9f24;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: absolute;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
     display: flex;
-    height: 100vh;
-     align-items: center;
-     justify-content: center;
-}
-
- .dtl-container .dtl-card{
-     display: flex;
-     border-radius: 15px;
-     box-shadow: 5px 5px 25px  #6c757d;
- }
-
-.dtl-container .dtl-card .row{
     align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg, #fff);
+    top: 175px;
 }
 
-.dtl-container .dtl-card img{
-    border-radius: 10px;
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
 }
 
-@media (max-width: 600px){
-    .dtl-container .dtl-card .img-container{
-        display: flex;
-        justify-content: center;
-    }
-    .dtl-container .dtl-card img{
-        max-width: 35%;
-        margin: 20px;
-    }
+.form:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
 }
 
-    .dtl-container .dtl-card p{
-    font-size: 15px;
-    color: #848484;
+.form:focus-within {
+    border-radius: var(--after-border-radius);
 }
 
-.dtl-container .dtl-card hr.solid {
-    border-top: 3px solid #bbb;
+input:focus {
+    outline: none;
 }
+
+.form:focus-within:before {
+    transform: scale(1);
+}
+
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+

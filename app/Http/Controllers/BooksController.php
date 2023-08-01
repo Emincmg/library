@@ -7,24 +7,23 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use GuzzleHttp;
 use Illuminate\Support\Facades\Log;
-use App\Services\GoogleBooksService;
 
 class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('book_title', 'ASC')->get();
+        $books = Book::orderBy('title', 'ASC')->get();
         $bookCount = count($books);
-        $categories = Categories::all('book_category');
-        $categoryCount = count($categories);
         $authors = Author::all();
         $authorCount = count($authors);
-        $bookStockSum = $books->sum('book_stock');
-        return view('frontend.index', compact(['books', 'bookCount', 'categories', 'categoryCount', 'authors', 'authorCount', 'bookStockSum']));
+        $bookStockSum = $books->sum('stock');
+        return view('index', compact(['books', 'bookCount', 'authors', 'authorCount', 'bookStockSum']));
     }
+
     public function addBook(Request $request)
     {
 
@@ -33,24 +32,24 @@ class BooksController extends Controller
 
         //Store the form data
         session_start();
-        $_SESSION['book_title'] = $_POST['book_title'];
-        $_SESSION['book_author'] = $_POST['book_author'];
-        $_SESSION['book_explanation'] = $_POST['book_explanation'];
-        $_SESSION['book_img'] = $_POST['book_img'];
-        $_SESSION['book_date'] = $_POST['book_date'];
-        $_SESSION['book_stock'] = $_POST['book_stock'];
-        $_SESSION['book_category'] = $_POST['book_category'];
+        $_SESSION['title'] = $_POST['title'];
+        $_SESSION['author'] = $_POST['author'];
+        $_SESSION['explanation'] = $_POST['explanation'];
+        $_SESSION['img'] = $_POST['img'];
+        $_SESSION['date'] = $_POST['date'];
+        $_SESSION['stock'] = $_POST['stock'];
+        $_SESSION['category'] = $_POST['category'];
 
         if ($validatedData) {
 
             //Author database check if exists
-            $authorDbCheck = Author::where('author_name', $request->book_author)->first();
+            $authorDbCheck = Author::where('author_name', $request->author)->first();
             if (!$authorDbCheck) {
                 return abort('404', 'Author you provided doesnt exists in the application database. Go to author creation page?');
             }
 
             //Book database check if exists
-            $bookDbCheck = Book::where('book_title', $request->book_title)->first();
+            $bookDbCheck = Book::where('title', $request->title)->first();
             if ($bookDbCheck) {
                 return abort('409', 'Book already exits.');
             }
@@ -62,8 +61,8 @@ class BooksController extends Controller
 
     public function addBookPage()
     {
-        $categories = Categories::all('book_category');
-        return view('frontend.addbook', compact('categories'));
+        $categories = Categories::all('category');
+        return view('addbook', compact('categories'));
     }
 
     public function addAuthor(Request $request)
@@ -88,7 +87,7 @@ class BooksController extends Controller
 
     public function addAuthorPage()
     {
-        return view('frontend.addauthor');
+        return view('addauthor');
     }
 
     public function editBook(Request $request)
@@ -104,8 +103,8 @@ class BooksController extends Controller
     public function editBookPage($id)
     {
         $book = Book::Where('id', $id)->first();
-        $categories = Categories::all('book_category');
-        return view('frontend.editbook', compact('categories', 'book'));
+        $categories = Categories::all('category');
+        return view('editbook', compact('categories', 'book'));
     }
 
     public function deleteBook($id)
@@ -117,26 +116,53 @@ class BooksController extends Controller
     public function bookDetail($id)
     {
         $book = Book::Where('id', $id)->first();
-        return view('frontend.book-detail', compact('book'));
+        return view('book-detail', compact('book'));
+    }
+
+    protected function insertBook(Request $request, $volumeID){
+
+        $client = new GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
+
+        $book = json_decode($response->getBody()->getContents(), true);
+        $user = Auth::user();
+
+        $title = $book['volumeInfo']['title'] ?? null;
+        $authors = $book['volumeInfo']['authors'] ?? null;
+        $explanation = $book['volumeInfo']['description'] ?? null;
+        $category = $book['volumeInfo']['categories'] ?? null;
+        $img = $book['volumeInfo']['imageLinks']['thumbnail'] ?? null;
+        $date = $book['volumeInfo']['publishedDate'] ?? null;
+        $pages = $book['volumeInfo']['pageCount'] ?? null;
+        $link = $book['volumeInfo']['canonicalVolumeLink'] ?? null;
+
+        $bookData = new Book([
+            'title' => $title,
+            'authors' => $authors,
+            'explanation' => $explanation,
+            'category' => $category,
+            'img' => $img,
+            'date' => $date,
+            'pages' => $pages,
+            'link' => $link,
+        ]);
+
+        $user->books()->save($bookData);
+
+        return \response('created', 200);
     }
 
     protected function getBooksFromGoogleAPI(Request $request)
-    {
+  {
         $token = $request->getContent();
         Log::debug($token);
 
-//        $client = new GuzzleHttp\Client();
-//        $response = $client->request('GET', 'https://api.collectapi.com/book/newBook', [
-//            'headers' => [
-//                'authorization' => "apikey 1nlKQ7aMXGYtOfvz7YrfAc:4y8LyQBDJ6dxKiCY5xWToy",
-//                'content-Type' => 'application/json'
-//            ]]);
-//        $books = json_decode($response->getBody()->getContents(),1)['result'];
-//        foreach ($books as $book){
-//            $collection[]= array(
-//                ""
-//            )
-//        }
-    }
+       $client = new GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/vaJrnQEACAAJ'
+       );
+
+        $books = json_decode($response->getBody()->getContents(), 1);
+        dd($books);
+   }
 }
 

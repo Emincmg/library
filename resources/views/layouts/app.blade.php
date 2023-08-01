@@ -1,83 +1,116 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Library application · Ali Emin Çomoğlu</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Favicons -->
+    <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{asset('assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/alertifyjs/css/alertify.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/alertifyjs/css/themes/semantic.css')}}" rel="stylesheet">
+    <link href="{{asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}"
+          rel="stylesheet">
+    <link href="{{asset('assets/vendor/jquery-select-picker/picker.css')}}" rel="stylesheet">
+    @livewireStyles
+    <!-- Template Main CSS File -->
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+        <h1 class="logo"><a href="{{route('index')}}">Library</a></h1>
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
+                @auth
+                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i
+                                class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{{route('listindex')}}">My book list</a></li>
+                            {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
+                            {{--                                <ul>--}}
+                            {{--                                    <li><a href="#">Deep Drop Down 1</a></li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </li>--}}
+                            <li><a href="{{route('logout')}}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                        </ul>
+                    </li>
+                @endauth
+                @guest
+                    <li><a class="getstarted scrollto" href="{{route('login')}}">Get Started</a></li>
+                @endguest
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+</header><!-- End Header -->
+@yield('content')
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            <strong><span>Library application</span></strong>
+        </div>
+        <div class="credits">
+            Developed by <a href="">Ali Emin Çomoğlu</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{{asset('//code.jquery.com/jquery.min.js')}}"></script>
+<script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+<script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{asset('assets/vendor/alertifyjs/alertify.min.js')}}"></script>
+<script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}"
+        integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+<script src="{{asset('assets/vendor/jquery-select-picker/picker.min.js')}}"></script>
+
+
+<!-- Template Main JS File -->
+<script src="{{asset('assets/js/main.js')}}"></script>
+@include('scripts')
+@yield('scripts')
+@livewireScripts
 </body>
+
 </html>

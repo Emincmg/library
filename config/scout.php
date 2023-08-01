@@ -137,8 +137,8 @@ return [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
             // ],
             App\Models\Book::class=>[
-                'searchableAttributes'=>['book_title', 'book_author','book_category'],
-                'filterableAttributes'=> ['book_title', 'book_author','book_category'],
+                'searchableAttributes'=>['title', 'author','category'],
+                'filterableAttributes'=> ['title', 'author','category'],
             ],
         ],
     ],

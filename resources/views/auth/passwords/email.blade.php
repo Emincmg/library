@@ -1,7 +1,7 @@
-@extends('frontend.layouts.inner-page')
+@extends('layouts.inner-page')
 
 @section('content')
-    @extends('frontend.layouts.inner-page')
+    @extends('layouts.inner-page')
 
     @section('content')
 

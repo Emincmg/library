@@ -96,5 +96,8 @@
                 coloring: classes,
             });
         });
+
+        //Add to will book list button
+        $('#willReadButton').on('click')
     </script>
 @endsection
