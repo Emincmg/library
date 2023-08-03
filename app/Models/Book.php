@@ -15,7 +15,8 @@ class Book extends Model
     protected $casts =
         [
             'category'=>'array',
-            'authors'=>'array'
+            'authors'=>'array',
+            'readBefore'=>'boolean'
         ];
 
     protected $fillable =
@@ -30,7 +31,8 @@ class Book extends Model
             'pages',
             'rate',
             'notes',
-            'link'
+            'link',
+            'readBefore'
         ];
 
     public function searchableAs()

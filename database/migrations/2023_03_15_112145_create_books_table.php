@@ -25,7 +25,7 @@ class CreateBooksTable extends Migration
             $table->string('date')->nullable();
             $table->integer('pages')->nullable();
             $table->integer('rate')->nullable();
-            $table->boolean('readBefore')->default(false);
+            $table->boolean('readBefore')->nullable()->default(false);
             $table->boolean('searchable')->default(true);
             $table->string('link')->nullable();
             $table->unsignedBigInteger('user_id');

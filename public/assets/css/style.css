@@ -2180,13 +2180,13 @@ form .edit-book-form .loading {
     position: center;
 }
 
-.form button {
+.search-form button {
     border: none;
     background: none;
     color: #8b8ba7;
 }
 
-.form {
+.search-form{
     --timing: 0.3s;
     --width-of-input: 40%;
     --height-of-input: 40px;
@@ -2207,7 +2207,7 @@ form .edit-book-form .loading {
     top: 175px;
 }
 
-.input {
+.search-form .input {
     font-size: 0.9rem;
     background-color: transparent;
     width: 100%;
@@ -2217,7 +2217,7 @@ form .edit-book-form .loading {
     border: none;
 }
 
-.form:before {
+.search-form:before {
     content: "";
     position: absolute;
     background: var(--border-color);

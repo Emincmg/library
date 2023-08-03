@@ -1,11 +1,10 @@
 <div>
-
     <section id="myList" class="myList section-bg">
         <div class="container mt-5">
             <div class="myList-list">
                 <ul>
                     <div class="search-container">
-                        <form class="form">
+                        <form class="search-form">
                             <button>
                                 <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                     <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -56,9 +55,9 @@
                                         @endif
                                             </div>
                                         <div class="read-links">
-                                            <button title="Add to already read book list" class="alreadyReadButton"><i
+                                            <button title="Add to already read book list" id="alreadyReadButton" data-id="{{$book['id']}}"><i
                                                     class='bx bx-list-check'></i></button>
-                                            <button title="Add to will read book list" class="willReadButton"><i class='bx bx-list-plus'></i>
+                                            <button title="Add to will read book list" id="willReadButton" data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
                                             </button>
                                         </div>
                                     </div>

@@ -119,7 +119,7 @@ class BooksController extends Controller
         return view('book-detail', compact('book'));
     }
 
-    protected function insertBook(Request $request, $volumeID){
+    protected function insertWillReadBook(Request $request, $volumeID){
 
         $client = new GuzzleHttp\Client();
         $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
@@ -145,24 +145,45 @@ class BooksController extends Controller
             'date' => $date,
             'pages' => $pages,
             'link' => $link,
+            'readBefore'=>false,
         ]);
 
         $user->books()->save($bookData);
 
         return \response('created', 200);
     }
+    protected function insertAlreadyReadBook(Request $request, $volumeID){
 
-    protected function getBooksFromGoogleAPI(Request $request)
-  {
-        $token = $request->getContent();
-        Log::debug($token);
+        $client = new GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
 
-       $client = new GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/vaJrnQEACAAJ'
-       );
+        $book = json_decode($response->getBody()->getContents(), true);
+        $user = Auth::user();
 
-        $books = json_decode($response->getBody()->getContents(), 1);
-        dd($books);
-   }
+        $title = $book['volumeInfo']['title'] ?? null;
+        $authors = $book['volumeInfo']['authors'] ?? null;
+        $explanation = $book['volumeInfo']['description'] ?? null;
+        $category = $book['volumeInfo']['categories'] ?? null;
+        $img = $book['volumeInfo']['imageLinks']['thumbnail'] ?? null;
+        $date = $book['volumeInfo']['publishedDate'] ?? null;
+        $pages = $book['volumeInfo']['pageCount'] ?? null;
+        $link = $book['volumeInfo']['canonicalVolumeLink'] ?? null;
+
+        $bookData = new Book([
+            'title' => $title,
+            'authors' => $authors,
+            'explanation' => $explanation,
+            'category' => $category,
+            'img' => $img,
+            'date' => $date,
+            'pages' => $pages,
+            'link' => $link,
+            'readBefore'=>true,
+        ]);
+
+        $user->books()->save($bookData);
+
+        return \response('created', 200);
+    }
 }
 

@@ -98,6 +98,44 @@
         });
 
         //Add to will book list button
-        $('#willReadButton').on('click')
+        $(document).on('click','#willReadButton' ,function (){
+            let bookID = $(this).data("id");
+            console.log('tiklandi')
+            $.ajax({
+                url: '/insertWillReadBook/'+ bookID,
+                type: 'GET',
+                success: function (response) {
+                    // alertify.notify(response.message, 'success', 2, function () {
+                    // });
+                },
+                error: function (xhr, status, error){
+                    // let message = JSON.parse(xhr.responseText).message;
+                    // $('#addAuthor-errors').empty().show().html('').delay(3000).fadeOut(500);
+                    // $.each(xhr.responseJSON, function (key, value) {
+                    // });
+                    // alertify.error(message, 2);
+                }
+            })
+        });
+        //Add to already read book list button
+        $(document).on('click','#alreadyReadButton',function (){
+            let bookID = $(this).data("id");
+            console.log('tıklandı')
+            $.ajax({
+                url: '/insertAlreadyReadBook/'+ bookID,
+                type: 'GET',
+                success: function (response) {
+                    // alertify.notify(response.message, 'success', 2, function () {
+                    // });
+                },
+                error: function (xhr, status, error){
+                    // let message = JSON.parse(xhr.responseText).message;
+                    // $('#addAuthor-errors').empty().show().html('').delay(3000).fadeOut(500);
+                    // $.each(xhr.responseJSON, function (key, value) {
+                    // });
+                    // alertify.error(message, 2);
+                }
+            })
+        });
     </script>
 @endsection
