@@ -18,7 +18,14 @@
                     })
                 },
                 error: function (xhr, status, error){
-
+                    let message = JSON.parse(xhr.responseText).message;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
         });
@@ -39,7 +46,14 @@
                     })
                 },
                 error: function (xhr, status, error){
-
+                    let message = JSON.parse(xhr.responseText).message;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
         });

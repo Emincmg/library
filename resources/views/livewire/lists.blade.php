@@ -205,7 +205,7 @@
                 <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                     <div class="count-box">
                         <i class='bx bx-user-pin'></i>
-                        <span data-purecounter-start="0" data-purecounter-end="55"
+                        <span data-purecounter-start="0" data-purecounter-end="{{$authorsCount}}"
                               data-purecounter-duration="1" class="purecounter"></span>
                         <p><strong>Authors</strong> registered.</p>
                     </div>
@@ -214,7 +214,7 @@
                 <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                     <div class="count-box">
                         <i class='bx bx-objects-horizontal-left'></i>
-                        <span data-purecounter-start="0" data-purecounter-end="56" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{$categoriesCount}}" data-purecounter-duration="1"
                               class="purecounter"></span>
                         <p>Book <strong>Categories.</strong> </p>
                     </div>

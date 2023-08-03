@@ -32,7 +32,8 @@ class Book extends Model
             'rate',
             'notes',
             'link',
-            'readBefore'
+            'readBefore',
+            'volumeID'
         ];
 
     public function searchableAs()

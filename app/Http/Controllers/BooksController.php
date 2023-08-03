@@ -64,12 +64,17 @@ class BooksController extends Controller
     }
 
     protected function insertWillReadBook(Request $request, $volumeID){
+        $user = Auth::user();
+        $checkBookTitle = $user->books()->where('volumeID',$volumeID)->first();
+        if ($checkBookTitle){
+            abort(409,'Book already exists.');
+        }
 
         $client = new GuzzleHttp\Client();
         $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
 
         $book = json_decode($response->getBody()->getContents(), true);
-        $user = Auth::user();
+
 
         $title = $book['volumeInfo']['title'] ?? null;
         $authors = $book['volumeInfo']['authors'] ?? null;
@@ -90,6 +95,7 @@ class BooksController extends Controller
             'pages' => $pages,
             'link' => $link,
             'readBefore'=>false,
+            'volumeID'=>$volumeID
         ]);
 
         $user->books()->save($bookData);
@@ -97,11 +103,18 @@ class BooksController extends Controller
     }
     protected function insertAlreadyReadBook(Request $request, $volumeID){
 
+        $user = Auth::user();
+        $checkBookTitle = $user->books()->where('volumeID',$volumeID)->first();
+        if ($checkBookTitle){
+            abort(409,'Book already exists.');
+        }
+
         $client = new GuzzleHttp\Client();
         $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
 
         $book = json_decode($response->getBody()->getContents(), true);
-        $user = Auth::user();
+
+
 
         $title = $book['volumeInfo']['title'] ?? null;
         $authors = $book['volumeInfo']['authors'] ?? null;
@@ -111,6 +124,7 @@ class BooksController extends Controller
         $date = $book['volumeInfo']['publishedDate'] ?? null;
         $pages = $book['volumeInfo']['pageCount'] ?? null;
         $link = $book['volumeInfo']['canonicalVolumeLink'] ?? null;
+
 
         $bookData = new Book([
             'title' => $title,
@@ -122,6 +136,7 @@ class BooksController extends Controller
             'pages' => $pages,
             'link' => $link,
             'readBefore'=>true,
+            'volumeID'=>$volumeID
         ]);
 
         $user->books()->save($bookData);
