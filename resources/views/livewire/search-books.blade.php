@@ -19,7 +19,7 @@
                         </form>
                     </div>
                     @isset($bookData)
-                        @foreach($bookData as $book)
+                        @forelse($bookData as $book)
                             <li data-aos="fade-up d-flex">
                                 <div class="row">
                                     <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}" >
@@ -75,7 +75,93 @@
                                 {{--                                                                        <label for="star1"></label>--}}
                                 {{--                                                                    </span>--}}
                             </li>
-                        @endforeach
+                        @empty
+                            <li class="placeholder-wrapper">
+
+                                <div class="col-md-2" >
+                                    <div class="placeholder-img section-bg"></div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="placeholder-wrapper">
+
+                                <div class="col-md-2" >
+                                    <div class="placeholder-img section-bg"></div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="placeholder-wrapper">
+
+                                <div class="col-md-2" >
+                                    <div class="placeholder-img section-bg"></div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="placeholder-wrapper">
+
+                                <div class="col-md-2" >
+                                    <div class="placeholder-img section-bg"></div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="placeholder-wrapper">
+
+                                <div class="col-md-2" >
+                                    <div class="placeholder-img section-bg"></div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </li>
+                        @endforelse
                     @endisset
                 </ul>
             </div>

@@ -22,7 +22,7 @@ class SearchBooks extends Component
 
         $client = new GuzzleHttp\Client();
         if ($this->search){
-            $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes?q=' . $this->search);
+            $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes?key=AIzaSyDHg3e16JU-uJGpNEcx6S2aCkQV2u4oRcQ&q=' . $this->search);
             $books = json_decode($response->getBody()->getContents(), 1);
             $bookData = $books['items'];
         }

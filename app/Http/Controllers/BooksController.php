@@ -3,25 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidationRequest;
-use App\Models\Author;
 use App\Models\Book;
-use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use GuzzleHttp;
-use Illuminate\Support\Facades\Log;
+
 
 class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('title', 'ASC')->get();
-        $bookCount = count($books);
-        $authors = Author::all();
-        $authorCount = count($authors);
-        $bookStockSum = $books->sum('stock');
-        return view('index', compact(['books', 'bookCount', 'authors', 'authorCount', 'bookStockSum']));
+        return view('index');
     }
 
     public function addBook(Request $request)
@@ -42,12 +35,6 @@ class BooksController extends Controller
 
         if ($validatedData) {
 
-            //Author database check if exists
-            $authorDbCheck = Author::where('author_name', $request->author)->first();
-            if (!$authorDbCheck) {
-                return abort('404', 'Author you provided doesnt exists in the application database. Go to author creation page?');
-            }
-
             //Book database check if exists
             $bookDbCheck = Book::where('title', $request->title)->first();
             if ($bookDbCheck) {
@@ -61,50 +48,7 @@ class BooksController extends Controller
 
     public function addBookPage()
     {
-        $categories = Categories::all('category');
-        return view('addbook', compact('categories'));
-    }
-
-    public function addAuthor(Request $request)
-    {
-
-        $validationRequest = new ValidationRequest;
-        $validatedData = $validationRequest->authorValidate($request);
-
-        $_SESSION['author_name'] = $request->author_name;
-
-        if ($validatedData) {
-            //Author database check if exists
-            $createdAuthor = Author::where('author_name', $request->author_name)->first();
-            if ($createdAuthor) {
-                return response()->json(['message' => 'Author already exists.'], 409);
-            }
-            Author::create($validatedData);
-        }
-
-        return response()->json(['message' => 'Author created successfully!'], 201);
-    }
-
-    public function addAuthorPage()
-    {
-        return view('addauthor');
-    }
-
-    public function editBook(Request $request)
-    {
-        $validationRequest = new ValidationRequest;
-        $validatedData = $validationRequest->bookValidate($request);
-        if ($validatedData) {
-            Book::Where('id', $request->id)->update($validatedData);
-        }
-        return response()->json(['message' => 'Book edited successfully!'], 204);
-    }
-
-    public function editBookPage($id)
-    {
-        $book = Book::Where('id', $id)->first();
-        $categories = Categories::all('category');
-        return view('editbook', compact('categories', 'book'));
+        return view('addbook');
     }
 
     public function deleteBook($id)
