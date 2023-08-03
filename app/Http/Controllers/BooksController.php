@@ -51,6 +51,13 @@ class BooksController extends Controller
         return view('addbook');
     }
 
+    public function changeReadField($id,$value){
+
+        $user = Auth::user();
+        $book = $user->books()->where('id',$id)->firstOrFail();
+
+        $book->update(['readBefore' => $value]);
+    }
     public function deleteBook($id)
     {
         Book::destroy($id);

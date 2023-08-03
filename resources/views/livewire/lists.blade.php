@@ -49,7 +49,7 @@
 
                                         </div>
                                         <div class="read-links">
-                                            <button title="Add to already read book list" wire:click="changeReadField('{{ json_encode([$book->id, true]) }}')"><i
+                                            <button title="Add to already read book list" id="alreadyReadChangeBtn" data-id="{{$book->id}}"><i
                                                     class='bx bx-list-check'></i></button>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                             @endif
                                         </div>
                                         <div class="read-links">
-                                            <button title="Add to will read book list" @isset($book->id)wire:click="changeReadField('{{ json_encode([$book->id, false]) }}')"@endisset><i class='bx bx-list-plus'></i>
+                                            <button title="Add to will read book list" id="willReadChangeBtn" data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
                                             </button>
                                         </div>
                                     </div>

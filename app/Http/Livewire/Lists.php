@@ -22,23 +22,4 @@ class Lists extends Component
         });
         return view('livewire.lists',compact('readBooks','unreadBooks','booksCount','authorsCount','categoriesCount'));
     }
-    public function deleteBook($id)
-    {
-        Book::destroy($id);
-    }
-
-    public function changeReadField($data){
-
-        $decodedData = json_decode($data, true);
-
-
-        $id = $decodedData[0];
-        $value = $decodedData[1];
-
-        $user = Auth::user();
-        $book = $user->books()->where('id',$id)->firstOrFail();
-
-        sweetalert('Changed book read value','success');
-        $book->update(['readBefore' => $value]);
-    }
 }

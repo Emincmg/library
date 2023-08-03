@@ -33,36 +33,4 @@ class SearchBooks extends Component
         return view('livewire.search-books', compact('bookData'));
     }
 
-    public function insertAlreadyReadBook(Request $request, $volumeID){
-
-        $client = new GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID);
-
-        $book = json_decode($response->getBody()->getContents(), true);
-        $user = Auth::user();
-
-        $title = $book['volumeInfo']['title'] ?? null;
-        $authors = $book['volumeInfo']['authors'] ?? null;
-        $explanation = $book['volumeInfo']['description'] ?? null;
-        $category = $book['volumeInfo']['categories'] ?? null;
-        $img = $book['volumeInfo']['imageLinks']['thumbnail'] ?? null;
-        $date = $book['volumeInfo']['publishedDate'] ?? null;
-        $pages = $book['volumeInfo']['pageCount'] ?? null;
-        $link = $book['volumeInfo']['canonicalVolumeLink'] ?? null;
-
-        $bookData = new Book([
-            'title' => $title,
-            'authors' => $authors,
-            'explanation' => $explanation,
-            'category' => $category,
-            'img' => $img,
-            'date' => $date,
-            'pages' => $pages,
-            'link' => $link,
-            'readBefore'=>true,
-        ]);
-
-        $user->books()->save($bookData);
-    }
-
 }

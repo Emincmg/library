@@ -86,5 +86,47 @@
             })
 
         });
+
+        $(document).on('click','#alreadyReadChangeBtn',function (){
+            let bookID = $(this).data("id");
+            let read = 1;
+
+            $.ajax({
+                url:'/changeread/'+bookID +'/'+ read,
+                type:'GET',
+                success:function (){
+                    Swal.fire(
+                        'Changed!',
+                        'Book list changed to already read!',
+                        'success'
+                    )
+                }
+            })
+
+            setTimeout(function() {
+                location.reload();
+            }, 1500);
+        });
+
+        $(document).on('click','#willReadChangeBtn',function (){
+            let bookID = $(this).data("id");
+            let read = 0;
+
+            $.ajax({
+                url:'/changeread/'+bookID +'/'+ read,
+                type:'GET',
+                success:function (){
+                    Swal.fire(
+                        'Changed!',
+                        'Book list changed to already read!',
+                        'success'
+                    )
+                }
+            })
+
+            setTimeout(function() {
+                location.reload();
+            }, 1500);
+        });
     </script>
 @endsection
