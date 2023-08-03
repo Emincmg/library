@@ -14,9 +14,6 @@
                                         @if(isset($book->img) && !empty($book->img))
                                             <img src="{{$book->img}}" alt=""
                                                  class="img-fluid">
-                                        @else
-                                            <img src="{{$placeHolderBook->img}}" alt=""
-                                                 class="img-fluid">
                                         @endif
                                             @if(isset($book->link) && !empty($book->link))
                                                 <a href="{{$book->link}}}}" class="list-store-link"><i class='bx bxl-google' ></i>Preview</a>
@@ -31,7 +28,7 @@
                                                 {{ implode(', ', $book->authors) }}
                                             @endif </a>
                                         <div class="del-button-wrapper">
-                                            <button title="Add to already read book list" id="delButton" data-id="{{$book['id']}}"><i class='bx bx-x' wire:click="deleteBook({{$book->id}})"></i></button>
+                                            <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}"><i class='bx bx-x' ></i></button>
                                         </div>
                                         @if(isset($book->category) && !empty($book->category))
                                             <p><strong>Categories
@@ -126,7 +123,7 @@
                                             @endif
                                         </a>
                                         <div class="del-button-wrapper">
-                                            <button title="Delete book"><i class='bx bx-x' wire:click="deleteBook({{$book->id}})"></i></button>
+                                            <button title="Delete book" id="deleteButton" data-id="{{$book->id}}"><i class='bx bx-x'></i></button>
                                         </div>
                                         @if(isset($book->category) && !empty($book->category))
                                             <p><strong>Categories
@@ -199,7 +196,7 @@
                 <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                     <div class="count-box">
                         <i class='bx bx-book-open'></i>
-                        <span data-purecounter-start="0" data-purecounter-end="54"
+                        <span data-purecounter-start="0" data-purecounter-end="{{$booksCount}}"
                               data-purecounter-duration="1" class="purecounter"></span>
                         <p><strong>Books</strong> registered.</p>
                     </div>

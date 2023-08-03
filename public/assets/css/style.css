@@ -1560,6 +1560,7 @@ section {
 .placeholder-wrapper{
     display: flex;
     min-height: 120px;
+    margin: 0 8dvh 0 8dvh;
 }
 
 .placeholder-wrapper .row {
@@ -1577,6 +1578,7 @@ section {
 @media (max-width: 768px){
     .placeholder-wrapper{
         display: block;
+        margin: 0 8dvh 0 8dvh;
     }
 }
 /*--------------------------------------------------------------
@@ -2292,7 +2294,7 @@ form .edit-book-form .loading {
 
 .search-form{
     --timing: 0.3s;
-    --width-of-input: 40%;
+    --width-of-input: 60dvw;
     --height-of-input: 40px;
     --border-height: 2px;
     --input-bg: #fff;

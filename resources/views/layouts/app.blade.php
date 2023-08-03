@@ -48,6 +48,7 @@
                 <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#why-us">Why me?</a></li>
                 @auth
                     <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i
                                 class="bi bi-chevron-down"></i></a>
@@ -104,7 +105,7 @@
 <script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}"
         integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="{{asset('assets/vendor/jquery-select-picker/picker.min.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Template Main JS File -->
 <script src="{{asset('assets/js/main.js')}}"></script>

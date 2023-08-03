@@ -13,7 +13,8 @@ class Lists extends Component
         $user = Auth::user();
         $readBooks = $user->books()->where('readBefore',true)->get();
         $unreadBooks = $user->books()->where('readBefore',false)->get();
-        return view('livewire.lists',compact('readBooks','unreadBooks'));
+        $booksCount = $user->books()->count();
+        return view('livewire.lists',compact('readBooks','unreadBooks','booksCount'));
     }
     public function deleteBook($id)
     {
@@ -31,6 +32,7 @@ class Lists extends Component
         $user = Auth::user();
         $book = $user->books()->where('id',$id)->firstOrFail();
 
+        flash()->addSuccess('Changed book read value');
         $book->update(['readBefore' => $value]);
     }
 }

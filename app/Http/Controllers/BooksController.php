@@ -94,7 +94,6 @@ class BooksController extends Controller
 
         $user->books()->save($bookData);
 
-        return \response('created', 200);
     }
     protected function insertAlreadyReadBook(Request $request, $volumeID){
 
@@ -126,8 +125,6 @@ class BooksController extends Controller
         ]);
 
         $user->books()->save($bookData);
-
-        return \response('created', 200);
     }
 }
 
