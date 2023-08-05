@@ -1,15 +1,11 @@
 <?php
 
 
-
 namespace App\Http\Controllers;
 
 
-
-use Illuminate\Http\Request;
-
 use App\Models\Contact;
-
+use Illuminate\Http\Request;
 
 
 class ContactController extends Controller
@@ -17,13 +13,9 @@ class ContactController extends Controller
 {
 
     /**
-
      * Write code on Method
-
      *
-
      * @return response()
-
      */
 
     public function index()
@@ -35,15 +27,10 @@ class ContactController extends Controller
     }
 
 
-
     /**
-
      * Write code on Method
-
      *
-
      * @return response()
-
      */
 
     public function store(Request $request)
@@ -56,7 +43,7 @@ class ContactController extends Controller
 
             'email' => 'required|email',
 
-            'phone' => 'required|digits:10|numeric',
+            'phone' => 'required|',
 
             'subject' => 'required',
 
@@ -65,14 +52,11 @@ class ContactController extends Controller
         ]);
 
 
-
         Contact::create($request->all());
 
 
-
-        return redirect()->back()
-
-            ->with(['success' => 'Thank you for contact me. I will contact you shortly.']);
+//        return redirect()->route('index')
+//            ->with(['success' => 'Your contact mail sent.']);
 
     }
 

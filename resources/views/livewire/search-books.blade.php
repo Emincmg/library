@@ -3,7 +3,7 @@
         <div class="container mt-5">
             <div class="myList-list">
                 <div class="search-container">
-                    <form class="search-form">
+                    <form class="search-form" onkeydown="return event.key != 'Enter';">
                         <button>
                             <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -19,7 +19,7 @@
                 </div>
                 <ul>
                     @isset($bookData)
-                        @forelse($bookData as $book)
+                        @foreach($bookData as $book)
                             <li data-aos="fade-up d-flex">
                                 <div class="row">
                                     <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}" >
@@ -27,9 +27,9 @@
                                             <img src="{{$book['volumeInfo']['imageLinks']['thumbnail']}}" alt=""
                                                  class="img-fluid">
                                         @endif
-                                        <a href="{{$book['volumeInfo']['previewLink']}}}}" class="store-link"><i class='bx bxl-google' ></i>Preview</a>
                                     </div>
                                     <div class="col-md-10 ">
+                                        <a href="{{$book['volumeInfo']['previewLink']}}" class="store-link"><i class='bx bxl-google' ></i>Preview</a>
                                         <a data-bs-toggle="collapse" class="collapse title"
                                            data-bs-target="#myList-list-{{$loop->iteration}}">@if(isset($book['volumeInfo']['title']) && !empty($book['volumeInfo']['title']))
                                                 {{$book['volumeInfo']['title']}}
@@ -55,9 +55,7 @@
                                         @endif
                                             </div>
                                         <div class="read-links">
-                                            <button title="Add to already read book list" id="alreadyReadButton" data-id="{{$book['id']}}"><i
-                                                    class='bx bx-list-check'></i></button>
-                                            <button title="Add to will read book list" id="willReadButton" data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
+                                            <button title="Add to book list" id="add-button" data-id="{{$book['id']}}"><i class='bx bx-plus'></i>
                                             </button>
                                         </div>
                                     </div>
@@ -75,78 +73,85 @@
                                 {{--                                                                        <label for="star1"></label>--}}
                                 {{--                                                                    </span>--}}
                             </li>
-                        @empty
-                            <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </li>
-
-                        @endforelse
+                        @endforeach
                     @endisset
+                        <div class="container" wire:loading.remove style="height: 60vh">
+
+                        </div>
+
+                    <div wire:loading.block>
+
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2">
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10" >
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2" >
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2" >
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2" >
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+
+                    </div>
+
                 </ul>
             </div>
         </div>

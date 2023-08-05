@@ -62,9 +62,7 @@ class ContactMail extends Mailable
 
     {
 
-        return $this->subject('Contact US - '. $this->data->subject)
-
-            ->view('emails.contact');
+        return $this->subject('Library Application Contact - '. $this->data->subject)->view('emails.contact');
 
     }
 

@@ -14,4 +14,8 @@
 
 <strong>Subject: </strong>{{ $data->subject }} <br>
 
-<strong>Message: </strong>{{ $data->user_query }} <br><br>
+<strong>Message: </strong>{{ $data->message }} <br><br>
+
+
+
+Thank you

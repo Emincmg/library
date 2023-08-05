@@ -15,11 +15,11 @@
                                             <img src="{{$book->img}}" alt=""
                                                  class="img-fluid">
                                         @endif
-                                            @if(isset($book->link) && !empty($book->link))
-                                                <a href="{{$book->link}}}}" class="list-store-link"><i class='bx bxl-google' ></i>Preview</a>
-                                            @endif
                                     </div>
                                     <div class="col-md-10 ">
+                                        @if(isset($book->link) && !empty($book->link))
+                                            <a href="{{$book->link}}" class="store-link"><i class='bx bxl-google' ></i>Preview</a>
+                                        @endif
                                         <a data-bs-toggle="collapse" class="collapse title"
                                            data-bs-target="#myList-list-{{$loop->iteration}}">@if(isset($book->title) && !empty($book->title))
                                                 {{$book->title}}
@@ -68,23 +68,9 @@
                                 {{--                                                                    </span>--}}
                             </li>
                     @empty
-                        <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                <div class="row">
-                                </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
+                            <div class="empty-container">
+                                <h2>No books.</h2>
                             </div>
-                        </li>
                         @endforelse
                     <div class="col mt-4">
                         <div class="container portfolio-insert">
@@ -109,11 +95,11 @@
                                             <img src="{{$book->img}}" alt=""
                                                  class="img-fluid">
                                         @endif
-                                            @if(isset($book->link) && !empty($book->link))
-                                                <a href="{{$book->link}}}}" class="list-store-link"><i class='bx bxl-google' ></i>Preview</a>
-                                            @endif
                                     </div>
                                     <div class="col-md-10 ">
+                                        @if(isset($book->link) && !empty($book->link))
+                                            <a href="{{$book->link}}" class="store-link"><i class='bx bxl-google' ></i>Preview</a>
+                                        @endif
                                         <a data-bs-toggle="collapse" class="collapse title"
                                            data-bs-target="#myList-list-{{$loop->iteration}}">@if(isset($book->title) && !empty($book->title))
                                                 {{$book->title}}
@@ -162,26 +148,21 @@
                                 {{--                                                                    </span>--}}
                             </li>
                         @empty
-                            <li class="placeholder-wrapper">
-
-                                <div class="col-md-2" >
-                                    <div class="placeholder-img section-bg"></div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </li>
+                            <div class="empty-container">
+                                <h2>No books.</h2>
+                            </div>
                         @endforelse
-
+                            <div class="col mt-4">
+                                <div class="container portfolio-insert">
+                                    <div class="col-md-6 icon-box">
+                                        <div class="d-flex flex-column">
+                                            <a href="{{route('addbookpage')}}"><i class="bx bx-plus rounded-1"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     @endisset
+
                 </ul>
             </div>
         </div>

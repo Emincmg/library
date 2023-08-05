@@ -50,7 +50,7 @@ class Contact extends Model
 
 
 
-            $adminEmail = "emin-comoglu@hotmai.com";
+            $adminEmail = "emin-comoglu@hotmail.com";
 
             Mail::to($adminEmail)->send(new ContactMail($item));
 

@@ -15,6 +15,11 @@
                             <div class="carousel-content">
                                 <h2 class="animate__animated animate__fadeInDown">Library Application</h2>
                                 <p class="animate__animated animate__fadeInUp">Library management application.</p>
+                                @auth
+                                    <div>
+                                        <a href="{{route('listindex')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Book List</a>
+                                    </div>
+                                @endauth
                                 @guest
                                 <div>
                                     <a href="{{route('login')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
@@ -188,7 +193,7 @@
                 </div>
 
                 <div class="form">
-                    <form action="{{ route('contact') }}" method="post" role="form" class="email-form">
+                    <form action="{{ route('contact') }}" method="post" role="form" class="email-form" id="contactUSForm">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
@@ -212,13 +217,8 @@
                         <textarea class="form-control" name="message" rows="5" placeholder="Message"
                                   required></textarea>
                         </div>
-                        <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
                         <div class="text-center">
-                            <button type="submit" disabled aria-disabled="true" class="btn btn-primary disabled">(Under Development)</button>
+                            <button type="submit" class="btn btn-primary">Send E-mail</button>
 
                         </div>
                     </form>

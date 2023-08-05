@@ -45,6 +45,7 @@
                 <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
+                <li><a class="nav-link scrollto" href="{{route('addbookpage')}}">Search Books</a></li>
                 @auth
                     <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

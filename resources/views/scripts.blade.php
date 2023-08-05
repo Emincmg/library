@@ -2,60 +2,98 @@
     <script type="text/javascript">
 
         //Add will book list
-        $(document).on('click','#willReadButton' ,function (){
+        $(document).on('click','#add-button' ,async function () {
             let bookID = $(this).data("id");
 
-            $.ajax({
-                url: '/insertWillReadBook/'+ bookID,
-                type: 'GET',
-                success: function (response) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Book saved',
-                        showConfirmButton: false,
-                        timer: 1500
+            const inputOptions = new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        'true': 'Read before',
+                        'false': 'Didnt read before',
                     })
-                },
-                error: function (xhr, status, error){
-                    let message = JSON.parse(xhr.responseText).message;
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: message,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
+                }, 500)
             })
+
+            const {value: readBefore} = await Swal.fire({
+                title: 'Did you read this book before?',
+                input: 'radio',
+                inputOptions: inputOptions,
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You need to choose something!'
+                    }
+                }
+
+            })
+            if (readBefore) {
+                const { value: note } = await Swal.fire({
+                    input: 'textarea',
+                    inputLabel: 'Do you have any notes?',
+                    inputPlaceholder: 'Type your message here...',
+                    inputAttributes: {
+                        'aria-label': 'Type your message here'
+                    },
+                    showCancelButton: true
+                })
+
+                if (note) {
+                    if(readBefore === "true"){
+                        $.ajax({
+                            url: '/insertAlreadyReadBook/'+ bookID,
+                            type: 'GET',
+                            success: function (response) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Book saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error: function (xhr, status, error){
+                                let message = JSON.parse(xhr.responseText).message;
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+                    }else{
+                        $.ajax({
+                            url: '/insertWillReadBook/' + bookID,
+                            type: 'GET',
+                            success: function (response) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Book saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error: function (xhr, status, error) {
+                                let message = JSON.parse(xhr.responseText).message;
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+                    }
+                }
+            }
         });
         //Add already read book list
         $(document).on('click','#alreadyReadButton',function (){
             let bookID = $(this).data("id");
 
-            $.ajax({
-                url: '/insertAlreadyReadBook/'+ bookID,
-                type: 'GET',
-                success: function (response) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Book saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                },
-                error: function (xhr, status, error){
-                    let message = JSON.parse(xhr.responseText).message;
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: message,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            })
+
         });
 
         $(document).on('click','#deleteButton',function (){
@@ -128,5 +166,29 @@
                 location.reload();
             }, 1500);
         });
+
+        $(document).on('submit','#contactUSForm',function (e){
+            e.preventDefault();
+            let formData = $(this).serialize();
+            Swal.showLoading();
+            $.ajax({
+                url:'contact',
+                type:'POST',
+                data: formData,
+                success:function (){
+                    Swal.fire(
+                        'Sent!',
+                        'Your contact email has been sent.',
+                        'success'
+                    )},
+                error: function(xhr, status, error) {
+                    Swal.fire(
+                        'Error!',
+                        error.message,
+                        'error'
+                    );
+                }
+            })
+        })
     </script>
 @endsection

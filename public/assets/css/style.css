@@ -1311,7 +1311,6 @@ section {
 }
 
 
-
 .myList .myList-list .icon-show {
     display: none;
 }
@@ -1362,11 +1361,13 @@ section {
         display: flex;
         flex-direction: row-reverse;
     }
-    .myList .myList-list .store-link{
+
+    .myList .myList-list .store-link {
         position: relative;
         display: flex;
     }
-    .myList .myList-list .list-store-link{
+
+    .myList .myList-list .store-link {
         position: relative;
         display: flex;
         margin: 0 10px 10px 0;
@@ -1403,14 +1404,27 @@ section {
 
 .myList .myList-list .store-link {
     position: absolute;
-    right: 150px;
+    right: 60px;
     bottom: 10px;
 }
 
-.myList .myList-list .list-store-link {
-    position: absolute;
-    right: 60px;
-    bottom: 10px;
+
+.myList .myList-list .empty-container{
+    display: flex;
+    flex-direction: column;
+    height: 20dvh;
+    background-color: #e7e7e7;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+    .myList .myList-list .empty-container{
+        display: compact;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .read-links {
@@ -1557,7 +1571,7 @@ section {
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
-.placeholder-wrapper{
+.placeholder-wrapper {
     display: flex;
     min-height: 120px;
     margin: 0 8dvh 0 8dvh;
@@ -1565,22 +1579,35 @@ section {
 
 .placeholder-wrapper .row {
     height: 20px;
-    background-color:#D3D3D3;
-    margin:10px;
+    background-color: #D3D3D3;
+    margin: 10px;
     border-radius: 10px;
+    animation: skeleton-loading 1s linear infinite alternate;
 }
-.placeholder-wrapper .placeholder-img{
+
+.placeholder-wrapper .placeholder-img {
     background-color: #D3D3D3;
     min-height: 8rem;
     border-radius: 10px;
-
+    animation: skeleton-loading 1s linear infinite alternate
 }
-@media (max-width: 768px){
-    .placeholder-wrapper{
+
+@media (max-width: 768px) {
+    .placeholder-wrapper {
         display: block;
         margin: 0 8dvh 0 8dvh;
     }
 }
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 70%);
+    }
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -2292,7 +2319,7 @@ form .edit-book-form .loading {
     color: #8b8ba7;
 }
 
-.search-form{
+.search-form {
     --timing: 0.3s;
     --width-of-input: 60dvw;
     --height-of-input: 40px;
@@ -2366,4 +2393,7 @@ input:not(:placeholder-shown) ~ .reset {
     margin-top: 3px;
 }
 
+.empty-container{
+    height: 60dvh;
+}
 
