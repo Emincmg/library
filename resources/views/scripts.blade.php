@@ -1,8 +1,8 @@
 @section('scripts')
     <script type="text/javascript">
 
-        //Add will book list
-        $(document).on('click','#add-button' ,async function () {
+        //Add book
+        $(document).on('click', '#add-button', async function () {
             let bookID = $(this).data("id");
 
             const inputOptions = new Promise((resolve) => {
@@ -26,77 +26,47 @@
 
             })
             if (readBefore) {
-                const { value: note } = await Swal.fire({
+                const {value: note} = await Swal.fire({
                     input: 'textarea',
                     inputLabel: 'Do you have any notes?',
-                    inputPlaceholder: 'Type your message here...',
+                    inputPlaceholder: 'Type your note here...',
                     inputAttributes: {
-                        'aria-label': 'Type your message here'
+                        'aria-label': 'Type your note here'
                     },
                     showCancelButton: true
                 })
 
                 if (note) {
-                    if(readBefore === "true"){
-                        $.ajax({
-                            url: '/insertAlreadyReadBook/'+ bookID,
-                            type: 'GET',
-                            success: function (response) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Book saved',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            },
-                            error: function (xhr, status, error){
-                                let message = JSON.parse(xhr.responseText).message;
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
-                        })
-                    }else{
-                        $.ajax({
-                            url: '/insertWillReadBook/' + bookID,
-                            type: 'GET',
-                            success: function (response) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Book saved',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            },
-                            error: function (xhr, status, error) {
-                                let message = JSON.parse(xhr.responseText).message;
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
-                        })
-                    }
+
+                    $.ajax({
+                        url: '/insertBook/' + bookID + '/' + readBefore + '/' + note,
+                        type: 'GET',
+                        success: function (response) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Book saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        },
+                        error: function (xhr, status, error) {
+                            let message = JSON.parse(xhr.responseText).message;
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'error',
+                                title: message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
                 }
             }
         });
-        //Add already read book list
-        $(document).on('click','#alreadyReadButton',function (){
-            let bookID = $(this).data("id");
 
-
-        });
-
-        $(document).on('click','#deleteButton',function (){
+        //Delete book
+        $(document).on('click', '#deleteButton', function () {
             let bookID = $(this).data("id");
             Swal.fire({
                 title: 'Are you sure?',
@@ -109,15 +79,15 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url:'/deletebook/'+bookID,
-                        type:'GET'
+                        url: '/deletebook/' + bookID,
+                        type: 'GET'
                     })
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
                         'success'
                     )
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.reload();
                     }, 1500);
                 }
@@ -125,14 +95,15 @@
 
         });
 
-        $(document).on('click','#alreadyReadChangeBtn',function (){
+        //Change Book read field
+        $(document).on('click', '#alreadyReadChangeBtn', function () {
             let bookID = $(this).data("id");
             let read = 1;
 
             $.ajax({
-                url:'/changeread/'+bookID +'/'+ read,
-                type:'GET',
-                success:function (){
+                url: '/changeread/' + bookID + '/' + read,
+                type: 'GET',
+                success: function () {
                     Swal.fire(
                         'Changed!',
                         'Book list changed to already read!',
@@ -141,47 +112,96 @@
                 }
             })
 
-            setTimeout(function() {
+            setTimeout(function () {
                 location.reload();
             }, 1500);
         });
 
-        $(document).on('click','#willReadChangeBtn',function (){
+        $(document).on('click', '#willReadChangeBtn', function () {
             let bookID = $(this).data("id");
             let read = 0;
 
             $.ajax({
-                url:'/changeread/'+bookID +'/'+ read,
-                type:'GET',
-                success:function (){
+                url: '/changeread/' + bookID + '/' + read,
+                type: 'GET',
+                success: function () {
                     Swal.fire(
                         'Changed!',
-                        'Book list changed to already read!',
+                        'Book list changed to will read!',
                         'success'
                     )
                 }
             })
 
-            setTimeout(function() {
+            setTimeout(function () {
                 location.reload();
             }, 1500);
         });
 
-        $(document).on('submit','#contactUSForm',function (e){
+        //View book notes
+        $(document).on('click', '#viewNotesButton', async function () {
+            let note = $(this).data("note")
+            let title = $(this).data("title")
+            let bookID = $(this).data('id')
+            Swal.fire({
+                title: title,
+                text: note,
+                showConfirmButton: true,
+                confirmButtonText: "Edit",
+                confirmButtonColor: '#D1D100',
+                showCancelButton: true,
+                cancelButtonText: "Close",
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    //Fire change note modal
+                    const {value: text} = await Swal.fire({
+                        input: 'textarea',
+                        inputLabel: 'Note',
+                        inputPlaceholder: 'Type your note here...',
+                        inputAttributes: {
+                            'aria-label': 'Type your note here'
+                        },
+                        showCancelButton: true
+                    })
+                    if (text) {
+                        Swal.showLoading();
+                        $.ajax({
+                                url: '/changenote/' + bookID + '/' + text,
+                                type: "GET",
+                            success:function (){
+                                Swal.fire({
+                                    title: 'Changed!',
+                                    text: 'Note has been changed.',
+                                    icon: 'success',
+                                    confirmButtonText: 'Confirm',
+                                    didClose: function() {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                            }
+                        )
+                    }
+                }
+            })})
+
+        //Contact form submit
+        $(document).on('submit', '#contactUSForm', function (e) {
             e.preventDefault();
             let formData = $(this).serialize();
             Swal.showLoading();
             $.ajax({
-                url:'contact',
-                type:'POST',
+                url: 'contact',
+                type: 'POST',
                 data: formData,
-                success:function (){
+                success: function () {
                     Swal.fire(
                         'Sent!',
                         'Your contact email has been sent.',
                         'success'
-                    )},
-                error: function(xhr, status, error) {
+                    )
+                },
+                error: function (xhr, status, error) {
                     Swal.fire(
                         'Error!',
                         error.message,
@@ -191,4 +211,5 @@
             })
         })
     </script>
+
 @endsection
