@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="col-md-10 ">
                                         @if(isset($book->link) && !empty($book->link))
-                                            <a href="{{$book->link}}" class="store-link"><i class='bx bxl-google' ></i>Preview</a>
+                                            <a href="{{$book->link}}" class="list-store-link"><i class='bx bxl-google' ></i>Preview</a>
                                         @endif
                                         <a data-bs-toggle="collapse" class="collapse title"
                                            data-bs-target="#myList-list-{{$loop->iteration}}">@if(isset($book->title) && !empty($book->title))
@@ -48,7 +48,7 @@
                                             @endif
                                         </div>
                                         <div class="read-links">
-                                            <button title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}"><i class='bx bx-note'></i></button>
+                                            <button title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}" data-id="{{$book->id}}"><i class='bx bx-note'></i></button>
                                             <button title="Add to already read book list" id="alreadyReadChangeBtn" data-id="{{$book->id}}"><i
                                                     class='bx bx-list-check'></i></button>
                                         </div>

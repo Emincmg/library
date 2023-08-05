@@ -39,7 +39,6 @@
                 })
 
                 if (note) {
-
                     $.ajax({
                         url: '/insertBook/' + bookID + '/' + readBefore + '/' + note,
                         type: 'GET',

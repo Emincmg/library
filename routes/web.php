@@ -15,6 +15,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/changeread/{id}/{value}', [App\Http\Controllers\BooksController::class, 'changeReadField'])->name('changeread');
     Route::get('/changenote/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeNoteField'])->name('changenote');
     Route::get('/contactpage', [App\Http\Controllers\ContactController::class, 'index']);
+    Route::get('/profilepage', [App\Http\Controllers\ProfileController::class, 'index'])->name('profilepage');
 
     Route::post('/editbook', [App\Http\Controllers\BooksController::class, 'editBook'])->name('editbook');
     Route::post('/addauthor', [App\Http\Controllers\BooksController::class, 'addAuthor'])->name('addauthor');
