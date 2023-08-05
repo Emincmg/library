@@ -234,7 +234,7 @@
 
         .login-btn {
             padding: 13px 30px;
-            background-color: #5c9f24;
+            background-color:#052E45;
             border-radius: 0;
             font-size: 20px;
             font-weight: bold;
@@ -242,9 +242,9 @@
         }
 
         .login-btn:hover {
-            border: 1px solid #5c9f24;
+            border: 1px solid#052E45;
             background-color: transparent;
-            color: #5c9f24;
+            color:#052E45;
         }
 
         .forgot-password-link {

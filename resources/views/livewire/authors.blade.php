@@ -1,6 +1,6 @@
 <div>
     <div class="input-group search-container mt-4">
-        <span class="input-group-text" id="basic-addon1" style="background-color: #5c9f24"><i class="bi bi-search" style="color: white"></i></span>
+        <span class="input-group-text" id="basic-addon1" style="background-color:#052E45"><i class="bi bi-search" style="color: white"></i></span>
         <input wire:model="search" type="search" class="form-control search-box" placeholder="Search Authors">
     </div>
     <div class="member-container">

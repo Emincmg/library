@@ -18,6 +18,7 @@
                 title: 'Did you read this book before?',
                 input: 'radio',
                 inputOptions: inputOptions,
+                confirmButtonColor: '#052E45',
                 inputValidator: (value) => {
                     if (!value) {
                         return 'You need to choose something!'
@@ -33,7 +34,8 @@
                     inputAttributes: {
                         'aria-label': 'Type your note here'
                     },
-                    showCancelButton: true
+                    showCancelButton: true,
+                    confirmButtonColor: '#052E45',
                 })
 
                 if (note) {
@@ -73,8 +75,7 @@
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#052E45',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -82,11 +83,12 @@
                         url: '/deletebook/' + bookID,
                         type: 'GET'
                     })
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    Swal.fire({
+                            title: 'Deleted!',
+                            text:'Book deleted!',
+                            icon:'success',
+                            confirmButtonColor: '#052E45',
+                        })
                     setTimeout(function () {
                         location.reload();
                     }, 1500);
@@ -104,10 +106,12 @@
                 url: '/changeread/' + bookID + '/' + read,
                 type: 'GET',
                 success: function () {
-                    Swal.fire(
-                        'Changed!',
-                        'Book list changed to already read!',
-                        'success'
+                    Swal.fire({
+                        title: 'Changed!',
+                        text:'Book list changed to already read!',
+                        icon:'success',
+                            confirmButtonColor: '#052E45',
+                    }
                     )
                 }
             })
@@ -125,11 +129,12 @@
                 url: '/changeread/' + bookID + '/' + read,
                 type: 'GET',
                 success: function () {
-                    Swal.fire(
-                        'Changed!',
-                        'Book list changed to will read!',
-                        'success'
-                    )
+                    Swal.fire({
+                            title: 'Changed!',
+                            text:'Book list changed to already read!',
+                            icon:'success',
+                            confirmButtonColor: '#052E45',
+                        })
                 }
             })
 
@@ -148,7 +153,7 @@
                 text: note,
                 showConfirmButton: true,
                 confirmButtonText: "Edit",
-                confirmButtonColor: '#D1D100',
+                confirmButtonColor: '#052E45',
                 showCancelButton: true,
                 cancelButtonText: "Close",
             }).then(async (result) => {
@@ -161,7 +166,8 @@
                         inputAttributes: {
                             'aria-label': 'Type your note here'
                         },
-                        showCancelButton: true
+                        showCancelButton: true,
+                        confirmButtonColor: '#052E45',
                     })
                     if (text) {
                         Swal.showLoading();
@@ -174,6 +180,7 @@
                                     text: 'Note has been changed.',
                                     icon: 'success',
                                     confirmButtonText: 'Confirm',
+                                    confirmButtonColor: '#052E45',
                                     didClose: function() {
                                         location.reload();
                                     }
