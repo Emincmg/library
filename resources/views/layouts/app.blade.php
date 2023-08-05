@@ -49,12 +49,13 @@
                 <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#why-us">Why me?</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
-                <li><a class="nav-link scrollto" href="{{route('addbookpage')}}">Search Books</a></li>
                 @auth
 
                     <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
+                            <li><a href="">Profile</a></li>
+                            <li><a class="nav-link scrollto" href="{{route('addbookpage')}}">Search Books</a></li>
                             <li><a href="{{route('listindex')}}">My book list</a></li>
                             {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
                             {{--                                <ul>--}}
