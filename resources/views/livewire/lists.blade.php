@@ -48,8 +48,8 @@
                                             @endif
                                         </div>
                                         <div class="read-links">
-                                            <button title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}" data-id="{{$book->id}}"><i class='bx bx-note'></i></button>
-                                            <button title="Add to already read book list" id="alreadyReadChangeBtn" data-id="{{$book->id}}"><i
+                                            <button class="custom-button positive" title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}" data-id="{{$book->id}}"><i class='bx bx-note'></i></button>
+                                            <button class="custom-button positive"  title="Add to already read book list" id="alreadyReadChangeBtn" data-id="{{$book->id}}"><i
                                                     class='bx bx-list-check'></i></button>
                                         </div>
                                     </div>
@@ -130,8 +130,8 @@
 
                                         </div>
                                         <div class="read-links">
-                                            <button title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}" data-id="{{$book->id}}"><i class='bx bx-note'></i></button>
-                                            <button title="Add to will read book list" id="willReadChangeBtn" data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
+                                            <button class="custom-button positive" title="View notes" id="viewNotesButton" data-note="{{$book->notes}}" data-title="{{$book->title}}" data-id="{{$book->id}}"><i class='bx bx-note'></i></button>
+                                            <button class="custom-button positive" title="Add to will read book list" id="willReadChangeBtn" data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
                                             </button>
                                         </div>
                                     </div>

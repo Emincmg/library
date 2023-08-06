@@ -16,9 +16,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/changenote/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeNoteField'])->name('changenote');
     Route::get('/contactpage', [App\Http\Controllers\ContactController::class, 'index']);
     Route::get('/profilepage', [App\Http\Controllers\ProfileController::class, 'index'])->name('profilepage');
+    Route::get('/editprofilepage', [App\Http\Controllers\ProfileController::class, 'editProfilePage'])->name('editprofilepage');
 
-    Route::post('/editbook', [App\Http\Controllers\BooksController::class, 'editBook'])->name('editbook');
-    Route::post('/addauthor', [App\Http\Controllers\BooksController::class, 'addAuthor'])->name('addauthor');
+    Route::post('/editprofile', [App\Http\Controllers\ProfileController::class, 'editProfile'])->name('editprofile');
     Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact');
 
 });

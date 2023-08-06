@@ -55,7 +55,7 @@
                                         @endif
                                             </div>
                                         <div class="read-links">
-                                            <button title="Add to book list" id="add-button" data-id="{{$book['id']}}"><i class='bx bx-plus'></i>
+                                            <button class="custom-button positive" title="Add to book list" id="add-button" data-id="{{$book['id']}}"><i class='bx bx-plus'></i>
                                             </button>
                                         </div>
                                     </div>
