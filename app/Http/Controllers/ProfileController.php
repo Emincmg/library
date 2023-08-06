@@ -34,7 +34,12 @@ class ProfileController extends Controller
             Auth()->user()->update(['img'=>$filename]);
         }
 
+
         $user->save();
 
+        return response()->json([
+            'message' => 'Image uploaded successfully.',
+            'image' => 'images/' . $filename
+        ], 200);
     }
 }

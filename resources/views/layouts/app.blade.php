@@ -51,7 +51,7 @@
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
                 @auth
 
-                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i
+                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="Profile Photo" class="profile-photo"> <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{route('profilepage')}}">Profile</a></li>

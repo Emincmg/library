@@ -216,6 +216,50 @@
                 }
             })
         })
+
+        //Edit Profile
+
+        function previewProfilePhoto(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const previewImage = document.getElementById('image');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(document).on('submit','#editProfileForm', function (e){
+            e.preventDefault();
+            Swal.showLoading();
+            $.ajax({
+                url: 'editprofile',
+                method: 'POST',
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+                    Swal.fire(
+                        'Changed!',
+                        'Profile has been modified.',
+                        'success'
+                    )
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire(
+                        'Error!',
+                        error.message,
+                        'error'
+                    );
+                }
+            })
+        })
     </script>
 
 @endsection

@@ -167,6 +167,7 @@ h1,h2,h3,h4,h5,h6{
     border: 1px solid#616B5E;
     background-color:#616B5E;
 }
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -203,6 +204,14 @@ h1,h2,h3,h4,h5,h6{
 .navbar-hide {
     pointer-events: none;
     opacity: 0;
+}
+
+.profile-photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    object-fit: cover;
 }
 
 /*--------------------------------------------------------------
