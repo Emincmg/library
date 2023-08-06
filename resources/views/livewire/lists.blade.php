@@ -1,12 +1,14 @@
 <div>
     <!-- ======= My List Section ======= -->
     <section id="myList" class="myList section-bg">
+
         <div class="container mt-5">
             <div class="myList-list ">
                 <div class="section-title">
                     <h2>Books i will read</h2>
                 </div>
                 <ul>
+                    <button class="custom-button positive"> aaa</button> <button class="custom-button positive"> aaa</button> <button class="custom-button positive"> aaa</button>
                         @forelse($unreadBooks as $book)
                             <li data-aos="fade-up d-flex" wire:key="{{$loop->iteration}}">
                                 <div class="row">
@@ -20,13 +22,14 @@
                                         @if(isset($book->link) && !empty($book->link))
                                             <a href="{{$book->link}}" class="list-store-link"><i class='bx bxl-google' ></i>Preview</a>
                                         @endif
-                                        <a data-bs-toggle="collapse" class="collapse title"
+                                      <a data-bs-toggle="collapse" class="collapse title"
                                            data-bs-target="#myList-list-{{$loop->iteration}}">@if(isset($book->title) && !empty($book->title))
                                                 {{$book->title}}
                                             @endif
                                             - @if(isset($book->authors) && !empty($book->authors))
                                                 {{ implode(', ', $book->authors) }}
                                             @endif </a>
+
                                         <div class="del-button-wrapper">
                                             <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}"><i class='bx bx-x' ></i></button>
                                         </div>
@@ -54,18 +57,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                                                    <span class="rating">--}}
-                                {{--                                                                        <input value="5" name="rating" id="star5" type="radio">--}}
-                                {{--                                                                        <label for="star5"></label>--}}
-                                {{--                                                                        <input value="4" name="rating" id="star4" type="radio">--}}
-                                {{--                                                                        <label for="star4"></label>--}}
-                                {{--                                                                        <input value="3" name="rating" id="star3" type="radio">--}}
-                                {{--                                                                        <label for="star3"></label>--}}
-                                {{--                                                                        <input value="2" name="rating" id="star2" type="radio">--}}
-                                {{--                                                                        <label for="star2"></label>--}}
-                                {{--                                                                        <input value="1" name="rating" id="star1" type="radio">--}}
-                                {{--                                                                        <label for="star1"></label>--}}
-                                {{--                                                                    </span>--}}
+                                                                                                    <span class="rating">
+                                                                                                        <input value="5" name="rating" id="star5" type="radio">
+                                                                                                        <label for="star5"></label>
+                                                                                                        <input value="4" name="rating" id="star4" type="radio">
+                                                                                                        <label for="star4"></label>
+                                                                                                        <input value="3" name="rating" id="star3" type="radio">
+                                                                                                        <label for="star3"></label>
+                                                                                                        <input value="2" name="rating" id="star2" type="radio">
+                                                                                                        <label for="star2"></label>
+                                                                                                        <input value="1" name="rating" id="star1" type="radio">
+                                                                                                        <label for="star1"></label>
+                                                                                                    </span>
                             </li>
                     @empty
                             <div class="empty-container">
@@ -136,18 +139,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                                                    <span class="rating">--}}
-                                {{--                                                                        <input value="5" name="rating" id="star5" type="radio">--}}
-                                {{--                                                                        <label for="star5"></label>--}}
-                                {{--                                                                        <input value="4" name="rating" id="star4" type="radio">--}}
-                                {{--                                                                        <label for="star4"></label>--}}
-                                {{--                                                                        <input value="3" name="rating" id="star3" type="radio">--}}
-                                {{--                                                                        <label for="star3"></label>--}}
-                                {{--                                                                        <input value="2" name="rating" id="star2" type="radio">--}}
-                                {{--                                                                        <label for="star2"></label>--}}
-                                {{--                                                                        <input value="1" name="rating" id="star1" type="radio">--}}
-                                {{--                                                                        <label for="star1"></label>--}}
-                                {{--                                                                    </span>--}}
+                                                                                                    <span class="rating">
+                                                                                                        <input value="5" name="rating" id="star5" type="radio">
+                                                                                                        <label for="star5"></label>
+                                                                                                        <input value="4" name="rating" id="star4" type="radio">
+                                                                                                        <label for="star4"></label>
+                                                                                                        <input value="3" name="rating" id="star3" type="radio">
+                                                                                                        <label for="star3"></label>
+                                                                                                        <input value="2" name="rating" id="star2" type="radio">
+                                                                                                        <label for="star2"></label>
+                                                                                                        <input value="1" name="rating" id="star1" type="radio">
+                                                                                                        <label for="star1"></label>
+                                                                                                    </span>
                             </li>
                         @empty
                             <div class="empty-container">
