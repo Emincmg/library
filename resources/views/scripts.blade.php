@@ -157,14 +157,15 @@
                 cancelButtonText: "Close",
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    //Fire change note modal
+
                     const {value: text} = await Swal.fire({
                         input: 'textarea',
                         inputLabel: 'Note',
                         inputPlaceholder: 'Type your note here...',
                         inputAttributes: {
-                            'aria-label': 'Type your note here'
+                            'aria-label': 'Type your note here',
                         },
+                        inputValue : note,
                         showCancelButton: true,
                         confirmButtonColor: '#052E45',
                     })
@@ -218,7 +219,6 @@
         })
 
         //Edit Profile
-
         function previewProfilePhoto(event) {
             const input = event.target;
             if (input.files && input.files[0]) {
