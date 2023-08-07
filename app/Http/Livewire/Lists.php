@@ -18,6 +18,7 @@ class Lists extends Component
 
     protected $queryString = ['search'];
 
+
     public function render()
     {
         $user = Auth::user();
@@ -35,10 +36,11 @@ class Lists extends Component
         $categoriesCount = $user->books->sum(function ($book) {
             return $book->category !== null ? count($book->category) : 0;
         });
-//       if ($this->search) {
-//           $books->where('title', 'like', '%' . $this->search . '%');
-//        }
-        return view('livewire.lists',compact('books','booksCount','authorsCount','categoriesCount'));
+        $notesCount = $user->books->sum(function ($book) {
+            return $book->notes !== null ? 1 : 0;
+        });
+        $this->dispatchBrowserEvent('contentChanged', ['books' => $books]);
+        return view('livewire.lists',compact('books','booksCount','authorsCount','categoriesCount','notesCount'));
     }
 
     public function sortBy($field){

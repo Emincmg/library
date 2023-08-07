@@ -37,6 +37,7 @@
                                             - @if(isset($book['volumeInfo']['authors']) && !empty($book['volumeInfo']['authors']))
                                                 {{ implode(', ', $book['volumeInfo']['authors']) }}
                                             @endif <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                        <div class="my-rating" data-rate="@if(isset( $book['volumeInfo']['averageRating']) && $book['volumeInfo']['averageRating'] !== 0 ){{$book['volumeInfo']['averageRating']}}@endif"></div>
                                         @if(isset($book['volumeInfo']['categories']) && !empty($book['volumeInfo']['categories']))
                                             <p><strong>Categories
                                                     :</strong> {{implode(',',$book['volumeInfo']['categories'])}}</p>
@@ -60,18 +61,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                                                    <span class="rating">--}}
-                                {{--                                                                        <input value="5" name="rating" id="star5" type="radio">--}}
-                                {{--                                                                        <label for="star5"></label>--}}
-                                {{--                                                                        <input value="4" name="rating" id="star4" type="radio">--}}
-                                {{--                                                                        <label for="star4"></label>--}}
-                                {{--                                                                        <input value="3" name="rating" id="star3" type="radio">--}}
-                                {{--                                                                        <label for="star3"></label>--}}
-                                {{--                                                                        <input value="2" name="rating" id="star2" type="radio">--}}
-                                {{--                                                                        <label for="star2"></label>--}}
-                                {{--                                                                        <input value="1" name="rating" id="star1" type="radio">--}}
-                                {{--                                                                        <label for="star1"></label>--}}
-                                {{--                                                                    </span>--}}
                             </li>
                         @endforeach
                     @endisset

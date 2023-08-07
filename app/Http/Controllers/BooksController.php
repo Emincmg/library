@@ -79,6 +79,13 @@ class BooksController extends Controller
         $book->update(['notes' => $value]);
     }
 
+    public function changeRateField($id,$value){
+        $user = Auth::user();
+        $book = $user->books()->where('id',$id)->firstOrFail();
+
+        $book->update(['rate' => $value]);
+    }
+
     public function deleteBook($id)
     {
         Book::destroy($id);

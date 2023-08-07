@@ -88,7 +88,7 @@
                                                 - @if(isset($book->authors) && !empty($book->authors))
                                                     {{ implode(', ', $book->authors) }}
                                                 @endif </a>
-
+                                                <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" ></div>
                                             <div class="del-button-wrapper">
                                                 <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}">
                                                     <i class='bx bx-x'></i></button>
@@ -123,18 +123,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{--                                                                                                    <span class="rating">--}}
-                                    {{--                                                                                                        <input value="5" name="rating" id="star5" type="radio">--}}
-                                    {{--                                                                                                        <label for="star5"></label>--}}
-                                    {{--                                                                                                        <input value="4" name="rating" id="star4" type="radio">--}}
-                                    {{--                                                                                                        <label for="star4"></label>--}}
-                                    {{--                                                                                                        <input value="3" name="rating" id="star3" type="radio">--}}
-                                    {{--                                                                                                        <label for="star3"></label>--}}
-                                    {{--                                                                                                        <input value="2" name="rating" id="star2" type="radio">--}}
-                                    {{--                                                                                                        <label for="star2"></label>--}}
-                                    {{--                                                                                                        <input value="1" name="rating" id="star1" type="radio">--}}
-                                    {{--                                                                                                        <label for="star1"></label>--}}
-                                    {{--                                                                                                    </span>--}}
                                 </li>
                                 @endif
                             @endforeach
@@ -184,6 +172,7 @@
                                                         {{ implode(', ', $book->authors) }}
                                                     @endif
                                                 </a>
+                                                    <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}"></div>
                                                 <div class="del-button-wrapper">
                                                     <button title="Delete book" id="deleteButton"
                                                             data-id="{{$book->id}}"><i class='bx bx-x'></i></button>
@@ -217,20 +206,9 @@
                                                             data-id="{{$book['id']}}"><i class='bx bx-list-plus'></i>
                                                     </button>
                                                 </div>
+
                                             </div>
                                         </div>
-                                        {{--                                                                                                                            <span class="rating">--}}
-                                        {{--                                                                                                                                <input value="5" name="rating" id="star5" type="radio">--}}
-                                        {{--                                                                                                                                <label for="star5"></label>--}}
-                                        {{--                                                                                                                                <input value="4" name="rating" id="star4" type="radio">--}}
-                                        {{--                                                                                                                                <label for="star4"></label>--}}
-                                        {{--                                                                                                                                <input value="3" name="rating" id="star3" type="radio">--}}
-                                        {{--                                                                                                                                <label for="star3"></label>--}}
-                                        {{--                                                                                                                                <input value="2" name="rating" id="star2" type="radio">--}}
-                                        {{--                                                                                                                                <label for="star2"></label>--}}
-                                        {{--                                                                                                                                <input value="1" name="rating" id="star1" type="radio">--}}
-                                        {{--                                                                                                                                <label for="star1"></label>--}}
-                                        {{--                                                                                                                            </span>--}}
                                     </li>
                                 @endif
                                 @endforeach
@@ -266,7 +244,7 @@
                         <i class='bx bx-book-open'></i>
                         <span data-purecounter-start="0" data-purecounter-end="{{$booksCount}}"
                               data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Books</strong> registered.</p>
+                        <p><strong>Books</strong></p>
                     </div>
                 </div>
 
@@ -275,7 +253,7 @@
                         <i class='bx bx-user-pin'></i>
                         <span data-purecounter-start="0" data-purecounter-end="{{$authorsCount}}"
                               data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Authors</strong> registered.</p>
+                        <p><strong>Authors</strong></p>
                     </div>
                 </div>
 
@@ -285,21 +263,52 @@
                         <span data-purecounter-start="0" data-purecounter-end="{{$categoriesCount}}"
                               data-purecounter-duration="1"
                               class="purecounter"></span>
-                        <p>Book <strong>Categories.</strong></p>
+                        <p><strong>Categories.</strong></p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                     <div class="count-box">
-                        <i class='bx bx-objects-horizontal-left'></i>
-                        <span data-purecounter-start="0" data-purecounter-end="57" data-purecounter-duration="1"
+                        <i class='bx bx-notepad' ></i>
+                        <span data-purecounter-start="0" data-purecounter-end="{{$notesCount}}" data-purecounter-duration="1"
                               class="purecounter"></span>
-                        <p><strong>Book stocks</strong> total.</p>
+                        <p><strong>Book notes</strong></p>
                     </div>
                 </div>
 
             </div>
-
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const sortByOptions = document.getElementById('sortByOptions');
+                const sortByButton = document.getElementById('sortByButton');
+                const filterDiv = document.getElementById('filterDiv');
+                const filterButton = document.getElementById('filterButton');
+
+
+                sortByOptions.style.display = 'none';
+                if(filterDiv)
+                    filterDiv.style.display = 'none';
+
+
+                sortByButton.addEventListener('click', function() {
+
+                    if (sortByOptions.style.display === 'none') {
+                        sortByOptions.style.display = 'block';
+                    } else {
+                        sortByOptions.style.display = 'none';
+                    }
+                });
+                filterButton.addEventListener('click', function() {
+
+                    if (filterDiv.style.display === 'none') {
+                        filterDiv.style.display = 'block';
+                    } else {
+                        filterDiv.style.display = 'none';
+                    }
+                });
+            });
+        </script>
     </section><!-- End Counts Section -->
 </div>

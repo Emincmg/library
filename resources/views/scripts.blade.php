@@ -142,7 +142,7 @@
             }, 1500);
         });
 
-        //View book notes
+        //Book note manipulation
         $(document).on('click', '#viewNotesButton', async function () {
             let note = $(this).data("note")
             let title = $(this).data("title")
@@ -261,43 +261,80 @@
             })
         })
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const sortByOptions = document.getElementById('sortByOptions');
-            const sortByButton = document.getElementById('sortByButton');
-            const filterDiv = document.getElementById('filterDiv');
-            const filterButton = document.getElementById('filterButton');
-
-            sortByOptions.style.display = 'none';
-            filterDiv.style.display = 'none';
-
-            sortByButton.addEventListener('click', function() {
-
-                if (sortByOptions.style.display === 'none') {
-                    sortByOptions.style.display = 'block';
-                } else {
-                    sortByOptions.style.display = 'none';
-                }
-            });
-            filterButton.addEventListener('click', function() {
-
-                if (filterDiv.style.display === 'none') {
-                    filterDiv.style.display = 'block';
-                } else {
-                    filterDiv.style.display = 'none';
-                }
-            });
-        });
-
+        //BS Tabs remember state
         $('#nav-will-read-tab, #nav-already-read-tab').on('click', function(e) {
             localStorage.setItem("active-tab-id", $(e.target).attr("data-bs-target"));
         });
 
         var activeTabId = localStorage.getItem("active-tab-id");
-        console.log(activeTabId);
         var activeTab = $(`button[data-bs-target="${activeTabId}"]`);
 
         if(activeTab.length == 1)
             activeTab.click();
+
+
+        //Rating plugin
+        $(".my-rating").each(function () {
+            const bookId = $(this).data("book-id");
+            const initialRating = $(this).data("rate");
+
+            $(this).starRating({
+                totalStars: 5,
+                ratedColor: 'cornflowerblue',
+                initialRating: initialRating,
+                strokeWidth: 0,
+                useGradient: false,
+                minRating: 0,
+                starSize: 25,
+
+                callback: function(currentRating, $el){
+                    $.ajax({
+                        url: '/changerate/' + bookId + '/' + currentRating,
+                        type: 'GET',
+                        success: function () {
+                            Swal.fire({
+                                title: 'Changed!',
+                                text:'Book rate changed!',
+                                icon:'success',
+                                confirmButtonColor: '#052E45',
+                            })
+                        }})
+                }
+            });
+        });
+
+        window.addEventListener('contentChanged', (e) => {
+
+            $(".my-rating").each(function () {
+                console.log('tetik')
+                const bookId = $(this).data("book-id");
+                const initialRating = $(this).data("rate");
+
+                $(this).starRating({
+                    totalStars: 5,
+                    ratedColor: 'cornflowerblue',
+                    initialRating: initialRating,
+                    strokeWidth: 0,
+                    useGradient: false,
+                    minRating: 0,
+                    starSize: 25,
+
+                    callback: function(currentRating, $el){
+                        $.ajax({
+                            url: '/changerate/' + bookId + '/' + currentRating,
+                            type: 'GET',
+                            success: function () {
+                                Swal.fire({
+                                    title: 'Changed!',
+                                    text:'Book rate changed!',
+                                    icon:'success',
+                                    confirmButtonColor: '#052E45',
+                                })
+                            }})
+                    }
+                });
+            });
+        });
     </script>
 
 @endsection

@@ -27,9 +27,9 @@
     <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/alertifyjs/css/alertify.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/alertifyjs/css/themes/semantic.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/star-rating-svg/css/star-rating-svg.css')}}" rel="stylesheet">
     <link href="{{asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}"
           rel="stylesheet">
-    <link href="{{asset('assets/vendor/jquery-select-picker/picker.css')}}" rel="stylesheet">
     @livewireStyles
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
@@ -106,6 +106,7 @@
 <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 <script src="{{asset('assets/vendor/alertifyjs/alertify.min.js')}}"></script>
+<script src="{{asset('assets/vendor/star-rating-svg/jquery.star-rating-svg.js')}}"></script>
 <script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}"
         integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -102,7 +102,7 @@
                                     <p>Take notes, rate your books and more</p>
                                 </div>
                                 <div class="col-md-6 icon-box">
-                                    <i class='bx bxs-edit'></i>
+                                    <i class='bx bxl-google'></i>
                                     <h4>Visit Store </h4>
                                     <p>Directly navigate to the Google Book Store page of a specific book.</p>
                                 </div>
