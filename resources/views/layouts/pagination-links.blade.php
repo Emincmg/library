@@ -3,7 +3,7 @@
 
 {{--Previous--}}
         @if($paginator->onFirstPage())
-            <a wire:click="previousPage" style="background-color: white; cursor: default; color: white" href=javascript:void(0);><</a>
+            <a wire:click="previousPage" style="display: none;"><</a>
         @else
             <a wire:click="previousPage" href=javascript:void(0);><</a>
         @endif
@@ -29,7 +29,7 @@
         @if($paginator->hasMorePages())
                 <a wire:click="nextPage" href=javascript:void(0);>></a>
             @else
-                <a wire:click="nextPage" style="background-color: white; cursor: default; color: white" href=javascript:void(0);>></a>
+                <a wire:click="nextPage" style="display: none">></a>
         @endif
     @endif
 {{--end Next--}}

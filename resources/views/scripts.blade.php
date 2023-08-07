@@ -27,7 +27,7 @@
 
             })
             if (readBefore) {
-                const {value: note} = await Swal.fire({
+                const { value: note } = await Swal.fire({
                     input: 'textarea',
                     inputLabel: 'Do you have any notes?',
                     inputPlaceholder: 'Type your note here...',
@@ -36,33 +36,33 @@
                     },
                     showCancelButton: true,
                     confirmButtonColor: '#052E45',
-                })
+                });
 
-                if (note) {
-                    $.ajax({
-                        url: '/insertBook/' + bookID + '/' + readBefore + '/' + note,
-                        type: 'GET',
-                        success: function (response) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Book saved',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        },
-                        error: function (xhr, status, error) {
-                            let message = JSON.parse(xhr.responseText).message;
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'error',
-                                title: message,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    })
-                }
+                const noteToSend = note || 'null';
+
+                $.ajax({
+                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend,
+                    type: 'GET',
+                    success: function (response) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Book saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        let message = JSON.parse(xhr.responseText).message;
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                });
             }
         });
 
@@ -260,6 +260,44 @@
                 }
             })
         })
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortByOptions = document.getElementById('sortByOptions');
+            const sortByButton = document.getElementById('sortByButton');
+            const filterDiv = document.getElementById('filterDiv');
+            const filterButton = document.getElementById('filterButton');
+
+            sortByOptions.style.display = 'none';
+            filterDiv.style.display = 'none';
+
+            sortByButton.addEventListener('click', function() {
+
+                if (sortByOptions.style.display === 'none') {
+                    sortByOptions.style.display = 'block';
+                } else {
+                    sortByOptions.style.display = 'none';
+                }
+            });
+            filterButton.addEventListener('click', function() {
+
+                if (filterDiv.style.display === 'none') {
+                    filterDiv.style.display = 'block';
+                } else {
+                    filterDiv.style.display = 'none';
+                }
+            });
+        });
+
+        $('#nav-will-read-tab, #nav-already-read-tab').on('click', function(e) {
+            localStorage.setItem("active-tab-id", $(e.target).attr("data-bs-target"));
+        });
+
+        var activeTabId = localStorage.getItem("active-tab-id");
+        console.log(activeTabId);
+        var activeTab = $(`button[data-bs-target="${activeTabId}"]`);
+
+        if(activeTab.length == 1)
+            activeTab.click();
     </script>
 
 @endsection

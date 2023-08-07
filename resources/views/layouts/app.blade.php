@@ -51,7 +51,7 @@
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
                 @auth
 
-                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="Profile Photo" class="profile-photo"> <i
+                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> @isset(Auth::user()->img)<img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="" class="profile-photo">@endisset <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{route('profilepage')}}">Profile</a></li>
@@ -97,7 +97,8 @@
         class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="{{asset('//code.jquery.com/jquery.min.js')}}"></script>
+<script src="{{asset('https://code.jquery.com/jquery-3.7.0.min.js')}}" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+        crossorigin="anonymous"></script>
 <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
 <script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
@@ -107,7 +108,6 @@
 <script src="{{asset('assets/vendor/alertifyjs/alertify.min.js')}}"></script>
 <script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}"
         integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
-<script src="{{asset('assets/vendor/jquery-select-picker/picker.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Template Main JS File -->
