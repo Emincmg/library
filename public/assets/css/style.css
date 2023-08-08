@@ -231,7 +231,7 @@ h1,h2,h3,h4,h5,h6{
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-left: auto;
     object-fit: cover;
 }
 
@@ -1084,8 +1084,10 @@ section {
     }
 
     .myList .myList-list .store-link {
-        position: relative;
-        display: flex;
+        position: absolute;
+        right: 80px!important;
+        bottom: 20px!important;
+        z-index: 1;
     }
 
     .myList .myList-list .list-store-link {
@@ -1863,4 +1865,10 @@ input:not(:placeholder-shown) ~ .reset {
         left:5px;
         z-index: 1;
     }
+    .swal2-popup {
+        font-size: 0.8rem !important;
+        font-family: "Open Sans", serif;
+    }
 }
+
+

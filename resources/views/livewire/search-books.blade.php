@@ -37,7 +37,7 @@
                                             - @if(isset($book['volumeInfo']['authors']) && !empty($book['volumeInfo']['authors']))
                                                 {{ implode(', ', $book['volumeInfo']['authors']) }}
                                             @endif <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                        <div class="my-rating" data-rate="@if(isset( $book['volumeInfo']['averageRating']) && $book['volumeInfo']['averageRating'] !== 0 ){{$book['volumeInfo']['averageRating']}}@endif"></div>
+                                        <div class="search-rating" data-rate="@if(isset( $book['volumeInfo']['averageRating']) && $book['volumeInfo']['averageRating'] !== 0 ){{$book['volumeInfo']['averageRating']}}@endif"></div>
                                         @if(isset($book['volumeInfo']['categories']) && !empty($book['volumeInfo']['categories']))
                                             <p><strong>Categories
                                                     :</strong> {{implode(',',$book['volumeInfo']['categories'])}}</p>

@@ -303,37 +303,74 @@
             });
         });
 
-        window.addEventListener('contentChanged', (e) => {
+        $(".search-rating").each(function () {
 
-            $(".my-rating").each(function () {
-                console.log('tetik')
-                const bookId = $(this).data("book-id");
-                const initialRating = $(this).data("rate");
+            const initialRating = $(this).data("rate");
 
-                $(this).starRating({
-                    totalStars: 5,
-                    ratedColor: 'cornflowerblue',
-                    initialRating: initialRating,
-                    strokeWidth: 0,
-                    useGradient: false,
-                    minRating: 0,
-                    starSize: 25,
-
-                    callback: function(currentRating, $el){
-                        $.ajax({
-                            url: '/changerate/' + bookId + '/' + currentRating,
-                            type: 'GET',
-                            success: function () {
-                                Swal.fire({
-                                    title: 'Changed!',
-                                    text:'Book rate changed!',
-                                    icon:'success',
-                                    confirmButtonColor: '#052E45',
-                                })
-                            }})
-                    }
-                });
+            $(this).starRating({
+                totalStars: 5,
+                ratedColor: 'cornflowerblue',
+                initialRating: initialRating,
+                strokeWidth: 0,
+                useGradient: false,
+                minRating: 0,
+                starSize: 25,
+                readOnly:true,
             });
+        });
+
+        window.addEventListener('contentChanged', (e) => {
+            console.log('tetik')
+            setTimeout(() => {
+                $(".my-rating").each(function () {
+                    const bookId = $(this).data("book-id");
+                    const initialRating = $(this).data("rate");
+
+                    $(this).starRating({
+                        totalStars: 5,
+                        ratedColor: 'cornflowerblue',
+                        initialRating: initialRating,
+                        strokeWidth: 0,
+                        useGradient: false,
+                        minRating: 0,
+                        starSize: 25,
+
+                        callback: function(currentRating, $el){
+                            $.ajax({
+                                url: '/changerate/' + bookId + '/' + currentRating,
+                                type: 'GET',
+                                success: function () {
+                                    Swal.fire({
+                                        title: 'Changed!',
+                                        text:'Book rate changed!',
+                                        icon:'success',
+                                        confirmButtonColor: '#052E45',
+                                    })
+                                }})
+                        }
+                    });
+                });
+            }, 750)
+        });
+        window.addEventListener('searchChanged', (e) => {
+
+            setTimeout(() => {
+                $(".search-rating").each(function () {
+                    console.log('tetik')
+                    const initialRating = $(this).data("rate");
+
+                    $(this).starRating({
+                        totalStars: 5,
+                        ratedColor: 'cornflowerblue',
+                        initialRating: initialRating,
+                        strokeWidth: 0,
+                        useGradient: false,
+                        minRating: 0,
+                        starSize: 25,
+                        readOnly:true,
+                    });
+                });
+            }, 5750)
         });
     </script>
 

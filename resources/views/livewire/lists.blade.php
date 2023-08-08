@@ -12,9 +12,9 @@
                             data-bs-target="#nav-already-read" type="button" role="tab" aria-controls="nav-already-read"
                             aria-selected="false" >Already read
                     </button>
-                    <div class="filters-wrapper d-flex ml-auto" >
-                        <button class="custom-button secondary" id="sortByButton">Sort By</button>
-                        <button class="custom-button secondary" id="filterButton">Filter</button>
+                    <div class="filters-wrapper d-flex ml-auto">
+                        <button class="custom-button negative" id="sortByButton"><i class='bx bx-sort' style="font-size: 0.8rem;"></i></button>
+                        <button class="custom-button negative" id="filterButton"><i class='bx bx-search-alt-2' style="font-size: 0.8rem;"></i></button>
                     </div>
                 </div>
             </nav>

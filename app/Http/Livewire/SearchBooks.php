@@ -29,7 +29,7 @@ class SearchBooks extends Component
             $bookData = $books['items'];
         }
 
-
+        $this->dispatchBrowserEvent('searchChanged', ['bookData' => $bookData]);
         return view('livewire.search-books', compact('bookData'));
     }
 
