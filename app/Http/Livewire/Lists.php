@@ -14,6 +14,8 @@ class Lists extends Component
     public $sortField ='title';
     public $sortDirection ='asc';
 
+    public $rating;
+
     public $search ;
 
     protected $queryString = ['search'];
@@ -22,12 +24,8 @@ class Lists extends Component
     public function render()
     {
         $user = Auth::user();
-        $books=[];
-        if (!empty($this->search)){
-            $books = $user->books()->orderBy($this->sortField,$this->sortDirection)->where('title', 'like', '%' . $this->search . '%')->get();
-        }else{
-            $books = $user->books()->orderBy($this->sortField,$this->sortDirection)->get();
-        }
+
+        $books = $user->books()->orderBy($this->sortField,$this->sortDirection)->where('title', 'like', '%' . $this->search . '%')->get();
 
         $booksCount = $user->books()->count();
         $authorsCount = $user->books->sum(function ($book) {
@@ -39,17 +37,20 @@ class Lists extends Component
         $notesCount = $user->books->sum(function ($book) {
             return $book->notes !== null ? 1 : 0;
         });
-        $this->dispatchBrowserEvent('contentChanged', ['books' => $books]);
         return view('livewire.lists',compact('books','booksCount','authorsCount','categoriesCount','notesCount'));
     }
 
     public function sortBy($field){
         $this->sortField = $field;
-        $this->forgetComputed();
     }
     public function sortDirection($direction){
         $this->sortDirection= $direction;
-        $this->forgetComputed();
     }
 
+    public function changeRateField($id,$rating){
+        $user = Auth::user();
+        $book = $user->books()->where('id',$id)->firstOrFail();
+
+        $book->update(['rate' => $rating]);
+    }
 }

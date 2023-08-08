@@ -88,8 +88,27 @@
                                                 - @if(isset($book->authors) && !empty($book->authors))
                                                     {{ implode(', ', $book->authors) }}
                                                 @endif </a>
-                                                <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" wire:key="{{ now() }}"></div>
-                                            <div class="del-button-wrapper">
+                                                <div class="block max-w-3xl px-1 py-2 mx-auto">
+                                                    <div class="flex rating">
+                                                        <label for="star1">
+                                                            <input hidden wire:click="" type="radio" id="star1" name="rating" value="1" />
+                                                        </label>
+                                                        <label for="star2">
+                                                            <input hidden wire:click="changeRateField({{$book->id,'2'}})" type="radio" id="star2" name="rating" value="2"/>
+                                                        </label>
+                                                        <label for="star3">
+                                                            <input hidden wire:click="changeRateField({{$book->id,'3'}})" type="radio" id="star3" name="rating" value="3" />
+                                                        </label>
+                                                        <label for="star4">
+                                                            <input hidden wire:click="changeRateField({{$book->id,'4'}})" type="radio" id="star4" name="rating" value="4" />
+                                                        </label>
+                                                        <label for="star5">
+                                                            <input hidden wire:click="changeRateField({{$book->id,'5'}})" type="radio" id="star5" name="rating" value="5" />
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="del-button-wrapper">
                                                 <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}">
                                                     <i class='bx bx-x'></i></button>
                                             </div>
@@ -172,7 +191,6 @@
                                                         {{ implode(', ', $book->authors) }}
                                                     @endif
                                                 </a>
-                                                    <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" wire:key="{{ now() }}" ></div>
                                                 <div class="del-button-wrapper">
                                                     <button title="Delete book" id="deleteButton"
                                                             data-id="{{$book->id}}"><i class='bx bx-x'></i></button>

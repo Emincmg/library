@@ -1002,7 +1002,7 @@ section {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 700;
     padding: 0 10px;
     outline: none;
     cursor: pointer;
@@ -1096,34 +1096,7 @@ section {
         margin: 0 10px 10px 0;
         z-index: 1;
     }
-}
 
-.myList .myList-list .rating {
-    display: flex;
-
-}
-
-.myList .myList-list .rating input {
-    display: none;
-}
-
-.myList .myList-list .rating label {
-    float: right;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s;
-}
-
-.myList .myList-list .rating label:before {
-    content: '\2605';
-    font-size: 30px;
-}
-
-.myList .myList-list .rating input:checked ~ label,
-.myList .myList-list .rating label:hover,
-.myList .myList-list .rating label:hover ~ label {
-    color: #ffc720;
-    transition: color 0.3s;
 }
 
 .myList .myList-list .store-link {
@@ -1852,23 +1825,18 @@ input:not(:placeholder-shown) ~ .reset {
     color:#052E45;
 }
 
-.my-rating{
-    position: absolute;
-    top: 20px;
-    right:70px;
-    z-index: 1;
-}
+
 @media (max-width: 710px) {
-    .my-rating{
-        position: relative;
-        top: 0;
-        left:5px;
-        z-index: 1;
-    }
     .swal2-popup {
         font-size: 0.8rem !important;
         font-family: "Open Sans", serif;
     }
 }
+
+
+
+
+
+
 
 
