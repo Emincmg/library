@@ -45,9 +45,11 @@ class Lists extends Component
 
     public function sortBy($field){
         $this->sortField = $field;
+        $this->forgetComputed();
     }
     public function sortDirection($direction){
         $this->sortDirection= $direction;
+        $this->forgetComputed();
     }
 
 }

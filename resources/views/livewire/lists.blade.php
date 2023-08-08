@@ -67,7 +67,7 @@
                         <ul>
                             @foreach($books as $book)
                                 @if(!$book->readBefore)
-                                <li data-aos="fade-up d-flex" wire:key="{{$loop->iteration}}">
+                                <li data-aos="fade-up d-flex">
                                     <div class="row">
                                         <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"
                                              data-bs-target="#myList-list-{{$loop->iteration}}">
@@ -88,7 +88,7 @@
                                                 - @if(isset($book->authors) && !empty($book->authors))
                                                     {{ implode(', ', $book->authors) }}
                                                 @endif </a>
-                                                <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" ></div>
+                                                <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" wire:key="{{ now() }}"></div>
                                             <div class="del-button-wrapper">
                                                 <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}">
                                                     <i class='bx bx-x'></i></button>
@@ -150,7 +150,7 @@
                         <ul>
                                 @foreach($books as $book)
                                     @if($book->readBefore)
-                                    <li data-aos="fade-up d-flex" wire:key="{{$loop->iteration}}">
+                                    <li data-aos="fade-up d-flex">
                                         <div class="row">
                                             <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"
                                                  data-bs-target="#myList-list-{{$loop->iteration}}">
@@ -172,7 +172,7 @@
                                                         {{ implode(', ', $book->authors) }}
                                                     @endif
                                                 </a>
-                                                    <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}"></div>
+                                                    <div class="my-rating" data-rate="@if(isset($book->rate) && !empty($book->rate)){{$book->rate}}@endif" data-book-id="{{ $book->id }}" wire:key="{{ now() }}" ></div>
                                                 <div class="del-button-wrapper">
                                                     <button title="Delete book" id="deleteButton"
                                                             data-id="{{$book->id}}"><i class='bx bx-x'></i></button>

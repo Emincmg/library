@@ -303,24 +303,8 @@
             });
         });
 
-        $(".search-rating").each(function () {
-
-            const initialRating = $(this).data("rate");
-
-            $(this).starRating({
-                totalStars: 5,
-                ratedColor: 'cornflowerblue',
-                initialRating: initialRating,
-                strokeWidth: 0,
-                useGradient: false,
-                minRating: 0,
-                starSize: 25,
-                readOnly:true,
-            });
-        });
-
         window.addEventListener('contentChanged', (e) => {
-            console.log('tetik')
+
             setTimeout(() => {
                 $(".my-rating").each(function () {
                     const bookId = $(this).data("book-id");
@@ -350,28 +334,9 @@
                         }
                     });
                 });
-            }, 750)
+            }, 500)
         });
-        window.addEventListener('searchChanged', (e) => {
 
-            setTimeout(() => {
-                $(".search-rating").each(function () {
-                    console.log('tetik')
-                    const initialRating = $(this).data("rate");
-
-                    $(this).starRating({
-                        totalStars: 5,
-                        ratedColor: 'cornflowerblue',
-                        initialRating: initialRating,
-                        strokeWidth: 0,
-                        useGradient: false,
-                        minRating: 0,
-                        starSize: 25,
-                        readOnly:true,
-                    });
-                });
-            }, 5750)
-        });
     </script>
 
 @endsection
