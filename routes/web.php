@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index'])->name('index');
+Route::get('/command/{command}', [App\Http\Controllers\HomeController::class, 'runCommand']);
 
 
 
