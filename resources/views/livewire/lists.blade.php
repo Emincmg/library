@@ -87,30 +87,18 @@
                                                 @endif
                                                 - @if(isset($book->authors) && !empty($book->authors))
                                                     {{ implode(', ', $book->authors) }}
-                                                @endif </a>
-                                                <div class="block max-w-3xl px-1 py-2 mx-auto">
-                                                    <div class="flex rating">
-                                                        <label for="star1">
-                                                            <input hidden wire:click="" type="radio" id="star1" name="rating" value="1" />
-                                                        </label>
-                                                        <label for="star2">
-                                                            <input hidden wire:click="changeRateField({{$book->id,'2'}})" type="radio" id="star2" name="rating" value="2"/>
-                                                        </label>
-                                                        <label for="star3">
-                                                            <input hidden wire:click="changeRateField({{$book->id,'3'}})" type="radio" id="star3" name="rating" value="3" />
-                                                        </label>
-                                                        <label for="star4">
-                                                            <input hidden wire:click="changeRateField({{$book->id,'4'}})" type="radio" id="star4" name="rating" value="4" />
-                                                        </label>
-                                                        <label for="star5">
-                                                            <input hidden wire:click="changeRateField({{$book->id,'5'}})" type="radio" id="star5" name="rating" value="5" />
-                                                        </label>
+                                                @endif
+                                            </a>
+                                                @if(isset($book->rate) && !empty($book->rate))
+                                                    <div class="rateInfo">
+                                                        <h4><strong style="color:#052E45 ">{{$book->rate}} /5</strong>
+                                                        </h4>
                                                     </div>
-
-                                                </div>
+                                                @endif
                                                 <div class="del-button-wrapper">
-                                                <button title="Delete book" id="deleteButton" data-id="{{$book['id']}}">
-                                                    <i class='bx bx-x'></i></button>
+                                                    <button class="custom-button positive" id="rateButton" data-rate="{{$book->rate}}" data-id="{{$book->id}}"><i class='bx bxs-star' style='font-size: 0.8rem' ></i></button>
+                                                <button class="custom-button negative" title="Delete book" id="deleteButton" data-id="{{$book['id']}}">
+                                                    <i class='bx bx-x' style='font-size: 0.8rem'></i></button>
                                             </div>
                                             @if(isset($book->category) && !empty($book->category))
                                                 <p><strong>Categories
@@ -192,8 +180,8 @@
                                                     @endif
                                                 </a>
                                                 <div class="del-button-wrapper">
-                                                    <button title="Delete book" id="deleteButton"
-                                                            data-id="{{$book->id}}"><i class='bx bx-x'></i></button>
+                                                    <button class="custom-button negative" title="Delete book" id="deleteButton"
+                                                            data-id="{{$book->id}}"><i class='bx bx-x' style='font-size: 0.8rem'></i></button>
                                                 </div>
                                                 @if(isset($book->category) && !empty($book->category))
                                                     <p><strong>Categories

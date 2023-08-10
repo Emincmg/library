@@ -37,16 +37,18 @@
                                             - @if(isset($book['volumeInfo']['authors']) && !empty($book['volumeInfo']['authors']))
                                                 {{ implode(', ', $book['volumeInfo']['authors']) }}
                                             @endif <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                        @if(isset($book['volumeInfo']['averageRating']) && !empty($book['volumeInfo']['averageRating']))
+                                            <div class="search-rateInfo">
+                                                <h4><strong style="color:#052E45 ">{{$book['volumeInfo']['averageRating']}} /5</strong>
+                                                </h4>
+                                            </div>
+                                        @endif
                                         @if(isset($book['volumeInfo']['categories']) && !empty($book['volumeInfo']['categories']))
                                             <p><strong>Categories
                                                     :</strong> {{implode(',',$book['volumeInfo']['categories'])}}</p>
                                         @endif
                                         @if(isset($book['volumeInfo']['publishedDate']) && !empty($book['volumeInfo']['publishedDate']))
                                             <p><strong>Release Date :</strong> {{$book['volumeInfo']['publishedDate']}}
-                                            </p>
-                                        @endif
-                                        @if(isset($book['volumeInfo']['averageRating']) && !empty($book['volumeInfo']['averageRating']))
-                                            <p><strong>Rating :</strong> {{$book['volumeInfo']['averageRating']}}
                                             </p>
                                         @endif
                                         @if(isset($book['volumeInfo']['pageCount']) && !empty($book['volumeInfo']['pageCount']))

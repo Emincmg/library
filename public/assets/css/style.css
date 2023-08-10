@@ -1136,78 +1136,10 @@ section {
     right: 0;
 }
 
-
-
 .del-button-wrapper {
     position: absolute;
     top: 5px;
     right: 5px;
-}
-
-.del-button-wrapper button {
-    display: inline-block;
-    padding: 4px 5px 0 5px;
-    border: 1px solid #616B5E;
-    border-radius: 4px;
-    transition: all 0.2s ease-in;
-    position: relative;
-    overflow: hidden;
-    font-size: 14px;
-    color: #616B5E;
-    z-index: 1;
-    margin: 5px;
-    background-color: #FFFFFF;
-}
-
-.del-button-wrapper button i {
-    font-size: 20px;
-}
-
-.del-button-wrapper button:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.25);
-    top: 100%;
-    width: 140%;
-    height: 180%;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-}
-
-.del-button-wrapper button:after {
-    content: "";
-    position: absolute;
-    left: 55%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.45);
-    top: 180%;
-    width: 160%;
-    height: 190%;
-    background-color: #616B5E;
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-}
-
-.del-button-wrapper button:hover {
-    color: #ffffff;
-    border: 1px solid #616B5E;
-}
-
-.del-button-wrapper button:hover:before {
-    top: -35%;
-    background-color: #616B5E;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-.del-button-wrapper button:hover:after {
-    top: -45%;
-    background-color: #616B5E;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
 .placeholder-wrapper {
@@ -1825,11 +1757,31 @@ input:not(:placeholder-shown) ~ .reset {
     color:#052E45;
 }
 
+.rateInfo{
+    position: absolute;
+    top: 13px;
+    right: 115px;
+}
+.search-rateInfo{
+    position: absolute;
+    top: 15px;
+    right: 50px;
+}
 
 @media (max-width: 710px) {
     .swal2-popup {
         font-size: 0.8rem !important;
         font-family: "Open Sans", serif;
+    }
+    .rateInfo{
+        position: absolute;
+        top: 50px;
+        right: 25px;
+    }
+    .search-rateInfo{
+        position: absolute;
+        top: 15px;
+        right: 15px;
     }
 }
 

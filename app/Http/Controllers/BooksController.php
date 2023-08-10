@@ -23,7 +23,7 @@ class BooksController extends Controller
         return view('addbook');
     }
 
-    protected function insertBook(Request $request, $volumeID, $readBefore,$note ){
+    protected function insertBook(Request $request, $volumeID, $readBefore,$note,$rate ){
         $user = Auth::user();
         $checkBookTitle = $user->books()->where('volumeID',$volumeID)->first();
         if ($checkBookTitle){
@@ -58,6 +58,7 @@ class BooksController extends Controller
             'readBefore'=>$readBeforeVal,
             'volumeID'=>$volumeID,
             'notes'=> $note ?? null,
+            'rate'=>$rate ?? 0,
         ]);
 
         $user->books()->save($bookData);

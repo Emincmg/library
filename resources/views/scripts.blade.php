@@ -36,12 +36,24 @@
                     },
                     showCancelButton: true,
                     confirmButtonColor: '#052E45',
-                });
-
+                }).then()
+               const {value:rate} = await Swal.fire({
+                        title: 'Rate',
+                        input: 'range',
+                        inputAttributes: {
+                            min: 0,
+                            max: 5,
+                            step: 0.1,
+                        },
+                        inputValue:0,
+                        showCancelButton: true,
+                        confirmButtonText: 'Rate',
+                        confirmButtonColor: '#052E45',
+                    })
                 const noteToSend = note || 'null';
 
                 $.ajax({
-                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend,
+                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/'+rate,
                     type: 'GET',
                     success: function (response) {
                         Swal.fire({
@@ -202,18 +214,24 @@
                 type: 'POST',
                 data: formData,
                 success: function () {
-                    Swal.fire(
-                        'Sent!',
-                        'Your contact email has been sent.',
-                        'success'
-                    )
+                    Swal.fire({
+                        title: 'Sent!',
+                        text: 'Your contact email has been sent.',
+                        icon: 'success',
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
+                    });
                 },
                 error: function (xhr, status, error) {
-                    Swal.fire(
-                        'Error!',
-                        error.message,
-                        'error'
-                    );
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error.message,
+                        icon: 'success',
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
+                    });
                 }
             })
         })
@@ -245,18 +263,24 @@
                 cache: false,
                 processData: false,
                 success: function (response) {
-                    Swal.fire(
-                        'Changed!',
-                        'Profile has been modified.',
-                        'success'
-                    )
+                    Swal.fire({
+                        title: 'Changed!',
+                        text: 'Your profile has been modified.',
+                        icon: 'success',
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
+                    });
                 },
                 error: function (xhr, status, error) {
-                    Swal.fire(
-                        'Error!',
-                        error.message,
-                        'error'
-                    );
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
+                    });
                 }
             })
         })
@@ -271,6 +295,48 @@
 
         if(activeTab.length == 1)
             activeTab.click();
+
+
+        //Rate function
+
+        $('#rateButton').on('click', function (e){
+            let value = $(this).data("rate")
+            let bookID = $(this).data("id")
+            Swal.fire({
+                title: 'Rate',
+                input: 'range',
+                inputAttributes: {
+                    min: 0,
+                    max: 5,
+                    step: 0.1,
+                },
+                inputValue:value,
+                showCancelButton: true,
+                confirmButtonText: 'Rate',
+                confirmButtonColor: '#052E45',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.showLoading();
+                    $.ajax({
+                            url: '/changerate/' + bookID + '/' + result.value,
+                            type: "GET",
+                            success:function (){
+                                Swal.fire({
+                                    title: 'Changed!',
+                                    text: 'Rate has been changed.',
+                                    icon: 'success',
+                                    confirmButtonText: 'Confirm',
+                                    confirmButtonColor: '#052E45',
+                                    didClose: function() {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        }
+                    )
+                }
+            })
+        })
 
     </script>
 

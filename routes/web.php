@@ -11,7 +11,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/addbookpage', [App\Http\Controllers\BooksController::class, 'addBookPage'])->name('addbookpage');
 
     Route::get('/deletebook/{id}', [App\Http\Controllers\BooksController::class, 'deleteBook'])->name('deletebook');
-    Route::get('/insertBook/{volumeID}/{readBefore}/{note?}', [App\Http\Controllers\BooksController::class, 'insertBook'])->name('insertBook');
+    Route::get('/insertBook/{volumeID}/{readBefore}/{note?}/{rate?}', [App\Http\Controllers\BooksController::class, 'insertBook'])->name('insertBook');
 
     Route::get('/changeread/{id}/{value}', [App\Http\Controllers\BooksController::class, 'changeReadField'])->name('changeread');
     Route::get('/changenote/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeNoteField'])->name('changenote');
