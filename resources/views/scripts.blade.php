@@ -47,7 +47,6 @@
                         },
                         inputValue:0,
                         showCancelButton: true,
-                        confirmButtonText: 'Rate',
                         confirmButtonColor: '#052E45',
                     })
                 const noteToSend = note || 'null';
@@ -142,7 +141,7 @@
                 success: function () {
                     Swal.fire({
                             title: 'Changed!',
-                            text:'Book list changed to already read!',
+                            text:'Book list changed to will read!',
                             icon:'success',
                             confirmButtonColor: '#052E45',
                         })
@@ -299,7 +298,7 @@
 
         //Rate function
 
-        $('#rateButton').on('click', function (e){
+        $(document).on('click','#rateButton', function (e){
             let value = $(this).data("rate")
             let bookID = $(this).data("id")
             Swal.fire({

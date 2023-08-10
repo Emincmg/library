@@ -179,7 +179,14 @@
                                                         {{ implode(', ', $book->authors) }}
                                                     @endif
                                                 </a>
+                                                    @if(isset($book->rate) && !empty($book->rate))
+                                                        <div class="rateInfo">
+                                                            <h4><strong style="color:#052E45 ">{{$book->rate}} /5</strong>
+                                                            </h4>
+                                                        </div>
+                                                    @endif
                                                 <div class="del-button-wrapper">
+                                                    <button class="custom-button positive" id="rateButton" data-rate="{{$book->rate}}" data-id="{{$book->id}}"><i class='bx bxs-star' style='font-size: 0.8rem' ></i></button>
                                                     <button class="custom-button negative" title="Delete book" id="deleteButton"
                                                             data-id="{{$book->id}}"><i class='bx bx-x' style='font-size: 0.8rem'></i></button>
                                                 </div>

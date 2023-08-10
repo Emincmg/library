@@ -45,25 +45,27 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="{{route('index')}}#about">About</a></li>
-                <li><a class="nav-link scrollto" href="{{route('index')}}#why-us">Why me?</a></li>
-                <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contact</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('index')}}#hero"><i class='bx bx-home'></i>Home</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#about"><i class='bx bx-message-square-detail bx-flip-horizontal' ></i>About</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#why-us"><i class='bx bx-male'></i>Why me?</a></li>
+                <li><a class="nav-link scrollto" href="{{route('index')}}#contact"><i class='bx bx-phone-outgoing'></i>Contact</a></li>
                 @auth
-
-                    <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> @isset(Auth::user()->img)<img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="" class="profile-photo">@endisset <i
+                    <li><a href="{{route('listindex')}}"><i class='bx bx-list-ul' ></i>My list</a></li>
+                    <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>
+                    <li class="dropdown"><a href="#"><i class='bx bxs-user'></i><span>{{Auth::user()->name}}</span> @isset(Auth::user()->img)<img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="" class="profile-photo">@endisset <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{route('profilepage')}}">Profile</a></li>
-                            <li><a href="{{route('listindex')}}">My list</a></li>
-                            <li><a class="nav-link scrollto" href="{{route('addbookpage')}}">Search Books</a></li>
+                            <li><a href="{{route('profilepage')}}"><i class='bx bxs-user-detail' ></i>Profile</a></li>
+                            <li><a href="{{route('profilepage')}}"><i class='bx bxs-user-detail' ></i>Edit Profile</a></li>
+{{--                            <li><a href="{{route('listindex')}}"><i class='bx bx-list-ul' ></i>My list</a></li>--}}
+{{--                            <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>--}}
                             {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
                             {{--                                <ul>--}}
                             {{--                                    <li><a href="#">Deep Drop Down 1</a></li>--}}
                             {{--                                </ul>--}}
                             {{--                            </li>--}}
                             <li><a href="{{route('logout')}}"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class='bx bx-log-out' ></i>Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -110,6 +112,7 @@
 <script src="{{asset('https://code.jquery.com/ui/1.13.2/jquery-ui.js')}}"
         integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{asset('assets/js/main.js')}}"></script>

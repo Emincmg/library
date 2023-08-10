@@ -54,7 +54,7 @@ class ProfileController extends Controller
 
         if ($request->hasFile('image')) {
             $filename = $request->image->getClientOriginalName();
-            $request->image->storeAs('public/images', $filename);
+            $request->image->storeAs('app/images', $filename);
             $user->img = $filename;
         }
 

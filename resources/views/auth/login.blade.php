@@ -35,6 +35,7 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <input name="login" id="login" class="btn login-btn" type="submit" value="Login">
+                            <a href="javascript:void(0);" class="forgot-password-link" style="margin-left: 10px" onclick="showPass()">Show Password</a>
                             <a href="{{ route('password.request') }}" class="forgot-password-link">Forgot Your Password?</a>
                         </div>
                     </form>
@@ -212,4 +213,14 @@
             font-size: 14px;
             text-align: center; }
     </style>
+    <script type="text/javascript">
+        function showPass() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection
