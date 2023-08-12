@@ -4,20 +4,8 @@ This project, a learning project in the making by Emin Çomoğlu, is a library m
 
 ## Features
 
-- Add, Edit and delete books.
-- Search books.
-- Manage book stocks.
-- Get info about clicked book.
-- Get info about clicked author.
-- Automatically create new author if it doesn't exist.
-
-## New features in development
-
-- ~~Meilisearch integration~~ ✔️ Done
-- ~~Livewire integration.~~ ✔️ Done
-- ~~Search bar.~~ ✔️ Done
-- ~~Author detail page.~~ ✔️ Done
-- ~~Ability to insert new Authors.~~ ✔️ Done
-- Better design.
-
+- Manage your book lists.
+- Search books via Google Books API.
+- Make notes about your books.
+- Make your personal ratings.
 
