@@ -24,10 +24,9 @@
                         return 'You need to choose something!'
                     }
                 }
-
             })
             if (readBefore) {
-                const { value: note } = await Swal.fire({
+                const {value: note} = await Swal.fire({
                     input: 'textarea',
                     inputLabel: 'Do you have any notes?',
                     inputPlaceholder: 'Type your note here...',
@@ -36,8 +35,11 @@
                     },
                     showCancelButton: true,
                     confirmButtonColor: '#052E45',
-                }).then()
-               const {value:rate} = await Swal.fire({
+                })
+                let rate;
+
+                if (readBefore === 'true') {
+                    const {value: rate} = await Swal.fire({
                         title: 'Rate',
                         input: 'range',
                         inputAttributes: {
@@ -45,14 +47,17 @@
                             max: 5,
                             step: 0.1,
                         },
-                        inputValue:0,
+                        inputValue: 0,
                         showCancelButton: true,
                         confirmButtonColor: '#052E45',
                     })
+                }
+
                 const noteToSend = note || 'null';
+                const rateToSend = rate || '0';
 
                 $.ajax({
-                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/'+rate,
+                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
                     type: 'GET',
                     success: function (response) {
                         Swal.fire({
@@ -94,14 +99,14 @@
                         type: 'GET'
                     })
                     Swal.fire({
-                            title: 'Deleted!',
-                            text:'Book deleted!',
-                            icon:'success',
-                            confirmButtonColor: '#052E45',
-                        })
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1500);
+                        title: 'Deleted!',
+                        text: 'Book deleted!',
+                        icon: 'success',
+                        confirmButtonColor: '#052E45',
+                        didClose: function () {
+                            location.reload();
+                        }
+                    })
                 }
             })
 
@@ -117,18 +122,27 @@
                 type: 'GET',
                 success: function () {
                     Swal.fire({
-                        title: 'Changed!',
-                        text:'Book list changed to already read!',
-                        icon:'success',
+                            title: 'Changed!',
+                            text: 'Book list changed to already read!',
+                            icon: 'success',
                             confirmButtonColor: '#052E45',
-                    }
+                            didClose: function () {
+                                location.reload();
+                            }
+                        }
                     )
+                },
+                error: function (xhr, response, error) {
+                    let message = JSON.parse(xhr.responseText).message;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             })
-
-            setTimeout(function () {
-                location.reload();
-            }, 1500);
         });
 
         $(document).on('click', '#willReadChangeBtn', function () {
@@ -140,17 +154,26 @@
                 type: 'GET',
                 success: function () {
                     Swal.fire({
-                            title: 'Changed!',
-                            text:'Book list changed to will read!',
-                            icon:'success',
-                            confirmButtonColor: '#052E45',
-                        })
+                        title: 'Changed!',
+                        text: 'Book list changed to will read!',
+                        icon: 'success',
+                        confirmButtonColor: '#052E45',
+                        didClose: function () {
+                            location.reload();
+                        }
+                    })
+                },
+                error: function (xhr, response, error) {
+                    let message = JSON.parse(xhr.responseText).message;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             })
-
-            setTimeout(function () {
-                location.reload();
-            }, 1500);
         });
 
         //Book note manipulation
@@ -176,7 +199,7 @@
                         inputAttributes: {
                             'aria-label': 'Type your note here',
                         },
-                        inputValue : note,
+                        inputValue: note,
                         showCancelButton: true,
                         confirmButtonColor: '#052E45',
                     })
@@ -185,23 +208,34 @@
                         $.ajax({
                                 url: '/changenote/' + bookID + '/' + text,
                                 type: "GET",
-                            success:function (){
-                                Swal.fire({
-                                    title: 'Changed!',
-                                    text: 'Note has been changed.',
-                                    icon: 'success',
-                                    confirmButtonText: 'Confirm',
-                                    confirmButtonColor: '#052E45',
-                                    didClose: function() {
-                                        location.reload();
-                                    }
-                                });
-                            }
+                                success: function () {
+                                    Swal.fire({
+                                        title: 'Changed!',
+                                        text: 'Note has been changed.',
+                                        icon: 'success',
+                                        confirmButtonText: 'Confirm',
+                                        confirmButtonColor: '#052E45',
+                                        didClose: function () {
+                                            location.reload();
+                                        }
+                                    });
+                                },
+                                error: function (xhr, response, error) {
+                                    let message = JSON.parse(xhr.responseText).message;
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'error',
+                                        title: message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                }
                             }
                         )
                     }
                 }
-            })})
+            })
+        })
 
         //Contact form submit
         $(document).on('submit', '#contactUSForm', function (e) {
@@ -251,7 +285,7 @@
             }
         }
 
-        $(document).on('submit','#editProfileForm', function (e){
+        $(document).on('submit', '#editProfileForm', function (e) {
             e.preventDefault();
             Swal.showLoading();
             $.ajax({
@@ -275,7 +309,7 @@
                     Swal.fire({
                         title: 'Error!',
                         text: error.message,
-                        icon: 'error',
+                        icon: 'success',
                         confirmButtonText: 'Confirm',
                         confirmButtonColor: '#052E45',
 
@@ -285,20 +319,20 @@
         })
 
         //BS Tabs remember state
-        $('#nav-will-read-tab, #nav-already-read-tab').on('click', function(e) {
+        $('#nav-will-read-tab, #nav-already-read-tab').on('click', function (e) {
             localStorage.setItem("active-tab-id", $(e.target).attr("data-bs-target"));
         });
 
         var activeTabId = localStorage.getItem("active-tab-id");
         var activeTab = $(`button[data-bs-target="${activeTabId}"]`);
 
-        if(activeTab.length == 1)
+        if (activeTab.length == 1)
             activeTab.click();
 
 
         //Rate function
 
-        $(document).on('click','#rateButton', function (e){
+        $(document).on('click', '#rateButton', function (e) {
             let value = $(this).data("rate")
             let bookID = $(this).data("id")
             Swal.fire({
@@ -309,7 +343,7 @@
                     max: 5,
                     step: 0.1,
                 },
-                inputValue:value,
+                inputValue: value,
                 showCancelButton: true,
                 confirmButtonText: 'Rate',
                 confirmButtonColor: '#052E45',
@@ -319,16 +353,25 @@
                     $.ajax({
                             url: '/changerate/' + bookID + '/' + result.value,
                             type: "GET",
-                            success:function (){
+                            success: function () {
                                 Swal.fire({
                                     title: 'Changed!',
                                     text: 'Rate has been changed.',
                                     icon: 'success',
                                     confirmButtonText: 'Confirm',
                                     confirmButtonColor: '#052E45',
-                                    didClose: function() {
+                                    didClose: function () {
                                         location.reload();
                                     }
+                                });
+                            },
+                            error: function (xhr, status, error) {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: error.message,
+                                    icon: 'success',
+                                    confirmButtonText: 'Confirm',
+                                    confirmButtonColor: '#052E45',
                                 });
                             }
                         }

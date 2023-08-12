@@ -29,13 +29,13 @@ class ProfileController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'old_password' => ['required', function ($attribute, $value, $fail) use ($user) {
+            'old_password' =>$request->old_password ? ['required', function ($attribute, $value, $fail) use ($user) {
                 if (!Hash::check($value, $user->getAuthPassword())) {
                     return $fail(__('The current password is incorrect.'));
                 }
-            }],
-            'password' => 'required|min:8|confirmed',
-            'password_confirmation' => 'required',
+            }] : '',
+            'password' => $request->password ? 'required|min:8|confirmed' : '',
+            'password_confirmation' =>  $request->password ? 'required':'',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
