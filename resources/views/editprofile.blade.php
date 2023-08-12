@@ -50,6 +50,32 @@
                                         </div>
                                     </div>
                                     <hr>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Password</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input type="password" name="old_password" placeholder="********" class="form-control">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">New Password</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input type="password" name="password" placeholder="********" class="form-control">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Confirm New Password</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input type="password" name="password_confirmation" placeholder="********" class="form-control">
+                                    </div>
+                                </div>
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <h6 class="mb-0">Email</h6>

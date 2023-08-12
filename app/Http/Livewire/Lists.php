@@ -25,7 +25,17 @@ class Lists extends Component
     {
         $user = Auth::user();
 
-        $books = $user->books()->orderBy($this->sortField,$this->sortDirection)->where('title', 'like', '%' . $this->search . '%')->get();
+        $booksReadBefore = $user->books()
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->where('title', 'like', '%' . $this->search . '%')
+            ->where('readBefore', 1)
+            ->paginate(5);
+
+        $booksNotReadBefore = $user->books()
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->where('title', 'like', '%' . $this->search . '%')
+            ->where('readBefore', '!=', 1)
+            ->paginate(5);
 
         $booksCount = $user->books()->count();
         $authorsCount = $user->books->sum(function ($book) {
@@ -37,7 +47,7 @@ class Lists extends Component
         $notesCount = $user->books->sum(function ($book) {
             return $book->notes !== null ? 1 : 0;
         });
-        return view('livewire.lists',compact('books','booksCount','authorsCount','categoriesCount','notesCount'));
+        return view('livewire.lists',compact('booksReadBefore','booksNotReadBefore','booksCount','authorsCount','categoriesCount','notesCount'));
     }
 
     public function sortBy($field){

@@ -1771,7 +1771,7 @@ input:not(:placeholder-shown) ~ .reset {
 
 @media (max-width: 710px) {
     .swal2-popup {
-        font-size: 0.6rem !important;
+        font-size: 0.7rem !important;
         font-family: "Open Sans", serif;
     }
     .rateInfo{

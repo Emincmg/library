@@ -57,6 +57,7 @@
                                    autocomplete="new-password">
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-5">
+                            <a href="javascript:void(0);" class="forgot-password-link" style="margin-left: 10px" onclick="showPass()">Show Password</a>
                             <input name="login" id="login" class="btn login-btn" type="submit" value="Register">
                         </div>
                     </form>
@@ -64,7 +65,16 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        function showPass() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
     <style>
         body {
             background-color: #fff;

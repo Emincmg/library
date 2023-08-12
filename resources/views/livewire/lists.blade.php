@@ -65,8 +65,7 @@
                      aria-labelledby="nav-will-read-tab" tabindex="0" wire:ignore.self>
                     <div class="myList-list mt-3">
                         <ul>
-                            @foreach($books as $book)
-                                @if(!$book->readBefore)
+                            @forelse($booksNotReadBefore as $book)
                                 <li data-aos="fade-up d-flex">
                                     <div class="row">
                                         <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"
@@ -91,7 +90,7 @@
                                             </a>
                                                 @if(isset($book->rate) && !empty($book->rate))
                                                     <div class="rateInfo">
-                                                        <h4><strong style="color:#052E45 ">{{$book->rate}} /5</strong>
+                                                        <h4><strong style="color:#052E45 ">{{rtrim(rtrim($book->rate, '0'), '.')}} /5</strong>
                                                         </h4>
                                                     </div>
                                                 @endif
@@ -131,13 +130,12 @@
                                         </div>
                                     </div>
                                 </li>
-                                @endif
-                            @endforeach
-                                @if($books->where('readBefore', false)->count() === 0)
-                                    <div class="empty-container">
-                                        <h2>No books.</h2>
-                                    </div>
-                                @endif
+                                    @empty
+                                        <div class="empty-container">
+                                            <h2>No books.</h2>
+                                        </div>
+                            @endforelse
+                                {{$booksNotReadBefore->links('layouts.pagination-links')}}
                             <div class="col mt-4">
                                 <div class="container portfolio-insert">
                                     <div class="col-md-6 icon-box">
@@ -155,8 +153,7 @@
                      tabindex="0" wire:ignore.self>
                     <div class="myList-list mt-3">
                         <ul>
-                                @foreach($books as $book)
-                                    @if($book->readBefore)
+                                @forelse($booksReadBefore as $book)
                                     <li data-aos="fade-up d-flex">
                                         <div class="row">
                                             <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"
@@ -181,7 +178,7 @@
                                                 </a>
                                                     @if(isset($book->rate) && !empty($book->rate))
                                                         <div class="rateInfo">
-                                                            <h4><strong style="color:#052E45 ">{{$book->rate}} /5</strong>
+                                                            <h4><strong style="color:#052E45 ">{{rtrim(rtrim($book->rate, '0'), '.')}} /5</strong>
                                                             </h4>
                                                         </div>
                                                     @endif
@@ -223,13 +220,12 @@
                                             </div>
                                         </div>
                                     </li>
-                                @endif
-                                @endforeach
-                                    @if($books->where('readBefore', true)->count() === 0)
-                                        <div class="empty-container">
-                                            <h2>No books.</h2>
-                                        </div>
-                                    @endif
+                                @empty
+                                    <div class="empty-container">
+                                        <h2>No books.</h2>
+                                    </div>
+                                @endforelse
+                            {{$booksReadBefore->links('layouts.pagination-links')}}
                                 <div class="col mt-4">
                                     <div class="container portfolio-insert">
                                         <div class="col-md-6 icon-box">
