@@ -36,8 +36,6 @@
                     showCancelButton: true,
                     confirmButtonColor: '#052E45',
                 })
-                let rate;
-
                 if (readBefore === 'true') {
                     const {value: rate} = await Swal.fire({
                         title: 'Rate',

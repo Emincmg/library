@@ -21,7 +21,8 @@
         "php-flasher/flasher-laravel": "^1.15",
         "php-flasher/flasher-sweetalert-laravel": "^1.15",
         "realrashid/sweet-alert": "^7.1",
-        "snapappointments/bootstrap-select": "^1.13"
+        "snapappointments/bootstrap-select": "^1.13",
+        "ext-zlib": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
