@@ -3,21 +3,18 @@
 namespace App\Http\Livewire;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Book;
-use App\Models\Author;
-use App\Models\Categories;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use GuzzleHttp;
 
 class SearchBooks extends Component
 {
-    use WithPagination;
 
-    public $search;
-    protected $queryString = ['search'];
+
+    use WithPagination;
+    #[Url(history: true)]
+    public string $search = '';
 
     /**
      * @throws GuzzleException
@@ -34,5 +31,4 @@ class SearchBooks extends Component
         }
         return view('livewire.search-books', compact('bookData'));
     }
-
 }

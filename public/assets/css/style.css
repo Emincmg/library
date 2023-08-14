@@ -540,7 +540,7 @@ h1,h2,h3,h4,h5,h6{
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    transition: 0.3;
+    transition: 0.3s;
 }
 
 #hero .carousel-item::before {
@@ -1599,6 +1599,7 @@ section {
     width: var(--width-of-input);
     height: var(--height-of-input);
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     padding-inline: 0.8em;
     border-radius: var(--border-radius);
@@ -1690,6 +1691,10 @@ input:not(:placeholder-shown) ~ .reset {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+}
+
+.card h6{
+    font-weight: bold;
 }
 
 
@@ -1789,9 +1794,6 @@ body.swal2-shown > [aria-hidden="true"] {
     transition: 0.1s filter;
     filter: blur(10px);
 }
-
-
-
 
 
 

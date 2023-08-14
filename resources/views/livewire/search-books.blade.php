@@ -2,6 +2,7 @@
     <section id="myList" class="myList section-bg">
         <div class="container mt-5">
             <div class="myList-list">
+
                 <div class="search-container">
                     <div class="search-form">
                         <button>
@@ -9,15 +10,15 @@
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
-                        <input wire:model.live="search" class="input" placeholder="Title, author, category etc..." required="" type="text">
+                        <input wire:model.live="search" class="input" placeholder="Title, author, category etc..." type="text">
                     </div>
                 </div>
                 <ul>
                     @isset($bookData)
                         @foreach($bookData as $book)
-                            <li data-aos="fade-up d-flex">
+                            <li data-aos="fade-up d-flex" wire:loading.remove>
                                 <div class="row">
-                                    <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}" >
+                                    <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}" livewire:searchbooks lazy>
                                         @if(isset($book['volumeInfo']['imageLinks']['thumbnail']) && !empty($book['volumeInfo']['imageLinks']['thumbnail']))
                                             <img src="{{$book['volumeInfo']['imageLinks']['thumbnail']}}" alt=""
                                                  class="img-fluid">
