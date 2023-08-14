@@ -48,35 +48,37 @@
                         inputValue: 0,
                         showCancelButton: true,
                         confirmButtonColor: '#052E45',
+                    }).then((value)=>{
+                        const noteToSend = note || 'null';
+                        const rateToSend = value.value || '0';
+
+                        $.ajax({
+                            url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
+                            type: 'GET',
+                            success: function (response) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Book saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            },
+                            error: function (xhr, status, error) {
+                                let message = JSON.parse(xhr.responseText).message;
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        });
                     })
                 }
 
-                const noteToSend = note || 'null';
-                const rateToSend = rate || '0';
 
-                $.ajax({
-                    url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
-                    type: 'GET',
-                    success: function (response) {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Book saved',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    },
-                    error: function (xhr, status, error) {
-                        let message = JSON.parse(xhr.responseText).message;
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'error',
-                            title: message,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                });
             }
         });
 

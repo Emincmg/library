@@ -100,7 +100,7 @@
                             @foreach($lastNotes as $book)
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <p style="font-size: 14px" class="mb-0">{{$book->title}}</p>
-                                <span style="font-size: 14px" class="text-secondary">{{$book->notes}}</span>
+                                <span style="font-size: 14px" class="text-secondary">@if($book->notes!=='null'){{$book->notes}}@else {{'No note.'}}@endif</span>
                             </li>
                             @endforeach
                         </ul>
