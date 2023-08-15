@@ -18,7 +18,7 @@
                         @foreach($bookData as $book)
                             <li data-aos="fade-up d-flex" wire:loading.remove>
                                 <div class="row">
-                                    <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}" livewire:searchbooks lazy>
+                                    <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}">
                                         @if(isset($book['volumeInfo']['imageLinks']['thumbnail']) && !empty($book['volumeInfo']['imageLinks']['thumbnail']))
                                             <img src="{{$book['volumeInfo']['imageLinks']['thumbnail']}}" alt=""
                                                  class="img-fluid">
@@ -77,6 +77,40 @@
                                 <div class="placeholder-img section-bg"></div>
                             </div>
                             <div class="col-md-10" >
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2" >
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                </div>
+
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="placeholder-wrapper">
+
+                            <div class="col-md-2" >
+                                <div class="placeholder-img section-bg"></div>
+                            </div>
+                            <div class="col-md-10">
                                 <div class="row">
                                 </div>
 
