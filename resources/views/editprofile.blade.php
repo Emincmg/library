@@ -15,7 +15,7 @@
         </div>
     </section>
     <!-- End Breadcrumbs -->
-    <div class="container" style="min-height: 75dvh">
+    <div class="container" style="min-height: 80dvh">
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">

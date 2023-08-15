@@ -65,7 +65,7 @@
                             </li>
                         @endforeach
                     @endisset
-                        <div class="container" wire:loading.remove style="height: 60vh">
+                        <div class="container" wire:loading.remove style="height: 70vh">
 
                         </div>
 

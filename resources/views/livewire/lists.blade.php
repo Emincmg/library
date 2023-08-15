@@ -1,6 +1,6 @@
 <div>
     <!-- ======= My List Section ======= -->
-    <section id="myList" class="myList section-bg">
+    <section id="myList" class="myList section-bg" style="min-height: 70vh">
         <div class="container mt-5">
             <nav wire:ignore>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist" >
