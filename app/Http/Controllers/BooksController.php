@@ -25,10 +25,7 @@ class BooksController extends Controller
 
     protected function insertBook(Request $request, $volumeID, $readBefore,$note,$rate ){
         $user = Auth::user();
-        $checkBookTitle = $user->books()->where('volumeID',$volumeID)->first();
-        if ($checkBookTitle){
-            abort(409,'Book already exists.');
-        }
+
 
         $client = new GuzzleHttp\Client();
         $response = $client->request('GET', 'https://www.googleapis.com/books/v1/volumes/'.$volumeID.'?key=AIzaSyDHg3e16JU-uJGpNEcx6S2aCkQV2u4oRcQ');
@@ -91,6 +88,14 @@ class BooksController extends Controller
     {
         Book::destroy($id);
         return Response::json(['Book deleted!'], 204);
+    }
+
+    public function checkBookExists($volumeID){
+        $user= Auth::user();
+        $checkBookTitle = $user->books()->where('volumeID',$volumeID)->first();
+        if ($checkBookTitle){
+            abort(409,'Book already exists.');
+        }
     }
 }
 

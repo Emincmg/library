@@ -3,83 +3,100 @@
 
         //Add book
         $(document).on('click', '#add-button', async function () {
+
             let bookID = $(this).data("id");
 
-            const inputOptions = new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve({
-                        'true': 'Read before',
-                        'false': 'Didnt read before',
-                    })
-                }, 500)
-            })
-
-            const {value: readBefore} = await Swal.fire({
-                title: 'Did you read this book before?',
-                input: 'radio',
-                inputOptions: inputOptions,
-                confirmButtonColor: '#052E45',
-                inputValidator: (value) => {
-                    if (!value) {
-                        return 'You need to choose something!'
-                    }
+            $.ajax({
+                url:'/checkbook/' + bookID,
+                type: 'GET',
+                error:function (xhr, status, error) {
+                    let message = JSON.parse(xhr.responseText).message;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
-            })
-            if (readBefore) {
-                const {value: note} = await Swal.fire({
-                    input: 'textarea',
-                    inputLabel: 'Do you have any notes?',
-                    inputPlaceholder: 'Type your note here...',
-                    inputAttributes: {
-                        'aria-label': 'Type your note here'
-                    },
-                    showCancelButton: true,
-                    confirmButtonColor: '#052E45',
+
+            }).then(async (result) => {
+                const inputOptions = new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({
+                            'true': 'Read before',
+                            'false': 'Didnt read before',
+                        })
+                    }, 500)
                 })
-                if (readBefore === 'true') {
-                    const {value: rate} = await Swal.fire({
-                        title: 'Rate',
-                        input: 'range',
+
+                const {value: readBefore} = await Swal.fire({
+                    title: 'Did you read this book before?',
+                    input: 'radio',
+                    inputOptions: inputOptions,
+                    confirmButtonColor: '#052E45',
+                    inputValidator: (value) => {
+                        if (!value) {
+                            return 'You need to choose something!'
+                        }
+                    }
+                })
+                if (readBefore) {
+                    const {value: note} = await Swal.fire({
+                        input: 'textarea',
+                        inputLabel: 'Do you have any notes?',
+                        inputPlaceholder: 'Type your note here...',
                         inputAttributes: {
-                            min: 0,
-                            max: 5,
-                            step: 0.1,
+                            'aria-label': 'Type your note here'
                         },
-                        inputValue: 0,
                         showCancelButton: true,
                         confirmButtonColor: '#052E45',
-                    }).then((value)=>{
-                        const noteToSend = note || 'null';
-                        const rateToSend = value.value || '0';
-
-                        $.ajax({
-                            url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
-                            type: 'GET',
-                            success: function (response) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Book saved',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            },
-                            error: function (xhr, status, error) {
-                                let message = JSON.parse(xhr.responseText).message;
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
-                        });
                     })
+                    if (readBefore === 'true') {
+                        const {value: rate} = await Swal.fire({
+                            title: 'Rate',
+                            input: 'range',
+                            inputAttributes: {
+                                min: 0,
+                                max: 5,
+                                step: 0.1,
+                            },
+                            inputValue: 0,
+                            showCancelButton: true,
+                            confirmButtonColor: '#052E45',
+                        }).then((value) => {
+                            const noteToSend = note || 'null';
+                            const rateToSend = value.value || '0';
+
+                            $.ajax({
+                                url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
+                                type: 'GET',
+                                success: function (response) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Book saved',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                },
+                                error: function (xhr, status, error) {
+                                    let message = JSON.parse(xhr.responseText).message;
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'error',
+                                        title: message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                }
+                            });
+                        })
+                    }
+
+
                 }
-
-
-            }
+            })
         });
 
         //Delete book
