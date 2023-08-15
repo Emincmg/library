@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Flasher\Laravel\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;

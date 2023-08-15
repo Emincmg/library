@@ -49,7 +49,6 @@ class ProfileController extends Controller
             ], 400);
         }
 
-        $user = Auth::user();
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');

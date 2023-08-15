@@ -16,6 +16,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/changeread/{id}/{value}', [App\Http\Controllers\BooksController::class, 'changeReadField'])->name('changeread');
     Route::get('/changenote/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeNoteField'])->name('changenote');
     Route::get('/changerate/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeRateField'])->name('changerate');
+    Route::get('/checkbook/{volumeID}', [App\Http\Controllers\BooksController::class, 'checkBookExists'])->name('checkbook');
 
     Route::get('/addbookpage', [App\Http\Controllers\BooksController::class, 'addBookPage'])->name('addbookpage');
     Route::get('/contactpage', [App\Http\Controllers\ContactController::class, 'index']);
@@ -28,7 +29,6 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index'])->name('index');
-Route::get('/command/{command}', [App\Http\Controllers\HomeController::class, 'runCommand']);
 
 
 
