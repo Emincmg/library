@@ -307,6 +307,7 @@
                         sortByOptions.style.display = 'block';
                     } else {
                         sortByOptions.style.display = 'none';
+                        $(this).addClass('hide');
                     }
                 });
                 filterButton.addEventListener('click', function() {

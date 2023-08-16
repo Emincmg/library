@@ -348,7 +348,6 @@
 
 
         //Rate function
-
         $(document).on('click', '#rateButton', function (e) {
             let value = $(this).data("rate")
             let bookID = $(this).data("id")
