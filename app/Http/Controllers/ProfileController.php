@@ -71,7 +71,7 @@ class ProfileController extends Controller
             ], 400);
         }
 
-        if (strcmp($request->get('old_password'), $request->password) == 0)
+        if (strcmp($request->get('old_password'), $request->input('password')) == 0)
         {
             return response()->json(['message'=>'New password cant be same with your old password']);
         }
@@ -97,8 +97,8 @@ class ProfileController extends Controller
             $filename = '';
 
             if ($request->hasFile('image')) {
-                $filename = $request->image->getClientOriginalName();
-                $request->image->storeAs('app/images', $filename);
+                $filename = $request->input('image')->getClientOriginalName();
+                $request->input('image')->storeAs('app/images', $filename);
                 $this->user->img = $filename;
             }
 
