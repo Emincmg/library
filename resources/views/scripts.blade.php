@@ -347,8 +347,8 @@
             localStorage.setItem("active-tab-id", $(e.target).attr("data-bs-target"));
         });
 
-        var activeTabId = localStorage.getItem("active-tab-id");
-        var activeTab = $(`button[data-bs-target="${activeTabId}"]`);
+        let activeTabId = localStorage.getItem("active-tab-id");
+        let activeTab = $(`button[data-bs-target="${activeTabId}"]`);
 
         if (activeTab.length == 1)
             activeTab.click();

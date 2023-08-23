@@ -94,7 +94,6 @@ class ProfileController extends Controller
                 $this->user->info = $request->input('info');
             }
 
-            $filename = '';
 
             if ($request->hasFile('image')) {
                 $filename = $request->input('image')->getClientOriginalName();
