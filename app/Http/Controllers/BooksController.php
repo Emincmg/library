@@ -6,6 +6,7 @@ use App\Models\Book;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use GuzzleHttp;
 
@@ -23,12 +24,12 @@ class BooksController extends Controller
         });
 
     }
-    public function index()
+    public function index() : View
     {
         return view('index');
     }
 
-    public function addBookPage()
+    public function addBookPage() : View
     {
         return view('addbook');
     }

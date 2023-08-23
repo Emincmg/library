@@ -41,7 +41,7 @@ class ProfileController extends Controller
      * @param array $data
      * @return \Illuminate\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data) : Validator
     {
         $rules = [
             'name' => 'required|string|max:255',
