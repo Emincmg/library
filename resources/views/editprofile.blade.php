@@ -21,18 +21,21 @@
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('editprofile')}}" method="POST" enctype="multipart/form-data" id="editProfileForm">
-                            <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="profile_image" class="rounded-circle" width="150" id="image">
-                                <div class="mt-3">
-                                    <h4>{{Auth::user()->name}}</h4>
-                                    <p class="text-secondary mb-1">{{Auth::user()->email}}</p>
-                                    <label class="custom-button positive upload-button">
-                                        <input type="file" style="display: none" name="image"  onchange="previewProfilePhoto(event)" accept="image/*">
-                                        Upload Image
-                                    </label>
+                            <form action="{{route('editprofile')}}" method="POST" enctype="multipart/form-data"
+                                  id="editProfileForm">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="profile_image"
+                                         class="rounded-circle" width="150" id="image">
+                                    <div class="mt-3">
+                                        <h4>{{Auth::user()->name}}</h4>
+                                        <p class="text-secondary mb-1">{{Auth::user()->email}}</p>
+                                        <label class="custom-button positive upload-button">
+                                            <input type="file" style="display: none" name="image"
+                                                   onchange="previewProfilePhoto(event)" accept="image/*">
+                                            Upload Image
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,22 +43,24 @@
                     <div class="row gutters-sm">
                         <div class="card mt-3">
                             <div class="card-body">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h6 class="mb-0">Full Name</h6>
-                                        </div>
-                                        <div class="col-sm-8 text-secondary">
-                                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control">
-                                        </div>
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Full Name</h6>
                                     </div>
-                                    <hr>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input type="text" name="name" value="{{ Auth::user()->name }}"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <h6 class="mb-0">Password</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
-                                        <input type="password" name="old_password" placeholder="********" class="form-control">
+                                        <input type="password" name="old_password" placeholder="********"
+                                               class="form-control">
                                     </div>
                                 </div>
                                 <hr>
@@ -64,39 +69,42 @@
                                         <h6 class="mb-0">New Password</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
-                                        <input type="password" name="password" placeholder="********" class="form-control">
+                                        <input type="password" name="password" placeholder="********"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Confirm New Password</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input type="password" name="password_confirmation" placeholder="********"
+                                               class="form-control">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <h6 class="mb-0">Confirm New Password</h6>
+                                        <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
-                                        <input type="password" name="password_confirmation" placeholder="********" class="form-control">
+                                        <input type="email" name="email" value="{{ Auth::user()->email }}"
+                                               class="form-control">
                                     </div>
                                 </div>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h6 class="mb-0">Email</h6>
-                                        </div>
-                                        <div class="col-sm-8 text-secondary">
-                                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
-                                        </div>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Info</h6>
                                     </div>
-                                    <hr>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h6 class="mb-0">Info</h6>
-                                        </div>
-                                        <div class="col-sm-8 text-secondary">
-                                            <textarea name="info" class="form-control">{{ Auth::user()->info }}</textarea>
-                                        </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        <textarea name="info" class="form-control">{{ Auth::user()->info }}</textarea>
                                     </div>
-                                    <div class="mt-3 text-center">
-                                        <button type="submit" class="custom-button positive">Update Profile</button>
-                                    </div>
+                                </div>
+                                <div class="mt-3 text-center">
+                                    <button type="submit" class="custom-button positive">Update Profile</button>
+                                </div>
                                 </form>
                             </div>
                         </div>

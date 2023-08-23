@@ -10,13 +10,14 @@
                 url:'/checkbook/' + bookID,
                 type: 'GET',
                 error:function (xhr, status, error) {
-                    let message = JSON.parse(xhr.responseText).message;
+                   let err = JSON.parse(xhr.responseText)
                     Swal.fire({
-                        position: 'top-end',
+                        title: "Error!",
+                        text: err.message,
                         icon: 'error',
-                        title: message,
-                        showConfirmButton: false,
-                        timer: 1500
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
                     });
                 }
 
@@ -81,13 +82,14 @@
                                     });
                                 },
                                 error: function (xhr, status, error) {
-                                    let message = JSON.parse(xhr.responseText).message;
+                                 let  err = JSON.parse(xhr.responseText)
                                     Swal.fire({
-                                        position: 'top-end',
+                                        title: "Error!",
+                                        text: err.message,
                                         icon: 'error',
-                                        title: message,
-                                        showConfirmButton: false,
-                                        timer: 1500
+                                        confirmButtonText: 'Confirm',
+                                        confirmButtonColor: '#052E45',
+
                                     });
                                 }
                             });
@@ -150,13 +152,14 @@
                     )
                 },
                 error: function (xhr, response, error) {
-                    let message = JSON.parse(xhr.responseText).message;
+                  let err = JSON.parse(xhr.responseText)
                     Swal.fire({
-                        position: 'top-end',
+                        title: "Error!",
+                        text: err.message,
                         icon: 'error',
-                        title: message,
-                        showConfirmButton: false,
-                        timer: 1500
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
                     });
                 }
             })
@@ -181,13 +184,14 @@
                     })
                 },
                 error: function (xhr, response, error) {
-                    let message = JSON.parse(xhr.responseText).message;
+                   let err = JSON.parse(xhr.responseText)
                     Swal.fire({
-                        position: 'top-end',
+                        title: "Error!",
+                        text: err.message,
                         icon: 'error',
-                        title: message,
-                        showConfirmButton: false,
-                        timer: 1500
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#052E45',
+
                     });
                 }
             })
@@ -238,13 +242,14 @@
                                     });
                                 },
                                 error: function (xhr, response, error) {
-                                    let message = JSON.parse(xhr.responseText).message;
+                                    let err = JSON.parse(xhr.responseText)
                                     Swal.fire({
-                                        position: 'top-end',
+                                        title: "Error!",
+                                        text: err.message,
                                         icon: 'error',
-                                        title: message,
-                                        showConfirmButton: false,
-                                        timer: 1500
+                                        confirmButtonText: 'Confirm',
+                                        confirmButtonColor: '#052E45',
+
                                     });
                                 }
                             }
@@ -274,10 +279,11 @@
                     });
                 },
                 error: function (xhr, status, error) {
+                    let err = JSON.parse(xhr.responseText)
                     Swal.fire({
-                        title: 'Error!',
-                        text: error.message,
-                        icon: 'success',
+                        title: "Error!",
+                        text: err.message,
+                        icon: 'error',
                         confirmButtonText: 'Confirm',
                         confirmButtonColor: '#052E45',
 
@@ -323,10 +329,11 @@
                     });
                 },
                 error: function (xhr, status, error) {
+                   let err = JSON.parse(xhr.responseText)
                     Swal.fire({
-                        title: 'Error!',
-                        text: error.message,
-                        icon: 'success',
+                        title: "Error!",
+                        text: err.message,
+                        icon: 'error',
                         confirmButtonText: 'Confirm',
                         confirmButtonColor: '#052E45',
 
@@ -382,12 +389,14 @@
                                 });
                             },
                             error: function (xhr, status, error) {
+                               let err = JSON.parse(xhr.responseText)
                                 Swal.fire({
-                                    title: 'Error!',
-                                    text: error.message,
-                                    icon: 'success',
+                                    title: "Error!",
+                                    text: err.message,
+                                    icon: 'error',
                                     confirmButtonText: 'Confirm',
                                     confirmButtonColor: '#052E45',
+
                                 });
                             }
                         }

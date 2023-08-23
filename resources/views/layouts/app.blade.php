@@ -56,7 +56,7 @@
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{route('profilepage')}}"><i class='bx bxs-user-detail' ></i>Profile</a></li>
-                            <li><a href="{{route('profilepage')}}"><i class='bx bxs-user-detail' ></i>Edit Profile</a></li>
+                            <li><a href="{{route('editprofilepage')}}"><i class='bx bxs-user-detail' ></i>Edit Profile</a></li>
 {{--                            <li><a href="{{route('listindex')}}"><i class='bx bx-list-ul' ></i>My list</a></li>--}}
 {{--                            <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>--}}
                             {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}

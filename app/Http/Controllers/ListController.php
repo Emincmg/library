@@ -12,8 +12,10 @@ class ListController extends Controller
     public function index()
     {
         $user = Auth::user();
+        
         $readBooks = $user->books()->where('readBefore', true)->get();
         $unreadBooks = $user->books()->where('readBefore', false)->get();
+
         return view('list', compact('readBooks', 'unreadBooks'));
     }
 
