@@ -102,11 +102,6 @@ class ProfileController extends Controller
             }
 
             $this->user->save();
-
-            return response()->json([
-                'message' => 'Profil başarıyla güncellendi.',
-                'image' => $filename ? 'images/' . $filename : null,
-            ], 200);
         }
     }
 
