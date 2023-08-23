@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
 
-    private Object $user;
+    private mixed $user;
 
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::user();
+            $this->user = Auth::user() ? Auth::user() : Auth::guest();
             return $next($request);
         });
 
