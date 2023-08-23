@@ -104,6 +104,9 @@ class ProfileController extends Controller
 
             $this->user->save();
         }
+        return response()->json([
+            'message' => 'Profile edited.',
+        ], 400);
     }
 
 

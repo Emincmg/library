@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -34,17 +35,25 @@ class BooksController extends Controller
         return view('addbook');
     }
 
-    public function changeReadField($id,$value){
+    public function changeReadField($id,$value) : JsonResponse
+    {
 
         $book = $this->user->books()->where('id',$id)->firstOrFail();
 
         $book->update(['readBefore' => $value]);
+
+        return response()->json(['Read field changed']);
     }
 
-    public function changeNoteField($id,$value){
+    public function changeNoteField($id,$value) : JsonResponse
+    {
         $book = $this->user->books()->where('id',$id)->firstOrFail();
 
         $book->update(['notes' => $value]);
+
+        return response()->json([
+            'message' => 'Note field changed',
+        ], 400);
     }
 
     public function changeRateField($id,$value){
@@ -53,13 +62,14 @@ class BooksController extends Controller
         $book->update(['rate' => $value]);
     }
 
-    public function deleteBook($id)
+    public function deleteBook($id): JsonResponse
     {
         Book::destroy($id);
-        return Response::json(['Book deleted!'], 204);
+        return response()->json(['message'=>'Book deleted']);
     }
 
-    public function checkBookExists($volumeID){
+    public function checkBookExists($volumeID) : Response
+    {
         $checkBookTitle = $this->user->books()->where('volumeID',$volumeID)->first();
         if ($checkBookTitle){
             abort(409,'Book already exists.');
@@ -70,11 +80,15 @@ class BooksController extends Controller
     /**
      * @throws GuzzleException
      */
-    public function insertBook(Request $request, $volumeID, $readBefore, $note, $rate)
+    public function insertBook(Request $request, $volumeID, $readBefore, $note, $rate) : JsonResponse
     {
         $bookData = $this->getBookData($volumeID,$readBefore,$note,$rate);
 
         $this->user->books()->save($bookData);
+
+        return response()->json([
+            'message' => 'Book added',
+        ], 400);
     }
 
 
