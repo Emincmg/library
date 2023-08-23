@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,13 +73,14 @@ class BooksController extends Controller
         if ($checkBookTitle){
             abort(409,'Book already exists.');
         }
+        return response()->json(['message'=>'Book checked']);
     }
 
 
     /**
      * @throws GuzzleException
      */
-    public function insertBook(Request $request, $volumeID, $readBefore, $note, $rate) : JsonResponse
+    public function insertBook($volumeID, $readBefore, $note, $rate) : JsonResponse
     {
         $bookData = $this->getBookData($volumeID,$readBefore,$note,$rate);
 
