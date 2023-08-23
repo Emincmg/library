@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 
 class ProfileController extends Controller
@@ -22,7 +23,7 @@ class ProfileController extends Controller
         });
 
     }
-    public function index()
+    public function index() : View
     {
         $lastBooks = $this->user->books()->orderBy('created_at', 'desc')->take(5)->get();
         $lastNotes = $this->user->books()->orderBy('updated_at', 'desc')->take(5)->get();
@@ -31,7 +32,7 @@ class ProfileController extends Controller
     }
 
 
-    public function editProfilePage()
+    public function editProfilePage() : View
     {
         return view('editprofile');
     }
@@ -41,7 +42,7 @@ class ProfileController extends Controller
      * @param array $data
      * @return \Illuminate\Validation\Validator
      */
-    protected function validator(array $data) : Validator
+    protected function validator(array $data) : \Illuminate\Validation\Validator
     {
         $rules = [
             'name' => 'required|string|max:255',
@@ -60,7 +61,7 @@ class ProfileController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    protected function editProfile(Request $request)
+    protected function editProfile(Request $request) : JsonResponse
     {
 
         if (!Hash::check($request->get('old_password'), $this->user->password))
