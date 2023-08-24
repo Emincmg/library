@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Contact;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class ContactController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return View ()
      */
 
-    public function index(): Response
+    public function index() : \Illuminate\View\View
 
     {
 
@@ -34,7 +35,7 @@ class ContactController extends Controller
      * @return response()
      */
 
-    public function store(Request $request): Response
+    public function store(Request $request)
 
     {
 
@@ -55,6 +56,8 @@ class ContactController extends Controller
 
         Contact::create($request->all());
 
+
+        return \response()->json(['message'=>'Contact mail sent']);
 
 //        return redirect()->route('index')
 //            ->with(['success' => 'Your contact mail sent.']);
