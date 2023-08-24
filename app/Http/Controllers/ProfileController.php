@@ -14,7 +14,7 @@ class ProfileController extends Controller
 {
 
     /**
-     * @var mixed Method user() returns a Closure while method guest() returns a bool therefore, it is a mixed value.
+     * @var mixed Method user() returns a Closure while method guest() returns a bool, therefore it is a mixed value.
      */
     private mixed $user;
 
@@ -106,9 +106,7 @@ class ProfileController extends Controller
 
             $this->user->save();
         }
-        return response()->json([
-            'message' => 'Profile edited.',
-        ], 200);
+        return response()->json(['message' => 'Profile edited.',], 200);
     }
 
 
