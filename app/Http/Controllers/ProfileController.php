@@ -71,7 +71,7 @@ class ProfileController extends Controller
         {
             return response()->json([
                 'message' => 'User password is invalid',
-            ], 400);
+            ], 422);
         }
 
         if (strcmp($request->get('old_password'), $request->input('password')) == 0)
@@ -84,7 +84,7 @@ class ProfileController extends Controller
         if ($validated->fails()) {
             return response()->json([
                 'message' => $validated->errors(),
-            ], 400);
+            ], 422);
         }
 
         if ($validated->passes()) {
@@ -108,7 +108,7 @@ class ProfileController extends Controller
         }
         return response()->json([
             'message' => 'Profile edited.',
-        ], 400);
+        ], 200);
     }
 
 
