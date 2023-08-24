@@ -27,9 +27,4 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function runCommand($command){
-        Artisan::call($command);
-
-        return "Command ran";
-    }
 }

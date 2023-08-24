@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Contact;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 
 
@@ -18,7 +19,7 @@ class ContactController extends Controller
      * @return response()
      */
 
-    public function index()
+    public function index(): Response
 
     {
 
@@ -33,7 +34,7 @@ class ContactController extends Controller
      * @return response()
      */
 
-    public function store(Request $request)
+    public function store(Request $request): Response
 
     {
 

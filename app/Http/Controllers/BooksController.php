@@ -33,11 +33,23 @@ class BooksController extends Controller
         return view('index');
     }
 
+    /**
+     * Render book adding page.
+     *
+     * @return View
+     */
     public function addBookPage(): View
     {
         return view('addbook');
     }
 
+    /**
+     * Changes a books already read field.
+     *
+     * @param $id
+     * @param $value
+     * @return JsonResponse
+     */
     public function changeReadField($id, $value): JsonResponse
     {
 
@@ -48,6 +60,13 @@ class BooksController extends Controller
         return response()->json(['message' => 'Read field changed'], 200);
     }
 
+    /**
+     * Changes a books note field.
+     *
+     * @param $id
+     * @param $value
+     * @return JsonResponse
+     */
     public function changeNoteField($id, $value): JsonResponse
     {
         $book = $this->user->books()->where('id', $id)->firstOrFail();
@@ -57,6 +76,13 @@ class BooksController extends Controller
         return response()->json(['message' => 'Note field changed',], 200);
     }
 
+    /**
+     * Changes a books rate field.
+     *
+     * @param $id
+     * @param $value
+     * @return void
+     */
     public function changeRateField($id, $value)
     {
         $book = $this->user->books()->where('id', $id)->firstOrFail();
