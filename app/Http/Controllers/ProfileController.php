@@ -13,12 +13,15 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
 
+    /**
+     * @var mixed Method user() returns a Closure while method guest() returns a bool therefore, it is a mixed value.
+     */
     private mixed $user;
 
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::user() ? Auth::user() : Auth::guest();
+            $this->user = Auth::user() ?? Auth::guest();
             return $next($request);
         });
 
