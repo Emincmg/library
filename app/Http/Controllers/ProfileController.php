@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +15,11 @@ class ProfileController extends Controller
 {
 
     /**
-     * @var mixed Method user() returns a Closure while method guest() returns a bool, therefore it is a mixed value.
+     * Method user() returns a User object while method guest() returns boolean, therefore it is either an object or "false".
+     *
+     * @var User|false
      */
-    private mixed $user;
+    private User|false $user;
 
     public function __construct()
     {
@@ -106,7 +109,7 @@ class ProfileController extends Controller
 
             $this->user->save();
         }
-        return response()->json(['message' => 'Profile edited.',], 200);
+        return response()->json(['message' => 'Profile edited.',], 205);
     }
 
 

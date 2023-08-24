@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use GuzzleHttp;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
@@ -15,9 +16,11 @@ class BooksController extends Controller
 {
 
     /**
-     * @var mixed Method user() returns a Closure while method guest() returns a bool, therefore it is a mixed value.
+     * Method user() returns a User object while method guest() returns boolean, therefore it is either an object or "false".
+     *
+     * @var User|false
      */
-    private mixed $user;
+    private User|false $user;
 
     public function __construct()
     {
@@ -57,7 +60,7 @@ class BooksController extends Controller
 
         $book->update(['readBefore' => $value]);
 
-        return response()->json(['message' => 'Read field changed'], 200);
+        return response()->json(['message' => 'Read field changed'], 204);
     }
 
     /**
@@ -73,7 +76,7 @@ class BooksController extends Controller
 
         $book->update(['notes' => $value]);
 
-        return response()->json(['message' => 'Note field changed',], 200);
+        return response()->json(['message' => 'Note field changed',], 204);
     }
 
     /**
@@ -81,19 +84,21 @@ class BooksController extends Controller
      *
      * @param $id
      * @param $value
-     * @return void
+     * @return JsonResponse
      */
-    public function changeRateField($id, $value)
+    public function changeRateField($id, $value) : JsonResponse
     {
         $book = $this->user->books()->where('id', $id)->firstOrFail();
 
         $book->update(['rate' => $value]);
+
+        return response()->json(['message' => 'Rate field changed',],204);
     }
 
     public function deleteBook($id): JsonResponse
     {
         Book::destroy($id);
-        return response()->json(['message' => 'Book deleted']);
+        return response()->json(['message' => 'Book deleted'],204);
     }
 
     public function checkBookExists($volumeID): Response
@@ -102,7 +107,7 @@ class BooksController extends Controller
         if ($checkBookTitle) {
             abort(409, 'Book already exists.');
         }
-        return response()->json(['message' => 'Book checked',200]);
+        return response()->json(['message' => 'Book checked',204]);
     }
 
 
