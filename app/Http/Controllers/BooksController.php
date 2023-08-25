@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\User;
 use GuzzleHttp;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -18,9 +18,9 @@ class BooksController extends Controller
     /**
      * Method user() returns a User object while method guest() returns boolean, therefore it is either an object or "false".
      *
-     * @var User|false
+     * @var Authenticatable
      */
-    private User|false $user;
+    private Authenticatable $user;
 
     public function __construct()
     {
@@ -95,12 +95,24 @@ class BooksController extends Controller
         return response()->json(['message' => 'Rate field changed',],204);
     }
 
+    /**
+     * Deletes book
+     *
+     * @param $id
+     * @return JsonResponse
+     */
     public function deleteBook($id): JsonResponse
     {
         Book::destroy($id);
         return response()->json(['message' => 'Book deleted'],204);
     }
 
+    /**
+     * Checks if book exists in the DB
+     *
+     * @param $volumeID
+     * @return Response
+     */
     public function checkBookExists($volumeID): Response
     {
         $checkBookTitle = $this->user->books()->where('volumeID', $volumeID)->first();
@@ -125,6 +137,13 @@ class BooksController extends Controller
 
 
     /**
+     * Gets book data from Google Books API
+     *
+     * @param $volumeID
+     * @param $readBefore
+     * @param $note
+     * @param $rate
+     * @return Book
      * @throws GuzzleException
      */
     protected function getBookData($volumeID, $readBefore, $note, $rate): Book

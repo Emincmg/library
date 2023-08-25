@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class ProfileController extends Controller
     /**
      * Method user() returns a User object while method guest() returns boolean, therefore it is either an object or "false".
      *
-     * @var User|false
+     * @var Authenticatable
      */
-    private User|false $user;
+    private Authenticatable $user;
 
     public function __construct()
     {
@@ -45,6 +45,8 @@ class ProfileController extends Controller
 
 
     /**
+     * Validates edit profile form
+     *
      * @param array $data
      * @return \Illuminate\Validation\Validator
      */
@@ -64,6 +66,8 @@ class ProfileController extends Controller
 
 
     /**
+     * Edits profile
+     *
      * @param Request $request
      * @return JsonResponse
      */
@@ -72,9 +76,7 @@ class ProfileController extends Controller
 
         if (!Hash::check($request->get('old_password'), $this->user->password))
         {
-            return response()->json([
-                'message' => 'User password is invalid',
-            ], 422);
+            return response()->json(['message' => 'Wrong password',], 422);
         }
 
         if (strcmp($request->get('old_password'), $request->input('password')) == 0)

@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         <input type="text" name="name" value="{{ Auth::user()->name }}"
-                                               class="form-control">
+                                               class="form-control" required>
                                     </div>
                                 </div>
                                 <hr>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         <input type="password" name="old_password" placeholder="********"
-                                               class="form-control">
+                                               class="form-control" required>
                                     </div>
                                 </div>
                                 <hr>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         <input type="email" name="email" value="{{ Auth::user()->email }}"
-                                               class="form-control">
+                                               class="form-control" required>
                                     </div>
                                 </div>
 

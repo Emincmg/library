@@ -14,8 +14,6 @@ class Lists extends Component
     public $sortField ='title';
     public $sortDirection ='asc';
 
-    public $rating;
-
     public $search ;
 
     protected $queryString = ['search'];
