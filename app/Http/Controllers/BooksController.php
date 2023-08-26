@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Symfony\Component\HttpFoundation\Response;
 
 
 class BooksController extends Controller
@@ -111,9 +110,9 @@ class BooksController extends Controller
      * Checks if book exists in the DB
      *
      * @param $volumeID
-     * @return Response
+     * @return JsonResponse
      */
-    public function checkBookExists($volumeID): Response
+    public function checkBookExists($volumeID): JsonResponse
     {
         $checkBookTitle = $this->user->books()->where('volumeID', $volumeID)->first();
         if ($checkBookTitle) {
@@ -124,6 +123,13 @@ class BooksController extends Controller
 
 
     /**
+     * Inserts book to the user list.
+     *
+     * @param $volumeID
+     * @param $readBefore
+     * @param $note
+     * @param $rate
+     * @return JsonResponse
      * @throws GuzzleException
      */
     public function insertBook($volumeID, $readBefore, $note, $rate): JsonResponse
