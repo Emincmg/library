@@ -54,7 +54,7 @@
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="pages" wire:click="sortBy('pages')">
                     <label class="form-check-label" for="inlineRadio5">Page</label>
                 </div>
-                <div class="form-check form-check-inline ml-auto">
+                <div class="form-check form-check-inline">
                     <button class="custom-button negative" wire:click="sortDirection('asc')" value="asc"><i class='bx bx-chevron-up'></i></button>
                     <button class="custom-button negative" wire:click="sortDirection('desc')" value="desc"><i class='bx bx-chevron-down'></i></button>
                 </div>

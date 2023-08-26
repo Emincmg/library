@@ -1,7 +1,3 @@
-@php
-session_start();
-@endphp
-
 @extends('layouts.app')
 @section('content')
     <!-- ======= Breadcrumbs ======= -->
@@ -19,5 +15,4 @@ session_start();
         </div>
     </section><!-- End Breadcrumbs -->
     @livewire('search-books')
-    </section>
     @endsection

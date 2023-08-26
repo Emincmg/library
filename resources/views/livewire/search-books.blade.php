@@ -1,19 +1,18 @@
 <div>
-    <section id="myList" class="myList section-bg">
-        <div class="container mt-5">
+    <section id="myList" class="myList section-bg" style="padding: 20px 0 60px 0;">
+        <div class="container">
             <div class="myList-list">
-
-                <div class="search-container">
-                    <div class="search-form">
-                        <button>
-                            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                        <input wire:model.live="search" class="input" placeholder="Title, author, category etc..." type="text">
-                    </div>
-                </div>
                 <ul>
+                    <div class="search-container" style="margin-bottom: 2rem;">
+                        <div class="search-form">
+                            <button>
+                                <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                                    <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                            <input wire:model.live="search" class="input" placeholder="Title, author, category etc..." type="text">
+                        </div>
+                    </div>
                     @isset($bookData)
                         @forelse($bookData as $book)
                             <li data-aos="fade-up d-flex" wire:loading.remove>

@@ -1,10 +1,3 @@
-/**
-* Template Name: Groovin
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
@@ -973,6 +966,7 @@ section {
 /*--------------------------------------------------------------
 # My List Page
 --------------------------------------------------------------*/
+
 .myList .myList-list {
     padding: 0 100px;
     border-radius: 10px;
@@ -1588,15 +1582,12 @@ section {
 
 .search-form {
     --timing: 0.3s;
-    --width-of-input: 60dvw;
     --height-of-input: 40px;
     --border-height: 2px;
     --input-bg: #fff;
     --border-color:#052E45;
     --border-radius: 30px;
     --after-border-radius: 1px;
-    position: absolute;
-    width: var(--width-of-input);
     height: var(--height-of-input);
     display: flex;
     flex-direction: row-reverse;
@@ -1605,7 +1596,6 @@ section {
     border-radius: var(--border-radius);
     transition: border-radius 0.5s ease;
     background: var(--input-bg, #fff);
-    top: 175px;
 }
 
 .search-form .input {
