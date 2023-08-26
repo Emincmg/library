@@ -15,7 +15,7 @@
                 </div>
                 <ul>
                     @isset($bookData)
-                        @foreach($bookData as $book)
+                        @forelse($bookData as $book)
                             <li data-aos="fade-up d-flex" wire:loading.remove>
                                 <div class="row">
                                     <div class="col-md-2 img-container collapse" data-bs-toggle="collapse"  data-bs-target="#myList-list-{{$loop->iteration}}">
@@ -63,12 +63,12 @@
                                     </div>
                                 </div>
                             </li>
-                        @endforeach
+                        @empty
+                            <div class="empty-container" style="height: 70vh;" wire:loading.remove>
+                                <h2>No books.</h2>
+                            </div>
+                        @endforelse
                     @endisset
-                        <div class="container" wire:loading.remove style="height: 70vh">
-
-                        </div>
-
                     <div wire:loading.block wire:target="search">
 
                         <li class="placeholder-wrapper">

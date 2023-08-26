@@ -2,21 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Book;
+
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Symfony\Component\HttpFoundation\Response;
 
 class Lists extends Component
 {
     use WithPagination;
-    public $sortField ='title';
-    public $sortDirection ='asc';
+    public string $sortField ='title';
+    public string $sortDirection ='asc';
 
     public $search ;
 
-    protected $queryString = ['search'];
+    protected array $queryString = ['search'];
 
 
     public function render()
@@ -48,14 +47,14 @@ class Lists extends Component
         return view('livewire.lists',compact('booksReadBefore','booksNotReadBefore','booksCount','authorsCount','categoriesCount','notesCount'));
     }
 
-    public function sortBy($field){
+    public function sortBy($field) : void {
         $this->sortField = $field;
     }
-    public function sortDirection($direction){
+    public function sortDirection($direction) : void{
         $this->sortDirection= $direction;
     }
 
-    public function changeRateField($id,$rating){
+    public function changeRateField($id,$rating) : void{
         $user = Auth::user();
         $book = $user->books()->where('id',$id)->firstOrFail();
 

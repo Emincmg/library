@@ -107,7 +107,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Checks if book exists in the DB
+     * Checks if book exists in the user list.
      *
      * @param $volumeID
      * @return JsonResponse
@@ -123,7 +123,7 @@ class BooksController extends Controller
 
 
     /**
-     * Inserts book to the user list.
+     * Inserts book to user list.
      *
      * @param $volumeID
      * @param $readBefore
@@ -143,7 +143,7 @@ class BooksController extends Controller
 
 
     /**
-     * Gets book data from Google Books API
+     * Gets book data from Google Books API.
      *
      * @param $volumeID
      * @param $readBefore

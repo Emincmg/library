@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Flasher\Laravel\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
@@ -15,13 +14,18 @@ class SearchBooks extends Component
 
 
     use WithPagination;
+
+    /**
+     * @var string
+     */
     #[Url(history: true)]
     public string $search = '';
+
 
     /**
      * @throws GuzzleException
      */
-    public function render()
+    public function render() : View
     {
         $bookData = [];
 

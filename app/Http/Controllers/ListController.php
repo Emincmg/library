@@ -8,6 +8,9 @@ use Illuminate\View\View;
 
 class ListController extends Controller
 {
+    /**
+     * @return View
+     */
     public function index() : View
     {
         /** @var User $user */
