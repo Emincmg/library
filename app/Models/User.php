@@ -23,7 +23,9 @@ class User extends Authenticatable
         'password',
         'username',
         'info',
-        'img'
+        'img',
+        'gauth_id',
+        'gauth_type'
     ];
 
     /**

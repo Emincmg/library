@@ -30,6 +30,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => '529125143484-91qub1sn302blh18brk04erqrdm4pv4a.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => env('APP_URL') . '/callback/google',
+    ],
+
     'google_books' => [
         'api_key' => env('GOOGLE_BOOKS_API_KEY'),
     ],

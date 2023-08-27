@@ -30,7 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
+Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'signInwithGoogle']);
+Route::get('callback/google', [App\Http\Controllers\GoogleController::class, 'callbackToGoogle']);
 
 
 

@@ -17,6 +17,7 @@
         "laravel/socialite": "^5.8",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.2",
+        "lcobucci/jwt": "^4.0",
         "livewire/livewire": "3.0.0-beta.4",
         "php-flasher/flasher-laravel": "^1.15",
         "php-flasher/flasher-sweetalert-laravel": "^1.15",

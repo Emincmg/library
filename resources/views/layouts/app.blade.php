@@ -113,6 +113,8 @@
         integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+
 
 <!-- Template Main JS File -->
 <script src="{{asset('assets/js/main.js')}}"></script>
