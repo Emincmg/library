@@ -82,7 +82,7 @@
                                     });
                                 },
                                 error: function (xhr, status, error) {
-                                 let  err = JSON.parse(xhr.responseText)
+                                    let  err = JSON.parse(xhr.responseText)
                                     Swal.fire({
                                         title: "Error!",
                                         text: err.message,
@@ -94,9 +94,35 @@
                                 }
                             });
                         })
+                    }else{
+                        const noteToSend = note || 'null';
+                        const rateToSend = '0';
+
+                        $.ajax({
+                            url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
+                            type: 'GET',
+                            success: function (response) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Book saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            },
+                            error: function (xhr, status, error) {
+                                let  err = JSON.parse(xhr.responseText)
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: err.message,
+                                    icon: 'error',
+                                    confirmButtonText: 'Confirm',
+                                    confirmButtonColor: '#052E45',
+
+                                });
+                            }
+                        });
                     }
-
-
                 }
             })
         });
