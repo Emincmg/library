@@ -225,7 +225,7 @@
                                         <h2>No books.</h2>
                                     </div>
                                 @endforelse
-                            {{$booksReadBefore->links('layouts.pagination-links')}}
+                            {{$booksReadBefore->links()}}
                                 <div class="col mt-4">
                                     <div class="container portfolio-insert">
                                         <div class="col-md-6 icon-box">

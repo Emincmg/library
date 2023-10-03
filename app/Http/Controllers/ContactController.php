@@ -5,38 +5,28 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Contact;
-use Illuminate\View\View;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 
 class ContactController extends Controller
 
 {
-
-    /**
-     * Write code on Method
-     *
-     * @return View ()
-     */
-
-    public function index() : \Illuminate\View\View
-
+    public function index() : View
     {
-
         return view('contactForm');
-
     }
 
 
     /**
      * Write code on Method
      *
-     * @return response()
+     * @param Request $request
+     * @return JsonResponse
      */
 
-    public function store(Request $request)
-
+    public function store(Request $request) : JsonResponse
     {
 
         $request->validate([
@@ -56,12 +46,6 @@ class ContactController extends Controller
 
         Contact::create($request->all());
 
-
         return \response()->json(['message'=>'Contact mail sent']);
-
-//        return redirect()->route('index')
-//            ->with(['success' => 'Your contact mail sent.']);
-
     }
-
 }

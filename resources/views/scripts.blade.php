@@ -70,7 +70,7 @@
                             const rateToSend = value.value || '0';
 
                             $.ajax({
-                                url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
+                                url: '/store/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
                                 type: 'GET',
                                 success: function (response) {
                                     Swal.fire({
@@ -98,9 +98,15 @@
                         const noteToSend = note || 'null';
                         const rateToSend = '0';
 
+                        const _token = $('meta[name="csrf-token"]').attr('content');
+
                         $.ajax({
-                            url: '/insertBook/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
-                            type: 'GET',
+                            url: '/store',
+                            data: bookID + readBefore + noteToSend + rateToSend,
+                            headers: {
+                                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                            },
+                            type: 'POST',
                             success: function (response) {
                                 Swal.fire({
                                     position: 'top-end',
@@ -336,22 +342,19 @@
 
         $(document).on('submit', '#editProfileForm', function (e) {
             e.preventDefault();
+            let formData = $(this).serialize();
             Swal.showLoading();
             $.ajax({
                 url: 'editprofile',
-                method: 'POST',
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function (response) {
+                method: 'PUT',
+                data: formData,
+                success: function () {
                     Swal.fire({
                         title: 'Changed!',
                         text: 'Your profile has been modified.',
                         icon: 'success',
                         confirmButtonText: 'Confirm',
                         confirmButtonColor: '#052E45',
-
                     });
                 },
                 error: function (xhr, status, error) {

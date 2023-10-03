@@ -8,6 +8,7 @@
     <title>Library application · Ali Emin Çomoğlu</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicons -->
     <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
@@ -50,20 +51,13 @@
                 <li><a class="nav-link scrollto" href="{{route('index')}}#why-us"><i class='bx bx-male'></i>Why me?</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#contact"><i class='bx bx-phone-outgoing'></i>Contact</a></li>
                 @auth
-                    <li><a href="{{route('listindex')}}"><i class='bx bx-list-ul' ></i>My list</a></li>
+                    <li><a href="{{route('list.index')}}"><i class='bx bx-list-ul' ></i>My list</a></li>
                     <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>
                     <li class="dropdown"><a href="#"><i class='bx bxs-user'></i><span>{{Auth::user()->name}}</span> @isset(Auth::user()->img)<img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="" class="profile-photo">@endisset <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{route('profilepage')}}"><i class='bx bxs-user-detail' ></i>Profile</a></li>
                             <li><a href="{{route('editprofilepage')}}"><i class='bx bxs-user-detail' ></i>Edit Profile</a></li>
-{{--                            <li><a href="{{route('listindex')}}"><i class='bx bx-list-ul' ></i>My list</a></li>--}}
-{{--                            <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>--}}
-                            {{--                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>--}}
-                            {{--                                <ul>--}}
-                            {{--                                    <li><a href="#">Deep Drop Down 1</a></li>--}}
-                            {{--                                </ul>--}}
-                            {{--                            </li>--}}
                             <li><a href="{{route('logout')}}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class='bx bx-log-out' ></i>Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

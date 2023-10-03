@@ -6,32 +6,50 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/listindex', [App\Http\Controllers\ListController::class, 'index'])->name('listindex');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::get('/list', [App\Http\Controllers\ListController::class, 'index'])->name('list.index');
 
-    Route::get('/insertBook/{volumeID}/{readBefore}/{note?}/{rate?}', [App\Http\Controllers\BooksController::class, 'insertBook'])->name('insertBook');
-    Route::get('/deletebook/{id}', [App\Http\Controllers\BooksController::class, 'deleteBook'])->name('deletebook');
+    Route::group(['book'], function () {
+        Route::controller(\App\Http\Controllers\BooksController::class)->group(function () {
+            Route::prefix('change')->group(function () {
+                Route::get('read/{id}/{value}', 'changeReadField')->name('changeread');
+                Route::get('note/{id}/{value?}', 'changeNoteField')->name('changenote');
+                Route::get('rate/{id}/{value?}', 'changeRateField')->name('changerate');
+            });
+            Route::get('/checkbook/{volumeID}', 'checkBookExists')->name('checkbook');
+            Route::get('/addbookpage', 'addBookPage')->name('addbookpage');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/deletebook/{id}', 'deleteBook')->name('deletebook');
+        }
+        );
+    });
 
+    Route::group(['profile'], function () {
+        Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
+            Route::get('/profilepage', 'index')->name('profilepage');
+            Route::get('/editprofilepage', 'editProfilePage')->name('editprofilepage');
+            Route::put('/editprofile', 'editProfile')->name('editprofile');
+        });
+    });
 
-    Route::get('/changeread/{id}/{value}', [App\Http\Controllers\BooksController::class, 'changeReadField'])->name('changeread');
-    Route::get('/changenote/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeNoteField'])->name('changenote');
-    Route::get('/changerate/{id}/{value?}', [App\Http\Controllers\BooksController::class, 'changeRateField'])->name('changerate');
-    Route::get('/checkbook/{volumeID}', [App\Http\Controllers\BooksController::class, 'checkBookExists'])->name('checkbook');
-
-    Route::get('/addbookpage', [App\Http\Controllers\BooksController::class, 'addBookPage'])->name('addbookpage');
-    Route::get('/contactpage', [App\Http\Controllers\ContactController::class, 'index']);
-    Route::get('/profilepage', [App\Http\Controllers\ProfileController::class, 'index'])->name('profilepage');
-    Route::get('/editprofilepage', [App\Http\Controllers\ProfileController::class, 'editProfilePage'])->name('editprofilepage');
-
-    Route::post('/editprofile', [App\Http\Controllers\ProfileController::class, 'editProfile'])->name('editprofile');
-    Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact');
-
+    Route::group(['contact'], function () {
+        Route::controller(App\Http\Controllers\ContactController::class)->group(function () {
+            Route::prefix('contact')->group(function () {
+                Route::post('/contact', 'store')->name('contact');
+                Route::get('/contactpage', 'index');
+            });
+        });
+    });
 });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'signInwithGoogle']);
-Route::get('callback/google', [App\Http\Controllers\GoogleController::class, 'callbackToGoogle']);
+Route::group(['google'], function () {
+    Route::controller(App\Http\Controllers\GoogleController::class)->group(function () {
+        Route::get('auth/google', 'signInwithGoogle');
+        Route::get('callback/google', 'callbackToGoogle')->name('callbackToGoogle');
+    });
+});
 
 
 

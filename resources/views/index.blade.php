@@ -17,7 +17,7 @@
                                 <p class="animate__animated animate__fadeInUp">Library management application.</p>
                                 @auth
                                     <div>
-                                        <a href="{{route('listindex')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Book List</a>
+                                        <a href="{{route('list.index')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Book List</a>
                                     </div>
                                 @endauth
                                 @guest

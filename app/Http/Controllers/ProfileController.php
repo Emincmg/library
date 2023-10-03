@@ -29,7 +29,9 @@ class ProfileController extends Controller
         });
 
     }
-    public function index() : View
+
+
+    public function index(): View
     {
         $lastBooks = $this->user->books()->orderBy('created_at', 'desc')->take(5)->get();
         $lastNotes = $this->user->books()->orderBy('updated_at', 'desc')->take(5)->get();
@@ -38,30 +40,9 @@ class ProfileController extends Controller
     }
 
 
-    public function editProfilePage() : View
+    public function editProfilePage(): View
     {
         return view('editprofile');
-    }
-
-
-    /**
-     * Validates edit profile form
-     *
-     * @param array $data
-     * @return \Illuminate\Validation\Validator
-     */
-    protected function validator(array $data) : \Illuminate\Validation\Validator
-    {
-        $rules = [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'old_password'=> 'required|string|max:255',
-            'password' => $data['password']? 'required|min:8|confirmed' : '',
-            'password_confirmation' => $data['password'] ? 'required' : '',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ];
-
-        return Validator::make($data, $rules);
     }
 
 
@@ -73,18 +54,17 @@ class ProfileController extends Controller
      */
     protected function editProfile(Request $request) : JsonResponse
     {
-
-        if (!Hash::check($request->get('old_password'), $this->user->password))
-        {
-            return response()->json(['message' => 'Wrong password',], 422);
+        if ($request->has('password')) {
+            if (!Hash::check($request->get('old_password'), $this->user['password'])) {
+                return response()->json(['message' => 'Wrong password',], 422);
+            }
+            if (strcmp($request->get('old_password'), $request->input('password')) == 0) {
+                return response()->json(['message' => 'New password cant be same with your old password']);
+            }
+            $this->user['password'] = Hash::make($request->input('password'));
         }
 
-        if (strcmp($request->get('old_password'), $request->input('password')) == 0)
-        {
-            return response()->json(['message'=>'New password cant be same with your old password']);
-        }
-
-        $validated = $this->Validator($request->all());
+        $validated = $this->editProfileValidator($request->all());
 
         if ($validated->fails()) {
             return response()->json([
@@ -93,25 +73,47 @@ class ProfileController extends Controller
         }
 
         if ($validated->passes()) {
-            $this->user->name = $request->input('name');
-            $this->user->email = $request->input('email');
-            $this->user->password = Hash::make($request->input('password'));
-
-
-            if ($request->has('info')) {
-                $this->user->info = $request->input('info');
+            if ($request->has('name')) {
+                $this->user['name'] = $request->input('name');
             }
 
+            if ($request->has('email')) {
+                $this->user['email'] = $request->input('email');
+            }
 
-            if ($request->hasFile('image')) {
-                $filename = $request->input('image')->getClientOriginalName();
-                $request->input('image')->storeAs('app/images', $filename);
-                $this->user->img = $filename;
+            if ($request->has('info')) {
+                $this->user['info'] = $request->input('info');
+            }
+
+            if ($request->has('image')) {
+                $filename = $request->file('image')->getClientOriginalName();
+                $request->file('image')->storeAs('/images', $filename);
+                $this->user['img'] = $filename;
             }
 
             $this->user->save();
         }
-        return response()->json(['message' => 'Profile edited.',], 205);
+    }
+
+
+    /**
+     * Validates edit profile form
+     *
+     * @param array $data
+     * @return \Illuminate\Validation\Validator
+     */
+    private function editProfileValidator(array $data): \Illuminate\Validation\Validator
+    {
+        return Validator::make($data,
+            [
+                'name' => isset($data['name']) ? 'required|string|max:255' : '',
+                'email' => isset($data['email']) ? 'required|email|max:255' : '',
+                'image' => isset($data['image']) ? 'image|mimes:jpeg,png,jpg,gif|max:2048' : '',
+                'old_password'=> isset($data['old_password']) ? 'required|string|max:255' : '',
+                'password' => isset($data['password']) ? 'required|min:8|confirmed' : '',
+                'password_confirmation' => isset($data['password']) ? 'required' : '',
+            ]
+        );
     }
 
 

@@ -21,8 +21,9 @@
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('editprofile')}}" method="POST" enctype="multipart/form-data"
+                            <form action="{{route('editprofile')}}" method="PUT" enctype="multipart/form-data"
                                   id="editProfileForm">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <img src="{{asset('/storage/images/'.Auth::user()->img)}}" alt="profile_image"
                                          class="rounded-circle" width="150" id="image">
@@ -43,7 +44,6 @@
                     <div class="row gutters-sm">
                         <div class="card mt-3">
                             <div class="card-body">
-                                @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <h6 class="mb-0">Full Name</h6>

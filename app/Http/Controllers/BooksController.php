@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Flasher\Laravel\Http\Request;
 use GuzzleHttp;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -35,11 +36,6 @@ class BooksController extends Controller
         return view('index');
     }
 
-    /**
-     * Render book adding page.
-     *
-     * @return View
-     */
     public function addBookPage(): View
     {
         return view('addbook');
@@ -54,7 +50,6 @@ class BooksController extends Controller
      */
     public function changeReadField($id, $value): JsonResponse
     {
-
         $book = $this->user->books()->where('id', $id)->firstOrFail();
 
         $book->update(['readBefore' => $value]);
@@ -85,13 +80,13 @@ class BooksController extends Controller
      * @param $value
      * @return JsonResponse
      */
-    public function changeRateField($id, $value) : JsonResponse
+    public function changeRateField($id, $value): JsonResponse
     {
         $book = $this->user->books()->where('id', $id)->firstOrFail();
 
         $book->update(['rate' => $value]);
 
-        return response()->json(['message' => 'Rate field changed',],204);
+        return response()->json(['message' => 'Rate field changed',], 204);
     }
 
     /**
@@ -103,7 +98,7 @@ class BooksController extends Controller
     public function deleteBook($id): JsonResponse
     {
         Book::destroy($id);
-        return response()->json(['message' => 'Book deleted'],204);
+        return response()->json(['message' => 'Book deleted'], 204);
     }
 
     /**
@@ -118,23 +113,20 @@ class BooksController extends Controller
         if ($checkBookTitle) {
             abort(409, 'Book already exists.');
         }
-        return response()->json(['message' => 'Book checked',204]);
+        return response()->json(['message' => 'Book checked', 204]);
     }
 
 
     /**
      * Inserts book to user list.
      *
-     * @param $volumeID
-     * @param $readBefore
-     * @param $note
-     * @param $rate
+     * @param Request $request
      * @return JsonResponse
      * @throws GuzzleException
      */
-    public function insertBook($volumeID, $readBefore, $note, $rate): JsonResponse
+    public function store(Request $request): JsonResponse
     {
-        $bookData = $this->getBookData($volumeID, $readBefore, $note, $rate);
+        $bookData = $this->getBookData($request['volumeID'], $request['readBefore'], $request['note'],$request['rate']);
 
         $this->user->books()->save($bookData);
 
