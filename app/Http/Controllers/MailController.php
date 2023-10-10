@@ -24,7 +24,7 @@ class MailController extends Controller
         ];
         if ($request->has('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-            $request->file('file')->storeAs('/files/contact', $filename);
+            $request->file('file')->storePubliclyAs('/contact', $filename);
             $mailData['file'] = $filename;
         }
 
