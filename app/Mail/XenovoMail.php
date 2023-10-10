@@ -33,6 +33,9 @@ class XenovoMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Xenovo - Contact Form ')->view('emails.contact')->attachData($this->mailData['file'],'Attachment.pdf');
+        return $this->subject('Xenovo - Contact Form ')->view('emails.contact')->attach($this->mailData['file'],[
+            'as'=>'Attachment',
+            'mime' => 'application/pdf',
+        ]);
     }
 }
