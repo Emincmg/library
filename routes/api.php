@@ -19,3 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/get-all-books-from-google', [App\Http\Controllers\BooksController::class, 'getBooksFromGoogleAPI']);
+Route::controller(\App\Http\Controllers\MailController::class)->group(function (){
+    Route::post('/contact-mail','index');
+});

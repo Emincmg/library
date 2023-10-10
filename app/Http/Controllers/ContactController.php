@@ -28,24 +28,15 @@ class ContactController extends Controller
 
     public function store(Request $request) : JsonResponse
     {
-
         $request->validate([
-
             'name' => 'required',
-
             'email' => 'required|email',
-
             'phone' => 'required|',
-
             'subject' => 'required',
-
             'message' => 'required'
-
         ]);
 
-
         Contact::create($request->all());
-
         return \response()->json(['message'=>'Contact mail sent']);
     }
 }

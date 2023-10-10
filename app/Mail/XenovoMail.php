@@ -1,38 +1,29 @@
 <?php
 
-
-
 namespace App\Mail;
 
-
-
 use Illuminate\Bus\Queueable;
-
 use Illuminate\Contracts\Queue\ShouldQueue;
-
 use Illuminate\Mail\Mailable;
-
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-
-
-class ContactMail extends Mailable
+class XenovoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $mailData;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
-
+    public function __construct($mailData)
     {
-        $this->data = $data;
+        $this->mailData = $mailData;
     }
-
 
 
     /**
@@ -40,10 +31,10 @@ class ContactMail extends Mailable
      *
      * @return $this
      */
-
     public function build()
-
     {
-        return $this->subject('Library Application Contact - '. $this->data->subject)->view('emails.contact');
+        return $this->subject('Xenovo - Contact Form ')->view('emails.contact')->attachData($this->mailData['file'],'Attachment.pdf',[
+            'mime' => 'application/pdf',
+        ]);
     }
 }

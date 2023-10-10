@@ -1,10 +1,10 @@
-<h2>Hey, It's me {{ $data->name }}</h2>
+<h2>{{ $data->name }}</h2>
 
 <br>
 
 
 
-<strong>User details: </strong><br>
+<strong>Details: </strong><br>
 
 <strong>Name: </strong>{{ $data->name }} <br>
 
