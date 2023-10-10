@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\XenovoMail;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,7 +29,7 @@ class MailController extends Controller
             $mailData['file'] = $filename;
         }
 
-        Mail::to('emin-comoglu@hotmail.com')->send(new ContactMail($mailData));
+        Mail::to('emin-comoglu@hotmail.com')->send(new XenovoMail($mailData));
 
         return \response()->json('Mail Sent!');
     }
