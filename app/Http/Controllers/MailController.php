@@ -25,7 +25,7 @@ class MailController extends Controller
         if ($request->has('file')) {
             $filename = $request->file('file')->getClientOriginalName();
             $request->file('file')->store('/files/contact', $filename);
-            $mailData['file'] = storage_path().$filename;
+            $mailData['file'] = $filename;
         }
 
         Mail::to('emin-comoglu@hotmail.com')->send(new ContactMail($mailData));
