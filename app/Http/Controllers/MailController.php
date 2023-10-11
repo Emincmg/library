@@ -31,8 +31,8 @@ class MailController extends Controller
             $mailData['file'] = $filename;
         }
 
-        Mail::to('job@xenovo.net')->send(new XenovoMail($mailData));
+        Mail::to('application@xenovo.com.tr')->send(new XenovoMail($mailData));
 
-        return http_redirect('https://xenovo.com.tr/jr-grafik-tasarimci');
+        return JsonResponse('message','Mail sent');
     }
 }
