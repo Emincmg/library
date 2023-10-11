@@ -15,7 +15,7 @@ class MailController extends Controller
      * Write code on Method
      *
      * @param Request $request
-     * @return JsonResponse()
+     * @return \Illuminate\Http\RedirectResponse()
      */
     public function index(Request $request)
     {
@@ -33,6 +33,6 @@ class MailController extends Controller
 
         Mail::to('emin-comoglu@hotmail.com')->send(new XenovoMail($mailData));
 
-        return \response()->json('Mail Sent!');
+        return redirect()->back();
     }
 }
