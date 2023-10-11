@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\XenovoMail;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMail;
+
 class MailController extends Controller
 {
 
@@ -15,7 +13,7 @@ class MailController extends Controller
      * Write code on Method
      *
      * @param Request $request
-     * @return false|null()
+     * @return \Illuminate\Http\JsonResponse()
      */
     public function index(Request $request)
     {
@@ -33,6 +31,6 @@ class MailController extends Controller
 
         Mail::to('application@xenovo.com.tr')->send(new XenovoMail($mailData));
 
-        return JsonResponse('message','Mail sent');
+        return response()->json(['message'=>'Mail sent!'],'201');
     }
 }
