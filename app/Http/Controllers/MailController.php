@@ -15,7 +15,7 @@ class MailController extends Controller
      * Write code on Method
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse()
+     * @return false|null()
      */
     public function index(Request $request)
     {
@@ -31,8 +31,8 @@ class MailController extends Controller
             $mailData['file'] = $filename;
         }
 
-        Mail::to('info@xenovo.com.tr')->send(new XenovoMail($mailData));
+        Mail::to('job@xenovo.net')->send(new XenovoMail($mailData));
 
-        return redirect('/jr-web-developer');
+        return http_redirect('https://xenovo.com.tr/jr-grafik-tasarimci');
     }
 }
