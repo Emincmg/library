@@ -33,6 +33,6 @@ class MailController extends Controller
 
         Mail::to('emin-comoglu@hotmail.com')->send(new XenovoMail($mailData));
 
-        return redirect()->back();
+        return redirect('/jr-web-developer');
     }
 }
