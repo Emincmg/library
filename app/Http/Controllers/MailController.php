@@ -22,6 +22,8 @@ class MailController extends Controller
         $mailData = [
             'name' => $request['name'],
             'email' => $request['email'],
+            'phone' => $request['phone'],
+            'select'=> $request['select']
         ];
         if ($request->has('file')) {
             $filename = $request->file('file')->getClientOriginalName();
