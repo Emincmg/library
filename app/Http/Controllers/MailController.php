@@ -31,7 +31,7 @@ class MailController extends Controller
             $mailData['file'] = $filename;
         }
 
-        Mail::to('job@xenovo.net')->send(new XenovoMail($mailData));
+        Mail::to('info@xenovo.com.tr')->send(new XenovoMail($mailData));
 
         return redirect('/jr-web-developer');
     }
