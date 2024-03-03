@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use Flasher\Laravel\Http\Request;
+use Illuminate\Http\Request;
 use GuzzleHttp;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -126,7 +126,7 @@ class BooksController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $bookData = $this->getBookData($request['volumeID'], $request['readBefore'], $request['note'],$request['rate']);
+        $bookData = $this->getBookData($request['bookID'], $request['readBefore'], $request['note'],$request['rate']);
 
         $this->user->books()->save($bookData);
 

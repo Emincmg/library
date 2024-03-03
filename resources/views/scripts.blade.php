@@ -1,6 +1,6 @@
 @section('scripts')
     <script type="text/javascript">
-
+        const _token = $('meta[name="csrf-token"]').attr('content');
         //Add book
         $(document).on('click', '#add-button', async function () {
 
@@ -69,9 +69,22 @@
                             const noteToSend = note || 'null';
                             const rateToSend = value.value || '0';
 
+                            const formData = {
+                                bookID : bookID,
+                                readBefore : readBefore,
+                                noteToSend : noteToSend,
+                                rateToSend :rateToSend
+                            }
+
                             $.ajax({
-                                url: '/store/' + bookID + '/' + readBefore + '/' + noteToSend + '/' + rateToSend,
-                                type: 'GET',
+                                url: '/store/',
+                                type: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: formData,
+                                dataType: "json",
+                                encode: true,
                                 success: function (response) {
                                     Swal.fire({
                                         position: 'top-end',
@@ -98,15 +111,22 @@
                         const noteToSend = note || 'null';
                         const rateToSend = '0';
 
-                        const _token = $('meta[name="csrf-token"]').attr('content');
+                        const formData = {
+                            bookID: bookID,
+                            readBefore : readBefore,
+                            noteToSend : noteToSend,
+                            rateToSend : rateToSend
+                        }
 
                         $.ajax({
                             url: '/store',
-                            data: bookID + readBefore + noteToSend + rateToSend,
+                            data: formData,
                             headers: {
-                                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                'X-CSRF-TOKEN': _token
                             },
                             type: 'POST',
+                            dataType: "json",
+                            encode: true,
                             success: function (response) {
                                 Swal.fire({
                                     position: 'top-end',
