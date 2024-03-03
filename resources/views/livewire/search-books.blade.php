@@ -21,6 +21,9 @@
                                         @if(isset($book['volumeInfo']['imageLinks']['thumbnail']) && !empty($book['volumeInfo']['imageLinks']['thumbnail']))
                                             <img src="{{$book['volumeInfo']['imageLinks']['thumbnail']}}" alt=""
                                                  class="img-fluid">
+                                        @else
+                                            <img src="/assets/img/book/not-found.png" alt="not-found"
+                                                 class="img-fluid">
                                         @endif
                                     </div>
                                     <div class="col-md-10 ">
