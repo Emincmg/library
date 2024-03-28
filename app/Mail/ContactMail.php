@@ -40,8 +40,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Xenovo - Contact Form ')->view('email.contact')->attachData($this->mailData['file'],'Attachment.pdf',[
-            'mime' => 'application/pdf',
-        ]);
+        return $this->subject('Emin Çomoğlu - Contact Form ')->view('email.contact');
     }
 }

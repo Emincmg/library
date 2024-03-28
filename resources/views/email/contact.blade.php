@@ -7,7 +7,7 @@
 
 <strong>Phone: </strong>{{ $mailData['phone'] }} <br>
 
-<strong>Application: </strong>{{ $mailData['select'] }} <br>
+<strong>Message: </strong>{{ $mailData['message'] }} <br>
 
 
 

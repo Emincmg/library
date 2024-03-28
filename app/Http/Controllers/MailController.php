@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Mail\XenovoMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -21,7 +22,8 @@ class MailController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'phone' => $request['phone'],
-            'select'=> $request['select']
+            'message'=> $request['message'],
+            'subject'=> $request['subject'],
         ];
         if ($request->has('file')) {
             $filename = $request->file('file')->getClientOriginalName();
@@ -29,8 +31,8 @@ class MailController extends Controller
             $mailData['file'] = $filename;
         }
 
-        Mail::to('application@xenovo.com.tr')->send(new XenovoMail($mailData));
+        Mail::to('emin-comoglu@hotmail.com')->send(new ContactMail($mailData));
 
-        return response()->json(['message'=>'Mail sent!'],'201');
+        return response()->json(['success'=>true,'message'=>'Mail sent!'],'200');
     }
 }

@@ -5,7 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::get('clear_cache', function () {
 
+    \Artisan::call('view:cache');
+    \Artisan::call('config:cache');
+    \Artisan::call('event:cache');
+    \Artisan::call('route:cache');
+
+    dd("Cache is cleared");
+
+});
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
@@ -50,7 +59,6 @@ Route::group(['google'], function () {
         Route::get('callback/google', 'callbackToGoogle')->name('callbackToGoogle');
     });
 });
-
 
 
 

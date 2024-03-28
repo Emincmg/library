@@ -49,7 +49,6 @@
                 <li><a class="nav-link scrollto active" href="{{route('index')}}#hero"><i class='bx bx-home'></i>Home</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#about"><i class='bx bx-message-square-detail bx-flip-horizontal' ></i>About</a></li>
                 <li><a class="nav-link scrollto" href="{{route('index')}}#why-us"><i class='bx bx-male'></i>Why me?</a></li>
-                <li><a class="nav-link scrollto" href="{{route('index')}}#contact"><i class='bx bx-phone-outgoing'></i>Contact</a></li>
                 @auth
                     <li><a href="{{route('list.index')}}"><i class='bx bx-list-ul' ></i>My list</a></li>
                     <li><a class="nav-link scrollto" href="{{route('addbookpage')}}"><i class='bx bx-search-alt-2' ></i>Search Books</a></li>
@@ -84,7 +83,7 @@
             <strong><span>Library application</span></strong>
         </div>
         <div class="credits">
-            Developed by <a href="">Ali Emin Çomoğlu</a>
+            Developed by <a href="https://emincomoglu.com">Ali Emin Çomoğlu</a>
         </div>
     </div>
 </footer><!-- End Footer -->
